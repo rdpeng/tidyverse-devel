@@ -37,7 +37,7 @@ A *dataset* is a collection of values. These are often numbers and strings, and 
 
 *Variables* in a dataset are the different categories of data that will be collected. They are the different pieces of information that can be collected or measured on each observation. Here, we see there are 7 different variables: ID, LastName, FirstName, Sex, City, State, and Occupation. The names for variables are put in the first row of the spreadsheet.
 
-![Variables](gslides/001.png)
+![Variables](images/gslides/001.png)
 
 **Observations**
 
@@ -473,10 +473,7 @@ Creating [RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526
 
 New projects can be created by clicking on the RStudio Projects button in RStudio:
 
-
-```
-## Error in knitr::include_graphics(here::here("book_figures/rproj-fig.png")): Cannot find the file(s): "/Users/rdpeng/books/tidyverse-devel/book_figures/rproj-fig.png"
-```
+<img src="/Users/rdpeng/books/tidyverse-devel/book_figures/rproj-fig.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="60%" />
 
 This will create a special file with the .Rproj extension. This file tells RStudio to identify the directory containing the .Rproj file as the main directory for that R Project. A new session of RStudio will be started when a user opens an R project from this main directory. The previous state including settings of that project will be maintained from one time to the next. The files that were open the last time the user worked on the project will automatically be opened again. Other packages like the `here` package will also recognize the .Rproj file to make analyses easier for the user. We will explain how this package works in the next section.
 

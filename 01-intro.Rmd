@@ -37,7 +37,7 @@ A *dataset* is a collection of values. These are often numbers and strings, and 
 
 *Variables* in a dataset are the different categories of data that will be collected. They are the different pieces of information that can be collected or measured on each observation. Here, we see there are 7 different variables: ID, LastName, FirstName, Sex, City, State, and Occupation. The names for variables are put in the first row of the spreadsheet.
 
-![Variables](gslides/001.png)
+![Variables](images/gslides/001.png)
 
 **Observations**
 
