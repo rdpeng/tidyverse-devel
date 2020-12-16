@@ -101,16 +101,16 @@ slice_sample(trees, n = 10)
 
 ```
 ##    Girth Height Volume
-## 1   13.8     64   24.9
+## 1   18.0     80   51.5
 ## 2   11.3     79   24.2
-## 3   17.5     82   55.7
+## 3    8.8     63   10.2
 ## 4   14.2     80   31.7
-## 5   16.0     72   38.3
-## 6   14.5     74   36.3
-## 7   11.2     75   19.9
-## 8    8.3     70   10.3
+## 5   11.4     76   21.4
+## 6   11.7     69   21.3
+## 7   11.0     66   15.6
+## 8   14.0     78   34.5
 ## 9   18.0     80   51.0
-## 10  11.0     75   18.2
+## 10  12.9     85   33.8
 ```
 
 You can also use `slice_head()` or `slice_tail()` to take a look at the top rows or bottom rows of your tibble. Again the number of rows can be specified with the n argument.
@@ -2042,11 +2042,11 @@ GET(url, write_disk(tf <- tempfile(fileext = ".xlsx")))
 
 ```
 ## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/Brady-State-Scorecard-2015.xlsx]
-##   Date: 2020-12-16 16:35
+##   Date: 2020-12-16 18:11
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 66.2 kB
-## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpbjCQ6S/file74b459c09d07.xlsx
+## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpdtZzCM/file7ddd59c09d07.xlsx
 ```
 
 ```r
@@ -2094,11 +2094,11 @@ GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
 
 ```
 ## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/table_5_crime_in_the_united_states_by_state_2015.xls]
-##   Date: 2020-12-16 16:35
+##   Date: 2020-12-16 18:11
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 98.3 kB
-## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpbjCQ6S/file74b4618fb492.xls
+## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpdtZzCM/file7ddd618fb492.xls
 ```
 
 ```r
@@ -2145,11 +2145,11 @@ GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
 
 ```
 ## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/LND01.xls]
-##   Date: 2020-12-16 16:35
+##   Date: 2020-12-16 18:11
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 1.57 MB
-## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpbjCQ6S/file74b46135133.xls
+## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpdtZzCM/file7ddd6135133.xls
 ```
 
 ```r
