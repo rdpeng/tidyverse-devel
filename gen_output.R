@@ -16,3 +16,6 @@ lapply(inputs, function(input) {
         file.rename(out, output)
 })
 
+system("rsync -av images manuscript")
+
+
