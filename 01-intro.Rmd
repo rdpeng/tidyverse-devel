@@ -663,7 +663,7 @@ create.project(project.name = "data_analysis",
 
 The `create.project()` function creates a directory called `data_analysis` for this project. Inside that directory are the following sub-directories (which we can view in the RStudio File browser):
 
-![Project Template Directory Layout](book_figures/projecttemplatedir.png)
+![Project Template Directory Layout](images/book_figures/projecttemplatedir.png)
 
 Inside each directory is a README file that contains a brief description of what kinds of files should go in this directory. If you do not need all of these directories, it is okay to leave them empty for now.
 
