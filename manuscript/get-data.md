@@ -31,7 +31,8 @@ There are a number of differences between tibbles and data.frames. To see a full
 
 The tibble package is part of the `tidyverse` and can thus be loaded in (once installed) using:
 
-```{r, message = FALSE}
+
+```r
 library(tidyverse)
 ```
 
@@ -41,8 +42,26 @@ Since many packages use the historical data.frame from base R, you'll often find
 
 For example, the `trees` dataset is a data.frame that's available in base R. This dataset stores the diameter, height, and volume for Black Cherry Trees. To convert this data.frame to a tibble you would use the following:
 
-```{r}
+
+```r
 as_tibble(trees)
+```
+
+```
+## # A tibble: 31 x 3
+##    Girth Height Volume
+##    <dbl>  <dbl>  <dbl>
+##  1   8.3     70   10.3
+##  2   8.6     65   10.3
+##  3   8.8     63   10.2
+##  4  10.5     72   16.4
+##  5  10.7     81   18.8
+##  6  10.8     83   19.7
+##  7  11       66   15.6
+##  8  11       75   18.2
+##  9  11.1     80   22.6
+## 10  11.2     75   19.9
+## # … with 21 more rows
 ```
 
 Note in the above example and as mentioned earlier, that tibbles, by default, only print the first ten rows to screen. If you were to print `trees` to screen, all 31 rows would be displayed. When working with large data.frames, this default behavior can be incredibly frustrating. Using tibbles removes this frustration because of the default settings for tibble printing.
@@ -53,31 +72,79 @@ If you *do* want to see more rows from the tibble, there are a few options! Firs
 
 A second option is the fact that `print()` enables you to specify how many rows and columns you'd like to display. Here, we again display the `trees` data.frame as a tibble but specify that we'd only like to see 5 rows. The `width = Inf` argument specifies that we'd like to see all the possible columns. Here, there are only 3, but for larger datasets, this can be helpful to specify.
 
-```{r}
+
+```r
 as_tibble(trees) %>% 
   print(n = 5, width = Inf)
+```
+
+```
+## # A tibble: 31 x 3
+##   Girth Height Volume
+##   <dbl>  <dbl>  <dbl>
+## 1   8.3     70   10.3
+## 2   8.6     65   10.3
+## 3   8.8     63   10.2
+## 4  10.5     72   16.4
+## 5  10.7     81   18.8
+## # … with 26 more rows
 ```
 
 Other options for viewing your tibbles are the `slice_*` functions of the `dplyr` package. 
 
 The `slice_sample()` function of the `dplyr` package will allow you to see a sample of random rows in random order. The number of rows to show is specified by the `n` argument. This can be useful if you don't want to print the entire tibble, but you want to get a greater sense of the values. This is a good option for data analysis reports, where printing the entire tibble would not be appropriate if the tibble is quite large.
 
-```{r}
+
+```r
 slice_sample(trees, n = 10)
+```
+
+```
+##    Girth Height Volume
+## 1   14.5     74   36.3
+## 2   11.4     76   21.4
+## 3   13.3     86   27.4
+## 4   11.3     79   24.2
+## 5   11.0     66   15.6
+## 6   11.4     76   21.0
+## 7   12.0     75   19.1
+## 8   14.2     80   31.7
+## 9    8.3     70   10.3
+## 10   8.6     65   10.3
 ```
 
 You can also use `slice_head()` or `slice_tail()` to take a look at the top rows or bottom rows of your tibble. Again the number of rows can be specified with the n argument.
 
 This will show the first 5 rows.
 
-```{r}
+
+```r
 slice_head(trees, n = 5)
+```
+
+```
+##   Girth Height Volume
+## 1   8.3     70   10.3
+## 2   8.6     65   10.3
+## 3   8.8     63   10.2
+## 4  10.5     72   16.4
+## 5  10.7     81   18.8
 ```
 
 This will show the last 5 rows.
 
-```{r}
+
+```r
 slice_tail(trees, n = 5)
+```
+
+```
+##   Girth Height Volume
+## 1  17.5     82   55.7
+## 2  17.9     80   58.3
+## 3  18.0     80   51.5
+## 4  18.0     80   51.0
+## 5  20.6     87   77.0
 ```
 
 
@@ -87,7 +154,8 @@ Alternatively, you can create a tibble on the fly by using `tibble()` and specif
 
 In the example here, we see that the column `c` will contain the value '1' across all rows. 
 
-```{r}
+
+```r
 tibble(
   a = 1:5,
   b = 6:10,
@@ -96,11 +164,23 @@ tibble(
 )
 ```
 
+```
+## # A tibble: 5 x 4
+##       a     b     c     z
+##   <int> <int> <dbl> <dbl>
+## 1     1     6     1    50
+## 2     2     7     1    82
+## 3     3     8     1   122
+## 4     4     9     1   170
+## 5     5    10     1   226
+```
+
 The `tibble()` function allows you to quickly generate tibbles and even allows you to reference columns within the tibble you're creating, as seen in column z of the example above.
 
 We also noted previously that tibbles can have column names that are not allowed in data.frame. In this example, we see that to utilize a nontraditional variable name, you surround the column name with backticks. Note that to refer to such columns in other tidyverse packages, you'll continue to use backticks surrounding the variable name. 
 
-```{r}
+
+```r
 tibble(
   `two words` = 1:5,
   `12` = "numeric",
@@ -108,11 +188,23 @@ tibble(
 )
 ```
 
+```
+## # A tibble: 5 x 3
+##   `two words` `12`    `:)` 
+##         <int> <chr>   <chr>
+## 1           1 numeric smile
+## 2           2 numeric smile
+## 3           3 numeric smile
+## 4           4 numeric smile
+## 5           5 numeric smile
+```
+
 ### Subsetting
 
 Subsetting tibbles also differs slightly from how subsetting occurs with data.frame. When it comes to tibbles, `[[` can subset by name or position;``$` only subsets by name. For example:
 
-```{r}
+
+```r
 df <- tibble(
   a = 1:5,
   b = 6:10,
@@ -122,10 +214,27 @@ df <- tibble(
 
 # Extract by name using $ or [[]]
 df$z
-df[["z"]]
+```
 
+```
+## [1]  50  82 122 170 226
+```
+
+```r
+df[["z"]]
+```
+
+```
+## [1]  50  82 122 170 226
+```
+
+```r
 # Extract by position requires [[]]
 df[[4]]
+```
+
+```
+## [1]  50  82 122 170 226
 ```
 
 Having now discussed tibbles, which are the type of object most tidyverse and tidyverse-adjacent packages work best with, we now know the goal. In many cases, tibbles are ultimately what we want to work with in R. However, data are stored in many different formats outside of R. We'll spend the rest of this course discussing those formats and talking about how to get those data into R so that you can start the process of working with and analyzing these data in R.
@@ -142,24 +251,44 @@ Microsoft Excel files, which typically have the file extension .xls or .xlsx, st
 
 Reading spreadsheets from Excel into R is made possible thanks to the `readxl` package. This is not a core tidyverse package, so you'll need to install and load the package in before use:
 
-```{r, message = FALSE}
+
+```r
 library(readxl)
 ```
 
 The function `read_excel()` is particularly helpful whenever you want read an Excel file into your R Environment. The only required argument of this function is the path to the Excel file on your computer. In the following example, `read_excel()` would look for the file "filename.xlsx" in your current working directory. If the file were located somewhere else on your computer, you would have to provide the *path* to that file.
 
-```{r eval = FALSE}
+
+```r
 # read Excel file into R
 df_excel <- read_excel("filename.xlsx")
 ```
 
 Within the `readxl` package there are a number of example datasets that we can use to demonstrate the packages functionality. To read the example dataset in, we'll use the `readxl_example()` function.
 
-```{r}
+
+```r
 # read example file into R
 example <- readxl_example("datasets.xlsx")
 df <- read_excel(example)
 df
+```
+
+```
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # … with 140 more rows
 ```
 
 Note that the information stored in `df` is a tibble. This will be a common theme throughout the packages used in these courses. 
@@ -172,16 +301,35 @@ Further, by default, `read_excel()` converts blank cells to missing data (NA). T
 
 For example, we are able to change the column names directly by passing a character string to the `col_names` argument:
 
-```{r}
+
+```r
 # specify column names on import
 read_excel(example, col_names = LETTERS[1:5])
+```
+
+```
+## # A tibble: 151 x 5
+##    A            B           C            D           E      
+##    <chr>        <chr>       <chr>        <chr>       <chr>  
+##  1 Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##  2 5.1          3.5         1.4          0.2         setosa 
+##  3 4.9          3           1.4          0.2         setosa 
+##  4 4.7          3.2         1.3          0.2         setosa 
+##  5 4.6          3.1         1.5          0.2         setosa 
+##  6 5            3.6         1.4          0.2         setosa 
+##  7 5.4          3.9         1.7          0.4         setosa 
+##  8 4.6          3.4         1.4          0.3         setosa 
+##  9 5            3.4         1.5          0.2         setosa 
+## 10 4.4          2.9         1.4          0.2         setosa 
+## # … with 141 more rows
 ```
 
 To take this a step further let's discuss one of the lesser-known arguments of the `read_excel()` function: `.name_repair`. This argument allows for further fine-tuning and handling of column names. 
 
 The default for this argument is `.name_repair = "unique"`. This checks to make sure that each column of the imported file has a unique name. If TRUE, `readxl` leaves them as is, as you see in the example here:
 
-```{r}
+
+```r
 # read example file into R using .name_repair default
 read_excel(
   readxl_example("deaths.xlsx"),
@@ -190,9 +338,19 @@ read_excel(
 )
 ```
 
+```
+## # A tibble: 3 x 6
+##   Name       Profession   Age `Has kids` `Date of birth`     `Date of death`    
+##   <chr>      <chr>      <dbl> <lgl>      <dttm>              <dttm>             
+## 1 David Bow… musician      69 TRUE       1947-01-08 00:00:00 2016-01-10 00:00:00
+## 2 Carrie Fi… actor         60 TRUE       1956-10-21 00:00:00 2016-12-27 00:00:00
+## 3 Chuck Ber… musician      90 TRUE       1926-10-18 00:00:00 2017-03-18 00:00:00
+```
+
 Another option for this argument is `.name_repair = "universal"`. This ensures that column names don’t contain any forbidden characters or reserved words. It's often a good idea to use this option if you plan to use these data with other packages downstream. This ensures that all the column names will work, regardless of the R package being used.
 
-```{r}
+
+```r
 # require use of universal naming conventions
 read_excel(
   readxl_example("deaths.xlsx"),
@@ -201,18 +359,44 @@ read_excel(
 )
 ```
 
+```
+## New names:
+## * `Has kids` -> Has.kids
+## * `Date of birth` -> Date.of.birth
+## * `Date of death` -> Date.of.death
+```
+
+```
+## # A tibble: 3 x 6
+##   Name         Profession   Age Has.kids Date.of.birth       Date.of.death      
+##   <chr>        <chr>      <dbl> <lgl>    <dttm>              <dttm>             
+## 1 David Bowie  musician      69 TRUE     1947-01-08 00:00:00 2016-01-10 00:00:00
+## 2 Carrie Fish… actor         60 TRUE     1956-10-21 00:00:00 2016-12-27 00:00:00
+## 3 Chuck Berry  musician      90 TRUE     1926-10-18 00:00:00 2017-03-18 00:00:00
+```
+
 Note that when using `.name_repair = "universal"`, you'll get a readout about which column names have been changed. Here you see that column names with a space in them have been changed to periods for word separation.
 
 Aside from these options, functions can be passed to `.name_repair`. For example, if you want all of your column names to be uppercase, you would use the following:
 
 
-```{r}
+
+```r
 # pass function for column naming
 read_excel(
   readxl_example("deaths.xlsx"),
   range = "arts!A5:F8",
   .name_repair = toupper
 )
+```
+
+```
+## # A tibble: 3 x 6
+##   NAME       PROFESSION   AGE `HAS KIDS` `DATE OF BIRTH`     `DATE OF DEATH`    
+##   <chr>      <chr>      <dbl> <lgl>      <dttm>              <dttm>             
+## 1 David Bow… musician      69 TRUE       1947-01-08 00:00:00 2016-01-10 00:00:00
+## 2 Carrie Fi… actor         60 TRUE       1956-10-21 00:00:00 2016-12-27 00:00:00
+## 3 Chuck Ber… musician      90 TRUE       1926-10-18 00:00:00 2017-03-18 00:00:00
 ```
 
 Notice that the function is passed directly to the argument. It does not have quotes around it, as we want this to be interpreted as the `toupper()` function.
@@ -251,7 +435,8 @@ The `googlesheets` package is tidyverse-adjacent, so it requires its own install
 
 ##### Getting Started with `googlesheets`
 
-```{r}
+
+```r
 #install.packages("googlesheets")
 # load package
 library(googlesheets)
@@ -273,7 +458,8 @@ Once authenticated, you can use the command `gs_ls()` to list all your worksheet
 
 In order to ultimately access the information a specific Google Sheet, you have to first **register** the sheet. To do this we'll use `gs_title()`. For the example below to work, you'll need to have a Google Sheet named "survey" in your account. To access this sheet, navigate to [https://docs.google.com/spreadsheets/d/1FN7VVKzJJyifZFY5POdz_LalGTBYaC4SLB-X9vyDnbY/] in your web browser. 
 
-```{r eval = FALSE}
+
+```r
 # register Google Sheet
 survey_sheet <- gs_title("survey")
 ```
@@ -289,7 +475,8 @@ If you type the name of the sheet correctly *and* it exists in your Google Drive
 
 At this point, your Google Sheet is registered and you can now read the data into R using the function `gs_read()`. The `survey_sheet` object output you generated using `gs_title()` will now be the input to `gs_read()`:
 
-```{r eval = FALSE}
+
+```r
 # access information stored in survey_sheet
 survey_data <- gs_read(survey_sheet)
 ```
@@ -317,7 +504,8 @@ Now, it's just up to us to register this information from Google Sheets into R u
 ![Where to find the title, key, and URL in Google Sheets](images/gslides/040.png)
 
 
-```{r eval = FALSE}
+
+```r
 # register in with title 
 gs_title("test-gs-gapminder")
 
@@ -339,7 +527,8 @@ In addition to reading in data from Google Sheets directly using the `googleshee
 
 Let's say you'd like to add your own response to the survey. For this you can use the command `gs_add_row()`. Note that the `input` argument specifies what you would like to add in the new row. If everything goes well, you will get a message saying *Row successfully appended*. 
 
-```{r eval = FALSE}
+
+```r
 my_response <- c("Me", 10, 8, 2, 2, 1, 1)
 gs_add_row(survey_sheet, input = my_response)
 ```
@@ -352,7 +541,8 @@ If you now check the sheet on Google Sheets, you will see the appended row.
 
 To edit a specific cell you can use the command `gs_edit_cell()` but you will have to tell `googlesheets` which specific cell to edit. Let's say we want to change the value of the cell *D4* from 0 to 2. For this we will use the `gs_edit_cells()` function. The `anchor` argument points to the cell that we want to modify and the `input` argument contains the new value that we want to assign to the cell.
 
-```{r eval = FALSE}
+
+```r
 gs_edit_cells(survey_sheet, anchor = "D4", input = 2)
 ```
 
@@ -386,7 +576,8 @@ If you entered the same values used above into Google Sheets first and wanted to
 
 Now that you have a CSV file, let's discuss how to get it into R! The best way to accomplish this is using the function `read_csv()` from the `readr` package. (Note, if you haven't installed the `readr` package, you'll have to do that first.) Inside the parentheses of the function, write the name of the file in quotes, including the file extension (.csv). Make sure you type the exact file name. Save the imported data in a data frame called `df_csv`. Your data will now be imported into R environment. If you use the command `head(df_csv)` you will see the first several rows of your imported data frame: 
  
-```{r eval = FALSE}
+
+```r
 ## install.packages("readr")
 library(readr)
 
@@ -420,7 +611,8 @@ Another common form of data is text files that usually come in the form of TXT o
 The process for reading these files into R is similar to what you've seen so far. We'll again use the `readr` package, but we'll instead use the `read_tsv()` function. 
 
 
-```{r eval = FALSE}
+
+```r
 ## read TSV into R
 df_tsv <- read_tsv("sample_data - Sheet1.tsv")
 
@@ -436,7 +628,8 @@ Google Sheets does not allow tab-separated files to be downloaded with the .txt 
 
 ### Reading Delimited Files into R
 
-```{r eval = FALSE}
+
+```r
 ## read TXT into R
 df_txt <- read_delim("sample_data.txt", delim = "\t")
 
@@ -456,7 +649,8 @@ As discussed above, CSV format is a good candidate because of its simplicity and
 
 Since we've already created a data frame named `df_csv`, we can export it to a CSV file using the following code. After typing this command, a new CSV file called `my_csv_file.csv` will appear in the Files section.
 
-```{r eval = FALSE}
+
+```r
 write_csv(df_csv, path = "my_csv_file.csv")
 ```
 
@@ -478,7 +672,8 @@ Using a snippet of JSON data here, we see a portion of JSON data from Yelp looki
 To get a sense of what JSON data look like in R, take a peak at this minimal example:
 
 
-```{r}
+
+```r
 ## generate a JSON object
 json <-
 '[
@@ -491,11 +686,16 @@ json <-
 json
 ```
 
+```
+## [1] "[\n  {\"Name\" : \"Woody\", \"Age\" : 40, \"Occupation\" : \"Sherriff\"}, \n  {\"Name\" : \"Buzz Lightyear\", \"Age\" : 34, \"Occupation\" : \"Space Ranger\"},\n  {\"Name\" : \"Andy\", \"Occupation\" : \"Toy Owner\"}\n]"
+```
+
 Here, we've stored information about Toy Story characters, their age, and their occupation in an object called `json`.
 
 In this format, we cannot easily work with the data with within R; however, the `jsonlite` package can help us. Using the defaults of the function `fromJSON()`, `jsonlite` will take the data from JSON array format and helpfully return a data frame. 
 
-```{r, message = FALSE}
+
+```r
 #install.packages("jsonlite")
 library(jsonlite)
 
@@ -506,6 +706,13 @@ mydf <- fromJSON(json)
 mydf
 ```
 
+```
+##             Name Age   Occupation
+## 1          Woody  40     Sherriff
+## 2 Buzz Lightyear  34 Space Ranger
+## 3           Andy  NA    Toy Owner
+```
+
 
 
 ![`fromJSON()`](images/gslides/050.png)
@@ -513,10 +720,15 @@ mydf
 
 Data frames can also be returned to their original JSON format using the function: `toJSON()`.
 
-```{r}
+
+```r
 ## take JSON object and convert to a data frame
 json <- toJSON(mydf)
 json
+```
+
+```
+## [{"Name":"Woody","Age":40,"Occupation":"Sherriff"},{"Name":"Buzz Lightyear","Age":34,"Occupation":"Space Ranger"},{"Name":"Andy","Occupation":"Toy Owner"}]
 ```
 
 
@@ -525,14 +737,14 @@ json
 
 While this gives us an idea of how to work with JSON formatted data in R, we haven't yet discussed how to read a JSON file into R. When you have data in the JSON format (file extension: .json), you'll use the `read_json()` function, which helpfully looks very similar to the other `read_` functions we've discussed so far:
 
-```{r eval = FALSE}
+
+```r
 # read JSON file into R
 read_json("json_file.json")
 
 # read JSON file into R and 
 # simplifies nested lists into vectors and data frames
 read_json("json_file.json", simplifyVector = TRUE)
-
 ```
 
 Note in our examples here that by default, `read_json()` reads the data in while retaining the JSON format. However, if you would like to simplify the information into a data.frame, you'll want to specify the argument, `simplifyVector = TRUE`.
@@ -548,10 +760,10 @@ XML accomplishes the same goal as JSON, but it just does it in a different forma
 We will look into the `xml2` package a bit more when we look at importing html files.
 
 
-```{r eval = FALSE}
+
+```r
 # read XML file into R
 read_xml("xml_file.xml")
-
 ```
 
 
@@ -608,7 +820,8 @@ Without any more details, let's get to it! Here you'll see the code to install a
 
 You'll then load the `company.db` sample database, connect to the database, and first obtain a list the tables in the database. Before you begin, make sure that the file `company.db` is in your current working directory (you can check by calling the `ls()` function).
 
-```{r}
+
+```r
 ## install and load packages
 ## this may take a minute or two
 # install.packages("RSQLite")
@@ -624,6 +837,10 @@ db <- dbConnect(sqlite, "company.db")
 dbListTables(db)
 ```
 
+```
+## character(0)
+```
+
 The output from `dbListTables()` will include 13 tables. Among them will be the two tables we're going to work through in our example: `artists`, and `albums`.
 
 ![output from `dbListTables(db)`](images/gslides/056.png)
@@ -636,7 +853,8 @@ To access these tables within R, we'll have to install the packages `dbplyr`, wh
 
 After installing and loading `dbplyr`, we'll be able to use the helpful `tbl()` function to extract the two tables we're interested in working with!
 
-```{r, message = FALSE}
+
+```r
 ## install and load packages
 # install.packages("dbplyr")
 library(dbplyr)
@@ -644,7 +862,18 @@ library(dplyr)
 
 ## get two tables
 albums <- tbl(db, "albums")
+```
+
+```
+## Error: no such table: albums
+```
+
+```r
 artists <- tbl(db, "artists")
+```
+
+```
+## Error: no such table: artists
 ```
 
 ### Mutating Joins
@@ -678,12 +907,23 @@ Throughout this lesson we will use the coloring use see here to explain the join
 
 Now, to run this for our tables from the database, rather than just for a few rows in our toy example, you would do the following:
 
-```{r}
+
+```r
 ## do inner join
 inner <- inner_join(artists, albums, by = "ArtistId")
+```
 
+```
+## Error in inner_join(artists, albums, by = "ArtistId"): object 'artists' not found
+```
+
+```r
 ## look at output as a tibble
 as_tibble(inner)
+```
+
+```
+## Error in as_tibble(inner): object 'inner' not found
 ```
 
 #### Left Join
@@ -700,12 +940,23 @@ Thus, our output will again include all the columns from both tables combined in
 
 Now, to run this for our tables from the database, rather than just for a few rows in our toy example, you would do the following:
 
-```{r}
+
+```r
 ## do left join
 left <- left_join(artists, albums, by = "ArtistId")
+```
 
+```
+## Error in left_join(artists, albums, by = "ArtistId"): object 'artists' not found
+```
+
+```r
 ## look at output as a tibble
 as_tibble(left)
+```
+
+```
+## Error in as_tibble(left): object 'left' not found
 ```
 
 
@@ -723,12 +974,23 @@ Again, in our toy example, we see that `right_join()` combines the information a
 
 Now, to run this for our tables from the database, you would have to do something *slightly* different than what you saw above. Note in the code below that we have to change the class of the tables from the database into tibbles before doing the join. This is because SQL does not currently support right or full joins, but `dplyr` does. Thus, we first have to be sure the data are a class that `dplyr` can work with using `as_tibble()`. Other than that, the code below is similar to what you've seen already:
 
-```{r}
+
+```r
 ## do right join
 right <- right_join(as_tibble(artists), as_tibble(albums), by = "ArtistId")
+```
 
+```
+## Error in as_tibble(artists): object 'artists' not found
+```
+
+```r
 ## look at output as a tibble
 as_tibble(right)
+```
+
+```
+## Error in as_tibble(right): object 'right' not found
 ```
 
 
@@ -746,12 +1008,23 @@ Thus, in our toy example, this join produces five rows, including all the observ
 
 As you saw in the last example, to carry out a full join, we have to again specify that the objects are tibbles before being able to carry out the join:
 
-```{r}
+
+```r
 ## do right join
 full <- full_join(as_tibble(artists), as_tibble(albums), by = "ArtistId")
+```
 
+```
+## Error in as_tibble(artists): object 'artists' not found
+```
+
+```r
 ## look at output as a tibble
 as_tibble(full)
+```
+
+```
+## Error in as_tibble(full): object 'full' not found
 ```
 
 #### Mutating Joins Summary
@@ -789,7 +1062,8 @@ For example, in this lesson we downloaded the entire `company` database, but onl
 
 This will require connecting to the database with `host`, `user`, and `password`. This information will be provided by the database's owners, but the syntax for entering this information into R to connect to the database would look something like what you see here:
 
-```{r eval = FALSE}
+
+```r
 ## This code is an example only
 con <- DBI::dbConnect(RMySQL::MySQL(), 
   host = "database.host.com",
@@ -872,11 +1146,35 @@ We'll then use `html_nodes()` to specify which parts of the webpage we want to e
 
 Finally `html_text()` extracts the text from the tag we've specified, giving us that list of packages we wanted to see!
 
-```{r}
+
+```r
 ## load package
 # install.packages("rvest")
 library(rvest) # this loads the xml2 package too!
+```
 
+```
+## Loading required package: xml2
+```
+
+```
+## 
+## Attaching package: 'rvest'
+```
+
+```
+## The following object is masked from 'package:purrr':
+## 
+##     pluck
+```
+
+```
+## The following object is masked from 'package:readr':
+## 
+##     guess_encoding
+```
+
+```r
 ## provide URL
 packages <- read_html("http://jhudatascience.org/stable_website/webscrape.html") # the function is from xml2
 
@@ -884,6 +1182,10 @@ packages <- read_html("http://jhudatascience.org/stable_website/webscrape.html")
 packages %>% 
   html_nodes("strong") %>%
   html_text() 
+```
+
+```
+## [1] "rvest"        "httr"         "dbplyr"       "jsonlite"     "googlesheets"
 ```
 
 With just a few lines of code we have the information we were looking for!
@@ -929,7 +1231,8 @@ Now that we know what our API endpoint is, we're ready to make our **API request
 
 The goal of this request is to obtain information about what repositories are available in *your* GitHub account. To use the example below, you'll want to change the username `janeeverydaydoe` to your GitHub username.
 
-```{r}
+
+```r
 ## load package
 library(httr)
 library(dplyr)
@@ -952,25 +1255,37 @@ Note: In the code above, you see the function `paste0()`. This function concaten
 
 Let's first take a look at what other variables are available within the `api_response` object:
 
-```{r}
+
+```r
 ## See variables in response
 names(api_response)
+```
+
+```
+##  [1] "url"         "status_code" "headers"     "all_headers" "cookies"    
+##  [6] "content"     "date"        "times"       "request"     "handle"
 ```
 
 ![`httr` response](images/gslides/076.png)
 
 While we see ten different variables within `api_response`, we should probably first make sure that the request to GitHub's API was successful. We can do this by checking the status code of the request, where "200" means that everything worked properly:
 
-```{r}
+
+```r
 ## Check Status Code of request
 api_response$status_code
+```
+
+```
+## [1] 200
 ```
 
 But, to be honest, we aren't really interested in just knowing the request worked. We actually want to see what information is contained on our GitHub account. 
 
 To do so we'll take advantage of `httr`'s `content()` function, which as its name suggests, extracts the contents from an API request.
 
-```{r}
+
+```r
 ## Extract content from API response
 repo_content <- content(api_response)
 ```
@@ -980,12 +1295,34 @@ repo_content <- content(api_response)
 
 You can see here that the length of `repo_content` in our case is 6 by looking at the Environment tab. This is because the GitHub account `janeeverydaydoe` had six repositories at the time of this API call. We can get some information about each repo by running the function below:
 
-```{r}
+
+```r
 ## function to get name and URL for each repo
 lapply(repo_content, function(x) {
   df <- data_frame(repo = x$name,
                    address = x$html_url)}) %>% 
   bind_rows()
+```
+
+```
+## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+## Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.
+```
+
+```
+## # A tibble: 8 x 2
+##   repo                       address                                            
+##   <chr>                      <chr>                                              
+## 1 cbds                       https://github.com/JaneEverydayDoe/cbds            
+## 2 first_project              https://github.com/JaneEverydayDoe/first_project   
+## 3 gcd                        https://github.com/JaneEverydayDoe/gcd             
+## 4 hello-world                https://github.com/JaneEverydayDoe/hello-world     
+## 5 janeeverydaydoe.github.com https://github.com/JaneEverydayDoe/janeeverydaydoe…
+## 6 my_first_project           https://github.com/JaneEverydayDoe/my_first_project
+## 7 newproject                 https://github.com/JaneEverydayDoe/newproject      
+## 8 Temporary_add_to_version_… https://github.com/JaneEverydayDoe/Temporary_add_t…
 ```
 
 ![output from API request](images/gslides/078.png)
@@ -1001,7 +1338,8 @@ This same approach can be used to download datasets directly from the web. The d
 
 To do so, we would do the following:
 
-```{r eval = FALSE}
+
+```r
 ## Make API request
 api_response <- GET(url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/steak-survey/steak-risk-survey.csv")
 
@@ -1017,7 +1355,8 @@ Here, we again specify our url within `GET()` followed by use of the helpful `co
 
 Before going any further, we'll note that these data are in the CSV format and that the `read_csv()` function can read CSVs directly from a URL:
 
-```{r eval = FALSE}
+
+```r
 #use readr to read in CSV from a URL
 df <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/steak-survey/steak-risk-survey.csv")
 ```
@@ -1034,7 +1373,8 @@ In these cases, what is known as a key is required to gain access to the API. **
 
 For example, to access the Twitter API, you would obtain your key and necessary tokens from [Twitter's API](https://developer.twitter.com/en/docs/tweets/search/overview) and replace the text in the `key`, `secret`, `token` and `token_secret` arguments below. This would authenticate you to use Twitter's API to acquire information about your home timeline. 
 
-```{r eval = FALSE}
+
+```r
 myapp = oauth_app("twitter",
                    key = "yourConsumerKeyHere",
                    secret = "yourConsumerSecretHere")
@@ -1052,7 +1392,8 @@ Perhaps you or your collaborators use other types of statistical software such a
 
 As an example, we will first write files for each of these software packages and then read them. The data needs to be in a data frame format and spaces and punctuation in variable names will cause issues. We will use the Toy Story character data frame that we created earlier for this example. Note that we are using the `here` package that was described in the introduction to save our files in a directory called `data` which is a subdirectory of the directory in which the `.Rproj` file is located.
 
-```{r}
+
+```r
 #install.packages("haven")
 library(haven)
 
@@ -1061,28 +1402,63 @@ write_sas(data = mydf, path = here::here("data", "mydf.sas7bdat"))
 # read_sas() reads .sas7bdat and .sas7bcat files 
 sas_mydf <-read_sas(here::here("data", "mydf.sas7bdat")) 
 sas_mydf
+```
+
+```
+## # A tibble: 3 x 3
+##   Name             Age Occupation  
+##   <chr>          <dbl> <chr>       
+## 1 Woody             40 Sherriff    
+## 2 Buzz Lightyear    34 Space Ranger
+## 3 Andy              NA Toy Owner
+```
+
+```r
 # use read_xpt() to read SAS transport files (version 5 and 8)
 ```
 
 We can also write the data frame to SPSS format.
-```{r}
+
+```r
 ## SPSS
 write_sav(data = mydf, path = here::here("data", "mydf.sav"))
 # use to read_sav() to read .sav files
 sav_mydf <-read_sav(here::here("data", "mydf.sav"))
 sav_mydf
+```
+
+```
+## # A tibble: 3 x 3
+##   Name             Age Occupation  
+##   <chr>          <dbl> <chr>       
+## 1 Woody             40 Sherriff    
+## 2 Buzz Lightyear    34 Space Ranger
+## 3 Andy              NA Toy Owner
+```
+
+```r
 # use read_por() to read older .por files
 ```
 
 
 Stata format is also supported.
 
-```{r}
+
+```r
 ## Stata
 write_dta(data = mydf, path = here::here("data", "mydf.dta"))
 # use to read_dta() to read .dta files 
 dta_mydf <-read_dta(here::here("data", "mydf.dta"))
 dta_mydf
+```
+
+```
+## # A tibble: 3 x 3
+##   Name             Age Occupation  
+##   <chr>          <dbl> <chr>       
+## 1 Woody             40 Sherriff    
+## 2 Buzz Lightyear    34 Space Ranger
+## 3 Andy              NA Toy Owner
 ```
 
 When exporting and importing to and from all foreign statistical formats it's important to realize that the conversion will generally be less than perfect. For simple data frames with numerical data, the conversion should work well. However, when there are a lot of missing data, or different types of data that perhaps a given statistical software package may not recognize, it's always important to check the output to make sure it contains all of the information that you expected.
@@ -1117,19 +1493,68 @@ A really useful manipulation that one can perform is text extraction from images
 
 We will show how to do this using a couple of tidyverse package hex stickers.
 
-```{r, fig.path="images/"}
+
+```r
 # install package
 #install.packages("magick")
 # load package
 library(magick)
+```
+
+```
+## Linking to ImageMagick 7.0.10.34
+## Enabled features: freetype, ghostscript, lcms, webp
+## Disabled features: cairo, fontconfig, fftw, pango, rsvg, x11
+```
+
+```
+## Using 16 threads
+```
+
+```r
 img1 <- image_read("https://ggplot2.tidyverse.org/logo.png")
 img2 <- image_read("https://pbs.twimg.com/media/D5bccHZWkAQuPqS.png")
 #show the image
 print(img1)
+```
+
+```
+## # A tibble: 1 x 7
+##   format width height colorspace matte filesize density
+##   <chr>  <int>  <int> <chr>      <lgl>    <int> <chr>  
+## 1 PNG      240    278 sRGB       TRUE     38516 +85x+85
+```
+
+![plot of chunk unnamed-chunk-51](images/unnamed-chunk-51-1.png)
+
+```r
 print(img2)
+```
+
+```
+## # A tibble: 1 x 7
+##   format width height colorspace matte filesize density
+##   <chr>  <int>  <int> <chr>      <lgl>    <int> <chr>  
+## 1 PNG      864    864 sRGB       TRUE     54056 +72x+72
+```
+
+![plot of chunk unnamed-chunk-51](images/unnamed-chunk-51-2.png)
+
+```r
 #concatenate and print text
 cat(image_ocr(img1))
+```
+
+```
+## ggplot2
+```
+
+```r
 cat(image_ocr(img2))
+```
+
+```
+## parsnip
 ```
 
 Great! We extracted the text!
@@ -1142,7 +1567,8 @@ Using `googledrive` requires having an established Google Drive account. You wil
 
 Finding files in your drive can be done using `drive_find()`.
 
-```{r, eval = FALSE}
+
+```r
 # install.packages("googledrive")
 # load package
 library("googledrive")
@@ -1156,20 +1582,23 @@ files <- drive_find(q = c("visibility = 'anyoneWithLink'"))
 
 Files can be viewed from your default browser by using the `drive_browse()` function:
 
-```{r, eval = FALSE}
+
+```r
 drive_browse("tidyverse")
-``` 
+```
 
 Files can be uploaded to your Google Drive using the `drive_upload()` function.
 
-```{r, eval = FALSE}
+
+```r
 drive_upload(here::here("tidyverse.txt"))
 ```
 
 
 If we wanted this file to be converted and saved as a Google file, then we would do the following based on the type of Goggle document desired. Only certain types of files can be converted to each type of Google file.
 
-```{r, eval = FALSE}
+
+```r
 drive_upload(here::here("tidyverse.txt"), type = "document")
 drive_upload(here::here("tidyverse.csv"), type = "spreadsheet")
 drive_upload(here::here("tidyverse.pptx"), type = "presentation")
@@ -1177,7 +1606,8 @@ drive_upload(here::here("tidyverse.pptx"), type = "presentation")
 
 Files can be downloaded using the `drive_download()` function. Google file types need to be converted to a conventional file type. For example one might save a Google Sheet file to a CSV file. This would download a file called tidyverse.csv to your project directory. This file could then be used in an analysis.
 
-```{r, eval = FALSE}
+
+```r
 drive_download("tidyverse", type = "csv")
 tidyverse_data <-readr::read_csv(here("tidyverse.csv"))
 ```
@@ -1186,7 +1616,8 @@ Files can be moved to trash using the `drive_trash()` function. This can be undo
 
 The trash can also be emptied using `drive_empty_trash()`.
 
-```{r, eval = FALSE}
+
+```r
 drive_trash("tidyverse.txt")
 drive_untrash("tidyverse.txt")
 drive_empty_trash()
@@ -1194,15 +1625,16 @@ drive_empty_trash()
 
 To permanently remove a file you can use the `drive_rm()` function. This does not keep the file in trash.
 
-```{r, eval = FALSE}
+
+```r
 drive_rm("tidyverse.txt")
 ```
 
 
 Files can be shared using the `drive_share()` function. The sharing status of a file can be checked using `drive_reveal()`.
 
-```{r, eval = FALSE}
 
+```r
 drive_share(file = "tidyverse", 
             role = "commenter", 
             type = "user", 
@@ -1212,7 +1644,6 @@ drive_share(file = "tidyverse",
 drove_share_anyone(file = "tidyverse", verbose = TRUE) # anyone with link can read
 
 drive_reveal(file = "tidyverse", what = "permissions")
-
 ```
 
 There are many other helpful functions for interacting with the files in your Google Drive within the `googledrive` package.
@@ -1237,28 +1668,109 @@ We'll first read the data in. Note that we have to skip the first two lines, as 
 
 To see what we mean, you can always use the `read_lines()` function from `readr` to see the first few lines:
 
-```{r, message = FALSE}
+
+```r
 read_lines(file = 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv', n_max = 10)
+```
+
+```
+##  [1] "\"Title: Health Insurance Coverage of the Total Population | The Henry J. Kaiser Family Foundation\""                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+##  [2] "\"Timeframe: 2013 - 2016\""                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+##  [3] "\"Location\",\"2013__Employer\",\"2013__Non-Group\",\"2013__Medicaid\",\"2013__Medicare\",\"2013__Other Public\",\"2013__Uninsured\",\"2013__Total\",\"2014__Employer\",\"2014__Non-Group\",\"2014__Medicaid\",\"2014__Medicare\",\"2014__Other Public\",\"2014__Uninsured\",\"2014__Total\",\"2015__Employer\",\"2015__Non-Group\",\"2015__Medicaid\",\"2015__Medicare\",\"2015__Other Public\",\"2015__Uninsured\",\"2015__Total\",\"2016__Employer\",\"2016__Non-Group\",\"2016__Medicaid\",\"2016__Medicare\",\"2016__Other Public\",\"2016__Uninsured\",\"2016__Total\""
+##  [4] "\"United States\",\"155696900\",\"13816000\",\"54919100\",\"40876300\",\"6295400\",\"41795100\",\"313401200\",\"154347500\",\"19313000\",\"61650400\",\"41896500\",\"5985000\",\"32967500\",\"316159900\",\"155965800\",\"21816500\",\"62384500\",\"43308400\",\"6422300\",\"28965900\",\"318868500\",\"157381500\",\"21884400\",\"62303400\",\"44550200\",\"6192200\",\"28051900\",\"320372000\""                                                                                                                                                                           
+##  [5] "\"Alabama\",\"2126500\",\"174200\",\"869700\",\"783000\",\"85600\",\"724800\",\"4763900\",\"2202800\",\"288900\",\"891900\",\"718400\",\"143900\",\"522200\",\"4768000\",\"2218000\",\"291500\",\"911400\",\"719100\",\"174600\",\"519400\",\"4833900\",\"2263800\",\"262400\",\"997000\",\"761200\",\"128800\",\"420800\",\"4834100\""                                                                                                                                                                                                                                      
+##  [6] "\"Alaska\",\"364900\",\"24000\",\"95000\",\"55200\",\"60600\",\"102200\",\"702000\",\"345300\",\"26800\",\"130100\",\"55300\",\"37300\",\"100800\",\"695700\",\"355700\",\"22300\",\"128100\",\"60900\",\"47700\",\"90500\",\"705300\",\"324400\",\"20300\",\"145400\",\"68200\",\"55600\",\"96900\",\"710800\""                                                                                                                                                                                                                                                             
+##  [7] "\"Arizona\",\"2883800\",\"170800\",\"1346100\",\"842000\",\"N/A\",\"1223000\",\"6603100\",\"2835200\",\"333500\",\"1639400\",\"911100\",\"N/A\",\"827100\",\"6657200\",\"2766500\",\"278400\",\"1711500\",\"949000\",\"189300\",\"844800\",\"6739500\",\"3010700\",\"377000\",\"1468400\",\"1028000\",\"172500\",\"833700\",\"6890200\""                                                                                                                                                                                                                                     
+##  [8] "\"Arkansas\",\"1128800\",\"155600\",\"600800\",\"515200\",\"67600\",\"436800\",\"2904800\",\"1176500\",\"231700\",\"639200\",\"479400\",\"82000\",\"287200\",\"2896000\",\"1293700\",\"200200\",\"641400\",\"484500\",\"63700\",\"268400\",\"2953000\",\"1290900\",\"252900\",\"618600\",\"490000\",\"67500\",\"225500\",\"2945300\""                                                                                                                                                                                                                                        
+##  [9] "\"California\",\"17747300\",\"1986400\",\"8344800\",\"3828500\",\"675400\",\"5594100\",\"38176400\",\"17703700\",\"2778800\",\"9618800\",\"4049000\",\"634400\",\"3916700\",\"38701300\",\"17718300\",\"3444200\",\"10138100\",\"4080100\",\"752700\",\"2980600\",\"39113900\",\"18116200\",\"3195400\",\"9853800\",\"4436000\",\"556100\",\"3030800\",\"39188300\""                                                                                                                                                                                                         
+## [10] "\"Colorado\",\"2852500\",\"426300\",\"697300\",\"549700\",\"118100\",\"654000\",\"5297800\",\"2489400\",\"397900\",\"1053700\",\"619500\",\"214000\",\"602900\",\"5377400\",\"2706000\",\"346900\",\"1036600\",\"708000\",\"148000\",\"475700\",\"5421300\",\"2872600\",\"370000\",\"855800\",\"692400\",\"190100\",\"528400\",\"5509200\""
 ```
 
 We'll read in the data, starting with the third line of the file:
 
-```{r, message = FALSE}
+
+```r
 coverage <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv', 
                      skip = 2)
+```
 
+```
+## Warning: 26 parsing failures.
+## row col   expected    actual                                                                                                              file
+##  53  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+##  54  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+##  55  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+##  56  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+##  57  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+## ... ... .......... ......... .................................................................................................................
+## See problems(...) for more details.
+```
+
+```r
 coverage
+```
+
+```
+## # A tibble: 78 x 29
+##    Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
+##    <chr>               <dbl>            <dbl>            <dbl>            <dbl>
+##  1 United …        155696900         13816000         54919100         40876300
+##  2 Alabama           2126500           174200           869700           783000
+##  3 Alaska             364900            24000            95000            55200
+##  4 Arizona           2883800           170800          1346100           842000
+##  5 Arkansas          1128800           155600           600800           515200
+##  6 Califor…         17747300          1986400          8344800          3828500
+##  7 Colorado          2852500           426300           697300           549700
+##  8 Connect…          2030500           126800           532000           475300
+##  9 Delaware           473700            25100           192700           141300
+## 10 Distric…           324300            30400           174900            59900
+## # … with 68 more rows, and 24 more variables: `2013__Other Public` <chr>,
+## #   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
+## #   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
+## #   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
+## #   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
+## #   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
+## #   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
+## #   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
+## #   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
 ```
 
 So, the first few lines of the dataset appear to store information for each state (observation) in the rows and different variables in the columns. What about the final few lines of the file?
 
-```{r}
+
+```r
 tail(coverage, n = 30)
+```
+
+```
+## # A tibble: 30 x 29
+##    Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
+##    <chr>               <dbl>            <dbl>            <dbl>            <dbl>
+##  1 "Washin…          3541600           309000          1026800           879000
+##  2 "West V…           841300            42600           382500           329400
+##  3 "Wiscon…          3154500           225300           907600           812900
+##  4 "Wyomin…           305900            19500            74200            65400
+##  5 "Notes"                NA               NA               NA               NA
+##  6 "The ma…               NA               NA               NA               NA
+##  7  <NA>                  NA               NA               NA               NA
+##  8 "In thi…               NA               NA               NA               NA
+##  9  <NA>                  NA               NA               NA               NA
+## 10 "Data e…               NA               NA               NA               NA
+## # … with 20 more rows, and 24 more variables: `2013__Other Public` <chr>,
+## #   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
+## #   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
+## #   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
+## #   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
+## #   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
+## #   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
+## #   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
+## #   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
 ```
 
 Looks like there's a lot of missing information there at the end of the file due the "Notes" observation. Seems as though Notes were added to the file that are not the actual data. We'll want to only include rows before the "Notes" at the end of the file, using `n_max`:
 
-```{r message = FALSE}
+
+```r
 ## read coverage data into R
 coverage <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv', 
                      skip = 2,
@@ -1267,10 +1779,66 @@ coverage <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-heal
 tail(coverage)
 ```
 
+```
+## # A tibble: 6 x 29
+##   Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
+##   <chr>               <dbl>            <dbl>            <dbl>            <dbl>
+## 1 Vermont            317700            26200           123400            96600
+## 2 Virginia          4661600           364800           773200           968000
+## 3 Washing…          3541600           309000          1026800           879000
+## 4 West Vi…           841300            42600           382500           329400
+## 5 Wiscons…          3154500           225300           907600           812900
+## 6 Wyoming            305900            19500            74200            65400
+## # … with 24 more variables: `2013__Other Public` <chr>,
+## #   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
+## #   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
+## #   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
+## #   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
+## #   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
+## #   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
+## #   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
+## #   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
+```
+
 Looks much better now! We can then use `glimpse()` to get a sense of what types of information are stored in our dataset.
 
-```{r}
+
+```r
 glimpse(coverage)
+```
+
+```
+## Rows: 52
+## Columns: 29
+## $ Location             <chr> "United States", "Alabama", "Alaska", "Arizona",…
+## $ `2013__Employer`     <dbl> 155696900, 2126500, 364900, 2883800, 1128800, 17…
+## $ `2013__Non-Group`    <dbl> 13816000, 174200, 24000, 170800, 155600, 1986400…
+## $ `2013__Medicaid`     <dbl> 54919100, 869700, 95000, 1346100, 600800, 834480…
+## $ `2013__Medicare`     <dbl> 40876300, 783000, 55200, 842000, 515200, 3828500…
+## $ `2013__Other Public` <chr> "6295400", "85600", "60600", "N/A", "67600", "67…
+## $ `2013__Uninsured`    <dbl> 41795100, 724800, 102200, 1223000, 436800, 55941…
+## $ `2013__Total`        <dbl> 313401200, 4763900, 702000, 6603100, 2904800, 38…
+## $ `2014__Employer`     <dbl> 154347500, 2202800, 345300, 2835200, 1176500, 17…
+## $ `2014__Non-Group`    <dbl> 19313000, 288900, 26800, 333500, 231700, 2778800…
+## $ `2014__Medicaid`     <dbl> 61650400, 891900, 130100, 1639400, 639200, 96188…
+## $ `2014__Medicare`     <dbl> 41896500, 718400, 55300, 911100, 479400, 4049000…
+## $ `2014__Other Public` <chr> "5985000", "143900", "37300", "N/A", "82000", "6…
+## $ `2014__Uninsured`    <dbl> 32967500, 522200, 100800, 827100, 287200, 391670…
+## $ `2014__Total`        <dbl> 316159900, 4768000, 695700, 6657200, 2896000, 38…
+## $ `2015__Employer`     <dbl> 155965800, 2218000, 355700, 2766500, 1293700, 17…
+## $ `2015__Non-Group`    <dbl> 21816500, 291500, 22300, 278400, 200200, 3444200…
+## $ `2015__Medicaid`     <dbl> 62384500, 911400, 128100, 1711500, 641400, 10138…
+## $ `2015__Medicare`     <dbl> 43308400, 719100, 60900, 949000, 484500, 4080100…
+## $ `2015__Other Public` <chr> "6422300", "174600", "47700", "189300", "63700",…
+## $ `2015__Uninsured`    <dbl> 28965900, 519400, 90500, 844800, 268400, 2980600…
+## $ `2015__Total`        <dbl> 318868500, 4833900, 705300, 6739500, 2953000, 39…
+## $ `2016__Employer`     <dbl> 157381500, 2263800, 324400, 3010700, 1290900, 18…
+## $ `2016__Non-Group`    <dbl> 21884400, 262400, 20300, 377000, 252900, 3195400…
+## $ `2016__Medicaid`     <dbl> 62303400, 997000, 145400, 1468400, 618600, 98538…
+## $ `2016__Medicare`     <dbl> 44550200, 761200, 68200, 1028000, 490000, 443600…
+## $ `2016__Other Public` <chr> "6192200", "128800", "55600", "172500", "67500",…
+## $ `2016__Uninsured`    <dbl> 28051900, 420800, 96900, 833700, 225500, 3030800…
+## $ `2016__Total`        <dbl> 320372000, 4834100, 710800, 6890200, 2945300, 39…
 ```
 
 Looks like we have a whole bunch of numeric variables, but a few that appear like they *should* be numeric, but are actually strings. We'll keep this in mind for when we wrangle the data!
@@ -1279,15 +1847,54 @@ Looks like we have a whole bunch of numeric variables, but a few that appear lik
 
 Now, we're ready to read in our healthcare spending data, using a similar approach as we did for the coverage data.
 
-```{r message = FALSE}
+
+```r
 ## read spending data into R
 spending <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv', 
                      skip = 2)
+```
+
+```
+## Warning: 12 parsing failures.
+## row col   expected    actual                                                                                                              file
+##  53  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+##  54  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+##  55  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+##  56  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+##  57  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+## ... ... .......... ......... .................................................................................................................
+## See problems(...) for more details.
+```
+
+```r
 #got some parsing errors...
 spending <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv', 
                      skip = 2, 
                      n_max  = which(spending$Location == "Notes")-1)
 tail(spending)
+```
+
+```
+## # A tibble: 6 x 25
+##   Location `1991__Total He… `1992__Total He… `1993__Total He… `1994__Total He…
+##   <chr>               <dbl>            <dbl>            <dbl>            <dbl>
+## 1 Vermont              1330             1421             1522             1625
+## 2 Virginia            14829            15599            16634            17637
+## 3 Washing…            12674            13859            14523            15303
+## 4 West Vi…             4672             5159             5550             5891
+## 5 Wiscons…            12694            13669            14636            15532
+## 6 Wyoming              1023             1067             1171             1265
+## # … with 20 more variables: `1995__Total Health Spending` <dbl>, `1996__Total
+## #   Health Spending` <dbl>, `1997__Total Health Spending` <dbl>, `1998__Total
+## #   Health Spending` <dbl>, `1999__Total Health Spending` <dbl>, `2000__Total
+## #   Health Spending` <dbl>, `2001__Total Health Spending` <dbl>, `2002__Total
+## #   Health Spending` <dbl>, `2003__Total Health Spending` <dbl>, `2004__Total
+## #   Health Spending` <dbl>, `2005__Total Health Spending` <dbl>, `2006__Total
+## #   Health Spending` <dbl>, `2007__Total Health Spending` <dbl>, `2008__Total
+## #   Health Spending` <dbl>, `2009__Total Health Spending` <dbl>, `2010__Total
+## #   Health Spending` <dbl>, `2011__Total Health Spending` <dbl>, `2012__Total
+## #   Health Spending` <dbl>, `2013__Total Health Spending` <dbl>, `2014__Total
+## #   Health Spending` <dbl>
 ```
 
 Recall from the introduction, that in data science workflows, we perform multiple steps in evaluating data. To keep this process tidy and reproducible, it is often helpful to save our data in a raw state and in processed states to allow for easy comparison. So let's save our case study 1 data to use in later sections of the course. 
@@ -1299,8 +1906,16 @@ Assuming we created a project called "project", let's save our raw coverage data
 ![File Structure](images/book_figures/file_structure.png)
 
 After creating a directory called raw_data within a directory that we called data, we can now save our raw data for case study #1 using the `here` package by simply typing:
-```{r}
+
+```r
 library(here)
+```
+
+```
+## here() starts at /Users/rdpeng/books/tidyverse-devel
+```
+
+```r
 save(coverage, spending, file = here::here("data", "raw_data", "case_study_1.rda"))
 #the coverage object and the spending object will get saved as case_study_1.rda within the raw_data directory which is a subdirectory of data 
 #the here package identifies where the project directory is located based on the .Rproj, and thus the path to this directory is not needed
@@ -1316,42 +1931,105 @@ As a reminder, we're interested in the following question: At the state-level, w
 
 Population characteristics at the state level for 2017 are available [here](https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/sc-est2017-alldata6.csv). Let's read it into R.
 
-```{r message = FALSE}
+
+```r
 # read in the census data
 census <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/sc-est2017-alldata6.csv',
                    n_max = 236900)
 census
 ```
 
+```
+## # A tibble: 236,844 x 19
+##    SUMLEV REGION DIVISION STATE NAME    SEX ORIGIN  RACE   AGE CENSUS2010POP
+##    <chr>   <dbl>    <dbl> <chr> <chr> <dbl>  <dbl> <dbl> <dbl>         <dbl>
+##  1 040         3        6 01    Alab…     0      0     1     0         37991
+##  2 040         3        6 01    Alab…     0      0     1     1         38150
+##  3 040         3        6 01    Alab…     0      0     1     2         39738
+##  4 040         3        6 01    Alab…     0      0     1     3         39827
+##  5 040         3        6 01    Alab…     0      0     1     4         39353
+##  6 040         3        6 01    Alab…     0      0     1     5         39520
+##  7 040         3        6 01    Alab…     0      0     1     6         39813
+##  8 040         3        6 01    Alab…     0      0     1     7         39695
+##  9 040         3        6 01    Alab…     0      0     1     8         40012
+## 10 040         3        6 01    Alab…     0      0     1     9         42073
+## # … with 236,834 more rows, and 9 more variables: ESTIMATESBASE2010 <dbl>,
+## #   POPESTIMATE2010 <dbl>, POPESTIMATE2011 <dbl>, POPESTIMATE2012 <dbl>,
+## #   POPESTIMATE2013 <dbl>, POPESTIMATE2014 <dbl>, POPESTIMATE2015 <dbl>,
+## #   POPESTIMATE2016 <dbl>, POPESTIMATE2017 <dbl>
+```
+
 #### Counted Data
 
 [The Counted](https://docubase.mit.edu/project/the-counted/) project started to count persons killed by police in the US due to the fact that as stated by Jon Swaine "the US government has no comprehensive record of the number of people killed by law enforcement". These data can be read in from the CSV stored on [GitHub](https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/the-counted-2015.csv), for 2015:
 
-```{r message = FALSE}
+
+```r
 # read in the counted data
 counted15 <- read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/the-counted-2015.csv")
-
 ```
 
 #### Suicide Data
 
 Information about suicide and suicide as a result of firearms can also be directly read into R from the CSVs stored on GitHub:
 
-```{r message = FALSE}
+
+```r
 # read in suicide data
 suicide_all <- read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/suicide_all.csv")
 suicide_all
+```
 
+```
+## # A tibble: 51 x 12
+##    Sex   Race  State Ethnicity `Age Group` `First Year` `Last Year`
+##    <chr> <chr> <chr> <chr>     <chr>              <dbl>       <dbl>
+##  1 Both… All … Alab… Both      All Ages            2015        2016
+##  2 Both… All … Alas… Both      All Ages            2015        2016
+##  3 Both… All … Ariz… Both      All Ages            2015        2016
+##  4 Both… All … Arka… Both      All Ages            2015        2016
+##  5 Both… All … Cali… Both      All Ages            2015        2016
+##  6 Both… All … Colo… Both      All Ages            2015        2016
+##  7 Both… All … Conn… Both      All Ages            2015        2016
+##  8 Both… All … Dela… Both      All Ages            2015        2016
+##  9 Both… All … Flor… Both      All Ages            2015        2016
+## 10 Both… All … Geor… Both      All Ages            2015        2016
+## # … with 41 more rows, and 5 more variables: `Cause of Death` <chr>,
+## #   Deaths <dbl>, Population <dbl>, `Crude Rate` <dbl>, `Age-Adjusted
+## #   Rate` <chr>
+```
+
+```r
 # read in firearm suicide data
 suicide_firearm <- read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/suicide_firearm.csv")
 suicide_firearm
+```
+
+```
+## # A tibble: 51 x 12
+##    Sex   Race  State Ethnicity `Age Group` `First Year` `Last Year`
+##    <chr> <chr> <chr> <chr>     <chr>              <dbl>       <dbl>
+##  1 Both… All … Alab… Both      All Ages            2015        2016
+##  2 Both… All … Alas… Both      All Ages            2015        2016
+##  3 Both… All … Ariz… Both      All Ages            2015        2016
+##  4 Both… All … Arka… Both      All Ages            2015        2016
+##  5 Both… All … Cali… Both      All Ages            2015        2016
+##  6 Both… All … Colo… Both      All Ages            2015        2016
+##  7 Both… All … Conn… Both      All Ages            2015        2016
+##  8 Both… All … Dela… Both      All Ages            2015        2016
+##  9 Both… All … Flor… Both      All Ages            2015        2016
+## 10 Both… All … Geor… Both      All Ages            2015        2016
+## # … with 41 more rows, and 5 more variables: `Cause of Death` <chr>,
+## #   Deaths <dbl>, Population <dbl>, `Crude Rate` <dbl>, `Age-Adjusted
+## #   Rate` <chr>
 ```
 
 #### Brady Data
 
 For the Brady Scores data, quantifying numerical scores for firearm legislation in each state, we'll need the `httr` package, as these data are stored in an Excel spreadsheet. Note, we could download these files to our local computer, store them, and read this file in using `readxl`'s `read_excel()` file, *or* we can use the `httr` package to download and store the file in a temporary directory, followed by `read_excel` to read them into R. We'll go with this second option here to demonstrate how it works.
 
-```{r message = FALSE}
+
+```r
 library(readxl)
 library(httr)
 
@@ -1360,25 +2038,94 @@ url = "https://github.com/opencasestudies/ocs-police-shootings-firearm-legislati
 
 # Use httr's GET() and read_excel() to read in file
 GET(url, write_disk(tf <- tempfile(fileext = ".xlsx")))
+```
+
+```
+## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/Brady-State-Scorecard-2015.xlsx]
+##   Date: 2020-12-16 15:07
+##   Status: 200
+##   Content-Type: application/octet-stream
+##   Size: 66.2 kB
+## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//Rtmpdrhjuq/file69c859c09d07.xlsx
+```
+
+```r
 brady <- read_excel(tf, sheet = 1)
 
 brady
+```
+
+```
+## # A tibble: 116 x 54
+##    `States can rec… `Category Point… `Sub Category P… Points AL    AK    AR   
+##    <chr>                       <dbl>            <dbl>  <dbl> <chr> <chr> <chr>
+##  1 TOTAL STATE POI…               NA               NA     NA -18   -30   -24  
+##  2 CATEGORY 1:  KE…               50               NA     NA <NA>  <NA>  <NA> 
+##  3 BACKGROUND CHEC…               NA               25     NA AL    AK    AR   
+##  4 Background Chec…               NA               NA     25 <NA>  <NA>  <NA> 
+##  5 Background Chec…               NA               NA     20 <NA>  <NA>  <NA> 
+##  6 Background Chec…               NA               NA      5 <NA>  <NA>  <NA> 
+##  7 Verifiy Legal P…               NA               NA     20 <NA>  <NA>  <NA> 
+##  8 TOTAL                          NA               NA     NA 0     0     0    
+##  9 <NA>                           NA               NA     NA <NA>  <NA>  <NA> 
+## 10 OTHER LAWS TO S…               NA               12     NA AL    AK    AR   
+## # … with 106 more rows, and 47 more variables: AZ <chr>, CA <chr>, CO <chr>,
+## #   CT <chr>, DE <chr>, FL <chr>, GA <chr>, HI <chr>, ID <chr>, IL <chr>,
+## #   IN <chr>, IA <chr>, KS <chr>, KY <chr>, LA <chr>, MA <chr>, MD <chr>,
+## #   ME <chr>, MI <chr>, MN <chr>, MO <chr>, MT <chr>, MS <chr>, NC <chr>,
+## #   ND <chr>, NE <chr>, NH <chr>, NJ <chr>, NM <chr>, NV <chr>, NY <chr>,
+## #   OK <chr>, OH <chr>, OR <chr>, PA <chr>, RI <chr>, SC <chr>, SD <chr>,
+## #   TN <chr>, TX <chr>, UT <chr>, VA <chr>, VT <chr>, WA <chr>, WI <chr>,
+## #   WV <chr>, WY <chr>
 ```
 
 #### Crime Data
 
 Crime data, from the FBI’s Uniform Crime Report, are stored as an Excel file, so we'll use a similar approach as above for these data:
 
-```{r message = FALSE}
+
+```r
 # specify URL to file
 url = "https://github.com/opencasestudies/ocs-police-shootings-firearm-legislation/blob/master/data/table_5_crime_in_the_united_states_by_state_2015.xls?raw=true"
 
 # Use httr's GET() and read_excel() to read in file
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
+```
+
+```
+## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/table_5_crime_in_the_united_states_by_state_2015.xls]
+##   Date: 2020-12-16 15:07
+##   Status: 200
+##   Content-Type: application/octet-stream
+##   Size: 98.3 kB
+## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//Rtmpdrhjuq/file69c8618fb492.xls
+```
+
+```r
 crime <- read_excel(tf, sheet = 1, skip = 3)
 
 # see data
 crime
+```
+
+```
+## # A tibble: 510 x 14
+##    State Area  ...3  Population `Violent\ncrime… `Murder and \nn…
+##    <chr> <chr> <chr> <chr>                 <dbl>            <dbl>
+##  1 ALAB… Metr… <NA>  3708033                  NA               NA
+##  2 <NA>  <NA>  Area… 0.9709999…            18122              283
+##  3 <NA>  <NA>  Esti… 1                     18500              287
+##  4 <NA>  Citi… <NA>  522241                   NA               NA
+##  5 <NA>  <NA>  Area… 0.9739999…             3178               32
+##  6 <NA>  <NA>  Esti… 1                      3240               33
+##  7 <NA>  Nonm… <NA>  628705                   NA               NA
+##  8 <NA>  <NA>  Area… 0.9939999…             1205               28
+##  9 <NA>  <NA>  Esti… 1                      1212               28
+## 10 <NA>  Stat… <NA>  4858979               22952              348
+## # … with 500 more rows, and 8 more variables:
+## #   `Rape\n(revised\ndefinition)2` <dbl>, `Rape\n(legacy\ndefinition)3` <dbl>,
+## #   Robbery <dbl>, `Aggravated \nassault` <dbl>, `Property \ncrime` <dbl>,
+## #   Burglary <dbl>, `Larceny-\ntheft` <dbl>, `Motor \nvehicle \ntheft` <dbl>
 ```
 
 Note, however, there are slight differences in the code used here, relative to the Brady data. We have to use `skip = 3` to skip the first three lines of this file. *Also*, this file has the extension `.xls` rather than `.xlsx`, which we specify within the `fileext` argument.
@@ -1387,16 +2134,53 @@ Note, however, there are slight differences in the code used here, relative to t
 
 US Census 2010 land area data are also stored in an excel spreadsheet. So again we will use a similar method.
 
-```{r message = FALSE}
+
+```r
 # specify URL to file
 url = "https://github.com/opencasestudies/ocs-police-shootings-firearm-legislation/blob/master/data/LND01.xls?raw=true"
 
 # Use httr's GET() and read_excel() to read in file
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
+```
+
+```
+## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/LND01.xls]
+##   Date: 2020-12-16 15:07
+##   Status: 200
+##   Content-Type: application/octet-stream
+##   Size: 1.57 MB
+## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//Rtmpdrhjuq/file69c86135133.xls
+```
+
+```r
 land <- read_excel(tf, sheet = 1)
 
 # see data
 land
+```
+
+```
+## # A tibble: 3,198 x 34
+##    Areaname STCOU LND010190F LND010190D LND010190N1 LND010190N2 LND010200F
+##    <chr>    <chr>      <dbl>      <dbl> <chr>       <chr>            <dbl>
+##  1 UNITED … 00000          0   3787425. 0000        0000                 0
+##  2 ALABAMA  01000          0     52423. 0000        0000                 0
+##  3 Autauga… 01001          0       604. 0000        0000                 0
+##  4 Baldwin… 01003          0      2027. 0000        0000                 0
+##  5 Barbour… 01005          0       905. 0000        0000                 0
+##  6 Bibb, AL 01007          0       626. 0000        0000                 0
+##  7 Blount,… 01009          0       651. 0000        0000                 0
+##  8 Bullock… 01011          0       626. 0000        0000                 0
+##  9 Butler,… 01013          0       778. 0000        0000                 0
+## 10 Calhoun… 01015          0       612. 0000        0000                 0
+## # … with 3,188 more rows, and 27 more variables: LND010200D <dbl>,
+## #   LND010200N1 <chr>, LND010200N2 <chr>, LND110180F <dbl>, LND110180D <dbl>,
+## #   LND110180N1 <chr>, LND110180N2 <chr>, LND110190F <dbl>, LND110190D <dbl>,
+## #   LND110190N1 <chr>, LND110190N2 <chr>, LND110200F <dbl>, LND110200D <dbl>,
+## #   LND110200N1 <chr>, LND110200N2 <chr>, LND110210F <dbl>, LND110210D <dbl>,
+## #   LND110210N1 <chr>, LND110210N2 <chr>, LND210190F <dbl>, LND210190D <dbl>,
+## #   LND210190N1 <chr>, LND210190N2 <chr>, LND210200F <dbl>, LND210200D <dbl>,
+## #   LND210200N1 <chr>, LND210200N2 <chr>
 ```
 
 #### Unemployment Data
@@ -1405,7 +2189,8 @@ This data is available online from the [Bureau of Labor Statistics (BLS)](https:
 
 As a reminder, to view the HTML of a webpage, right-click and select “View page source.”
 
-```{r message = FALSE}
+
+```r
 library(rvest)
 
 # specify URL to where we'll be web scraping
@@ -1422,10 +2207,28 @@ unemployment <- as_tibble(out[[1]])
 unemployment
 ```
 
+```
+## # A tibble: 54 x 3
+##    State           `2015rate` Rank 
+##    <chr>           <chr>      <chr>
+##  1 "United States" "5.3"      ""   
+##  2 ""              ""         ""   
+##  3 "North Dakota"  "2.8"      "1"  
+##  4 "Nebraska"      "3.0"      "2"  
+##  5 "South Dakota"  "3.1"      "3"  
+##  6 "New Hampshire" "3.4"      "4"  
+##  7 "Hawaii"        "3.6"      "5"  
+##  8 "Utah"          "3.6"      "5"  
+##  9 "Vermont"       "3.6"      "5"  
+## 10 "Minnesota"     "3.7"      "8"  
+## # … with 44 more rows
+```
+
 Then we get the values from each column of the data table. The `html_nodes()` function acts as a CSS selector. The "table" class returns two tables from the webpage and we specify that we want the second table. From the object `out` we select the first in the list and store this as a tibble.
 
 Now that we have gathered all the raw data we will need for our second case study, let's save it using the `here` package:
-```{r}
+
+```r
 library(here)
 save(census, counted15, suicide_all, suicide_firearm, brady, crime, land, unemployment , file = here::here("data", "raw_data", "case_study_2.rda"))
 #all of these objects (census, counted15 etc) will get saved as case_study_2.rda within the raw_data directory which is a subdirectory of data 

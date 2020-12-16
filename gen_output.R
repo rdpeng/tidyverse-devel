@@ -3,7 +3,7 @@
 library(knitr)
 
 inputs <- c("01-intro.Rmd",
-#            "02-get-data.Rmd",
+            "02-get-data.Rmd",
 #            "03-tidying.Rmd",
 #	    "04-dataviz.Rmd",
 #            "05-prediction.Rmd",
@@ -15,7 +15,4 @@ lapply(inputs, function(input) {
         output <- file.path("manuscript", sub("^[^a-zA-Z]+", "", out))
         file.rename(out, output)
 })
-
-#system("rsync -av figure/ manuscript/figure/")
-        
 
