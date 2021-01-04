@@ -1847,7 +1847,7 @@ chickwts %>%
   geom_point()
 ```
 
-![plot of chunk unnamed-chunk-63](images/unnamed-chunk-63-1.png)
+![plot of chunk unnamed-chunk-63](images/tidying-unnamed-chunk-63-1.png)
 
 ![fct_reorder allows you to re-level a factor based on a secondary numeric variable](images/gslides/125.png)
 
@@ -2085,7 +2085,7 @@ age
 ```
 
 ```
-## Time difference of 11766 days
+## Time difference of 11785 days
 ```
 
 ```r
@@ -2094,7 +2094,7 @@ as.duration(age)
 ```
 
 ```
-## [1] "1016582400s (~32.21 years)"
+## [1] "1018224000s (~32.27 years)"
 ```
 
 
@@ -2277,12 +2277,12 @@ str_view(names, "^M")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd624a7a.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b624a7a.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd624a7a.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b624a7a.png': No such
 ## file or directory
 ```
 
@@ -2308,12 +2308,12 @@ str_view(names, "M$")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd780d04c9.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b780d04c9.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd780d04c9.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b780d04c9.png': No such
 ## file or directory
 ```
 
@@ -2337,12 +2337,12 @@ str_view(names, "a$")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd7188e8f6.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b7188e8f6.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd7188e8f6.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b7188e8f6.png': No such
 ## file or directory
 ```
 
@@ -2477,12 +2477,12 @@ str_view_all(names, "[aeiou]")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd7a4ad61f.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b7a4ad61f.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd7a4ad61f.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b7a4ad61f.png': No such
 ## file or directory
 ```
 
@@ -2508,12 +2508,12 @@ str_view_all(names, "[^aeiou]")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd3452778e.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b3452778e.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd3452778e.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b3452778e.png': No such
 ## file or directory
 ```
 
@@ -2540,12 +2540,12 @@ str_view_all(addresses, "\\d")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd3e87a50e.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b3e87a50e.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd3e87a50e.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b3e87a50e.png': No such
 ## file or directory
 ```
 
@@ -2570,12 +2570,12 @@ str_view_all(addresses, "\\s")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd1991a4d7.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b1991a4d7.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd1991a4d7.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b1991a4d7.png': No such
 ## file or directory
 ```
 
@@ -2600,12 +2600,12 @@ str_view_all(addresses, ".")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd535c4858.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b535c4858.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd535c4858.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b535c4858.png': No such
 ## file or directory
 ```
 
@@ -2642,12 +2642,12 @@ str_view_all(addresses, "n+")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd3cfbb7a2.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b3cfbb7a2.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd3cfbb7a2.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b3cfbb7a2.png': No such
 ## file or directory
 ```
 
@@ -2670,12 +2670,12 @@ str_view_all(addresses, "n{1}")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd736a0986.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b736a0986.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd736a0986.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b736a0986.png': No such
 ## file or directory
 ```
 
@@ -2698,12 +2698,12 @@ str_view_all(addresses, "n{2}")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd34852336.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b34852336.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd34852336.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b34852336.png': No such
 ## file or directory
 ```
 
@@ -2726,12 +2726,12 @@ str_view_all(addresses, "nn+")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd14c2ec12.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b14c2ec12.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd14c2ec12.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b14c2ec12.png': No such
 ## file or directory
 ```
 
@@ -2754,12 +2754,12 @@ str_view_all(addresses, "n{2,3}")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd114b4387.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b114b4387.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd114b4387.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b114b4387.png': No such
 ## file or directory
 ```
 
@@ -2777,12 +2777,12 @@ str_view_all(addresses, "n{3,4}")
 ```
 
 ```
-## Warning in normalizePath(f2): path[1]="webshot7ddd2cbd3509.png": No such file or
+## Warning in normalizePath(f2): path[1]="webshot6a6b2cbd3509.png": No such file or
 ## directory
 ```
 
 ```
-## Warning in file(con, "rb"): cannot open file 'webshot7ddd2cbd3509.png': No such
+## Warning in file(con, "rb"): cannot open file 'webshot6a6b2cbd3509.png': No such
 ## file or directory
 ```
 
@@ -3193,7 +3193,7 @@ ggplot(poem_words, aes(n/total, fill = title)) +
   facet_wrap(~title, ncol = 3, scales = "free_y")
 ```
 
-![plot of chunk unnamed-chunk-116](images/unnamed-chunk-116-1.png)
+![plot of chunk unnamed-chunk-116](images/tidying-unnamed-chunk-116-1.png)
 
 With most documents there are only a few words that show up infrequently in the tail off to the right (rare words), while most words show up a whole bunch of times. 
 
@@ -3289,7 +3289,7 @@ poem_words %>%
 ## Selecting by tf_idf
 ```
 
-![plot of chunk unnamed-chunk-120](images/unnamed-chunk-120-1.png)
+![plot of chunk unnamed-chunk-120](images/tidying-unnamed-chunk-120-1.png)
 
 
 ## Functional Programming
