@@ -6,7 +6,7 @@ inputs <- c("01-intro.Rmd",
             "02-get-data.Rmd",
             "03-tidying.Rmd",
 	    "04-dataviz.Rmd",
-#            "05-prediction.Rmd",
+            "05-prediction.Rmd",
 	    "about.Rmd")
 
 lapply(inputs, function(input) {
