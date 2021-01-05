@@ -301,23 +301,20 @@ To build your first plot in `ggplot2` we'll make use of the fact that there are 
 ```r
 diamonds <- as_tibble(diamonds)
 diamonds
-```
-
-```
-## # A tibble: 53,940 x 10
-##    carat cut       color clarity depth table price     x     y     z
-##    <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-##  1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
-##  2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
-##  3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-##  4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-##  5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
-##  6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
-##  7 0.24  Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
-##  8 0.26  Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
-##  9 0.22  Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
-## 10 0.23  Very Good H     VS1      59.4    61   338  4     4.05  2.39
-## # … with 53,930 more rows
+# A tibble: 53,940 x 10
+   carat cut       color clarity depth table price     x     y     z
+   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+ 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+ 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+ 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+ 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+ 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+ 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+ 7 0.24  Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+ 8 0.26  Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
+ 9 0.22  Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+10 0.23  Very Good H     VS1      59.4    61   338  4     4.05  2.39
+# … with 53,930 more rows
 ```
 
 ![First 12 rows of diamonds dataset](images/gslides/193.png)
@@ -429,20 +426,11 @@ You can also change the shape of the points (`shape`). We've used solid, filled 
 # map clarity to point shape within aes 
 ggplot(data = diamonds) + 
   geom_point(mapping = aes(x = carat, y = price, shape = clarity))
-```
-
-```
-## Warning: Using shapes for an ordinal variable is not advised
-```
-
-```
-## Warning: The shape palette can deal with a maximum of 6 discrete values because
-## more than 6 becomes difficult to discriminate; you have 8. Consider
-## specifying shapes manually if you must have them.
-```
-
-```
-## Warning: Removed 5445 rows containing missing values (geom_point).
+Warning: Using shapes for an ordinal variable is not advised
+Warning: The shape palette can deal with a maximum of 6 discrete values because
+more than 6 becomes difficult to discriminate; you have 8. Consider
+specifying shapes manually if you must have them.
+Warning: Removed 5445 rows containing missing values (geom_point).
 ```
 
 ![plot of chunk unnamed-chunk-15](images/dataviz-unnamed-chunk-15-1.png)
@@ -509,10 +497,7 @@ For example, if we wanted to see what the distribution of carats was for these d
 # change geom_ to generate histogram
 ggplot(data = diamonds) + 
   geom_histogram(mapping =  aes(carat))
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ![plot of chunk unnamed-chunk-18](images/dataviz-unnamed-chunk-18-1.png)
@@ -1008,6 +993,7 @@ ggplot(diamonds) +
 ![plot of chunk unnamed-chunk-41](images/dataviz-unnamed-chunk-41-1.png)
 
 ```r
+
 ggplot(diamonds) + 
   geom_boxplot(aes(y = price, x = clarity)) + 
   scale_y_continuous(trans = "log10") + 
@@ -1037,6 +1023,7 @@ In the above plot, we might also want to order the boxplots by the median price,
 
 
 ```r
+
 ggplot(diamonds) + 
   geom_boxplot(aes(y = price, x = forcats::fct_reorder(clarity, price, .fun = median))) + 
   scale_y_continuous(trans = "log10", 
@@ -1085,10 +1072,7 @@ ggplot(diamonds) +
         legend.text = element_text(size = 14),
         plot.subtitle = element_text(color = "gray30")) +
   guides(fill = guide_legend("cut quality")) 
-```
-
-```
-## Warning: Removed 30940 rows containing non-finite values (stat_count).
+Warning: Removed 30940 rows containing non-finite values (stat_count).
 ```
 
 ![plot of chunk unnamed-chunk-45](images/dataviz-unnamed-chunk-45-1.png)
@@ -1143,10 +1127,7 @@ ggplot(diamonds) +
            y = 12800, x = 2.9, 
            vjust = "top", hjust = "right", 
            size = 6)
-```
-
-```
-## Warning: Removed 30940 rows containing non-finite values (stat_count).
+Warning: Removed 30940 rows containing non-finite values (stat_count).
 ```
 
 ![plot of chunk unnamed-chunk-47](images/dataviz-unnamed-chunk-47-1.png)
@@ -1240,17 +1221,14 @@ df <- diamonds %>%
 ```r
 # look at data
 df
-```
-
-```
-## # A tibble: 5 x 5
-##   cut           N   min   avg   max
-##   <ord>     <int> <int> <dbl> <int>
-## 1 Fair       1610   337 4359. 18574
-## 2 Good       4906   327 3929. 18788
-## 3 Very Good 12082   336 3982. 18818
-## 4 Premium   13791   326 4584. 18823
-## 5 Ideal     21551   326 3458. 18806
+# A tibble: 5 x 5
+  cut           N   min   avg   max
+  <ord>     <int> <int> <dbl> <int>
+1 Fair       1610   337 4359. 18574
+2 Good       4906   327 3929. 18788
+3 Very Good 12082   336 3982. 18818
+4 Premium   13791   326 4584. 18823
+5 Ideal     21551   326 3458. 18806
 ```
 
 By getting the data summarized into a single object in R (`df`), we're on our way to making an informative table. However, this is clearly just an exploratory table. The output in R from this code follows some of the good table rules above, but not all of them.  At a glance, it will help you to understand the data, but it's not the finished table you would want to send to your boss. 
@@ -1494,6 +1472,7 @@ ggplot(mtcars, aes(qsec, mpg, label = model)) +
 ![plot of chunk unnamed-chunk-60](images/dataviz-unnamed-chunk-60-1.png)
 
 ```r
+
 ggplot(mtcars, aes(qsec, mpg, label = model)) +
   geom_point(color = ifelse(mtcars$mpg > 30, "dodgerblue", "black")) +
   scale_x_continuous(expand = c(0.05, 0.05)) +
@@ -1614,13 +1593,7 @@ p3 <- ggplot(mtcars, aes(engine)) +
   theme_minimal_hgrid(12) +
   panel_border(color = "black") +
   theme(strip.background = element_rect(fill = "gray80"))
-```
-
-```
-## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
-```
-
-```r
+Warning: `expand_scale()` is deprecated; use `expansion()` instead.
 p3
 ```
 
@@ -1705,20 +1678,11 @@ To combine two plots together we can simply add them together with the `+` sign 
 ```r
 #install.packages(patchwork)
 library(patchwork)
-```
 
-```
-## 
-## Attaching package: 'patchwork'
-```
+Attaching package: 'patchwork'
+The following object is masked from 'package:cowplot':
 
-```
-## The following object is masked from 'package:cowplot':
-## 
-##     align_plots
-```
-
-```r
+    align_plots
 p1 + p2
 ```
 
@@ -1862,6 +1826,7 @@ Annotations for all the plots combined can also be added using the `plot_annotat
 
 
 ```r
+
 (p1 + p2) + p3 + theme(axis.text.x = element_text(angle = 90)) +
   plot_annotation(title = "Plot title for all 3 plots", 
                   theme = theme(plot.title = element_text(hjust = 0.5)))
@@ -2115,24 +2080,21 @@ We've now got the data in order so that we can start to explore the relationship
 ```r
 # see health care data
 hc
-```
-
-```
-## # A tibble: 612 x 10
-##    Location  year type  tot_coverage abb   region tot_spending tot_pop
-##    <chr>    <int> <chr>        <int> <chr> <fct>         <dbl>   <int>
-##  1 Alabama   2013 Empl…      2126500 AL    South         33788 4763900
-##  2 Alabama   2013 Non-…       174200 AL    South         33788 4763900
-##  3 Alabama   2013 Medi…       869700 AL    South         33788 4763900
-##  4 Alabama   2013 Medi…       783000 AL    South         33788 4763900
-##  5 Alabama   2013 Othe…        85600 AL    South         33788 4763900
-##  6 Alabama   2013 Unin…       724800 AL    South         33788 4763900
-##  7 Alabama   2014 Empl…      2202800 AL    South         35263 4768000
-##  8 Alabama   2014 Non-…       288900 AL    South         35263 4768000
-##  9 Alabama   2014 Medi…       891900 AL    South         35263 4768000
-## 10 Alabama   2014 Medi…       718400 AL    South         35263 4768000
-## # … with 602 more rows, and 2 more variables: prop_coverage <dbl>,
-## #   spending_capita <dbl>
+# A tibble: 612 x 10
+   Location  year type  tot_coverage abb   region tot_spending tot_pop
+   <chr>    <int> <chr>        <int> <chr> <fct>         <dbl>   <int>
+ 1 Alabama   2013 Empl…      2126500 AL    South         33788 4763900
+ 2 Alabama   2013 Non-…       174200 AL    South         33788 4763900
+ 3 Alabama   2013 Medi…       869700 AL    South         33788 4763900
+ 4 Alabama   2013 Medi…       783000 AL    South         33788 4763900
+ 5 Alabama   2013 Othe…        85600 AL    South         33788 4763900
+ 6 Alabama   2013 Unin…       724800 AL    South         33788 4763900
+ 7 Alabama   2014 Empl…      2202800 AL    South         35263 4768000
+ 8 Alabama   2014 Non-…       288900 AL    South         35263 4768000
+ 9 Alabama   2014 Medi…       891900 AL    South         35263 4768000
+10 Alabama   2014 Medi…       718400 AL    South         35263 4768000
+# … with 602 more rows, and 2 more variables: prop_coverage <dbl>,
+#   spending_capita <dbl>
 ```
 
 As a reminder, we have state level data, broken down by year and type of insurance. For each, we have the total number of individuals who have health care coverage (`tot_coverage`), the amount spent on coverage (`tot_spending`), the proportion of individuals covered (`prop_coverage`), and the amount spent per capita (`spending_capita`). Additionally, we have the state name (`Location`), the two letter state abbreviation  (`abb`) and the region of the United States where the state is located (`region`). Let's get visualizing!
@@ -2170,32 +2132,29 @@ Let's use `dplyr` to see *which* observations have missing data:
 ```r
 hc %>%
   filter(is.na(tot_coverage))
-```
-
-```
-## # A tibble: 19 x 10
-##    Location  year type  tot_coverage abb   region tot_spending tot_pop
-##    <chr>    <int> <chr>        <int> <chr> <fct>         <dbl>   <int>
-##  1 Arizona   2013 Othe…           NA AZ    West          41481 6603100
-##  2 Arizona   2014 Othe…           NA AZ    West          43356 6657200
-##  3 Distric…  2013 Othe…           NA DC    South          7443  652100
-##  4 Distric…  2014 Othe…           NA DC    South          7871  656900
-##  5 Indiana   2014 Othe…           NA IN    North…        54741 6477500
-##  6 Kansas    2013 Othe…           NA KS    North…        21490 2817600
-##  7 Kansas    2014 Othe…           NA KS    North…        22183 2853000
-##  8 Kentucky  2014 Othe…           NA KY    South         35323 4315700
-##  9 Massach…  2013 Othe…           NA MA    North…        68899 6647700
-## 10 Massach…  2014 Othe…           NA MA    North…        71274 6658100
-## 11 New Ham…  2014 Othe…           NA NH    North…        12742 1319700
-## 12 New Jer…  2013 Othe…           NA NJ    North…        75148 8807400
-## 13 North D…  2013 Othe…           NA ND    North…         6795  714500
-## 14 Oklahoma  2013 Othe…           NA OK    South         28097 3709400
-## 15 Rhode I…  2014 Othe…           NA RI    North…        10071 1048200
-## 16 Tenness…  2013 Othe…           NA TN    South         46149 6400200
-## 17 Tenness…  2014 Othe…           NA TN    South         48249 6502000
-## 18 West Vi…  2013 Othe…           NA WV    South         16622 1822000
-## 19 Wiscons…  2014 Othe…           NA WI    North…        50109 5747200
-## # … with 2 more variables: prop_coverage <dbl>, spending_capita <dbl>
+# A tibble: 19 x 10
+   Location  year type  tot_coverage abb   region tot_spending tot_pop
+   <chr>    <int> <chr>        <int> <chr> <fct>         <dbl>   <int>
+ 1 Arizona   2013 Othe…           NA AZ    West          41481 6603100
+ 2 Arizona   2014 Othe…           NA AZ    West          43356 6657200
+ 3 Distric…  2013 Othe…           NA DC    South          7443  652100
+ 4 Distric…  2014 Othe…           NA DC    South          7871  656900
+ 5 Indiana   2014 Othe…           NA IN    North…        54741 6477500
+ 6 Kansas    2013 Othe…           NA KS    North…        21490 2817600
+ 7 Kansas    2014 Othe…           NA KS    North…        22183 2853000
+ 8 Kentucky  2014 Othe…           NA KY    South         35323 4315700
+ 9 Massach…  2013 Othe…           NA MA    North…        68899 6647700
+10 Massach…  2014 Othe…           NA MA    North…        71274 6658100
+11 New Ham…  2014 Othe…           NA NH    North…        12742 1319700
+12 New Jer…  2013 Othe…           NA NJ    North…        75148 8807400
+13 North D…  2013 Othe…           NA ND    North…         6795  714500
+14 Oklahoma  2013 Othe…           NA OK    South         28097 3709400
+15 Rhode I…  2014 Othe…           NA RI    North…        10071 1048200
+16 Tenness…  2013 Othe…           NA TN    South         46149 6400200
+17 Tenness…  2014 Othe…           NA TN    South         48249 6502000
+18 West Vi…  2013 Othe…           NA WV    South         16622 1822000
+19 Wiscons…  2014 Othe…           NA WI    North…        50109 5747200
+# … with 2 more variables: prop_coverage <dbl>, spending_capita <dbl>
 ```
 
 Ah, so we see that the "Other" type of coverage is missing in both 2013 and 2014 for a subset of states. We'll be focusing on the non-"Other" types of healthcare coverage, so this shouldn't pose a problem, but is good to know!
@@ -2368,10 +2327,7 @@ hc %>%
   labs(x = "spending per capita",
        y = "coverage proportion") +
   geom_smooth(method = "lm", col = "red")
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula 'y ~ x'
 ```
 
 ![plot of chunk unnamed-chunk-108](images/dataviz-unnamed-chunk-108-1.png)
@@ -2392,10 +2348,7 @@ hc %>%
   geom_smooth(method = "lm", col = "red") + 
   geom_text(aes(label=abb), 
             nudge_x = 150)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula 'y ~ x'
 ```
 
 ![plot of chunk unnamed-chunk-109](images/dataviz-unnamed-chunk-109-1.png)
@@ -2418,10 +2371,7 @@ hc %>%
   geom_text(aes(label=abb), 
             nudge_x = 150, 
             show.legend = FALSE)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula 'y ~ x'
 ```
 
 ![plot of chunk unnamed-chunk-110](images/dataviz-unnamed-chunk-110-1.png)
@@ -2444,10 +2394,7 @@ hc %>%
   geom_text(aes(label=abb), 
             nudge_x = 150, 
             show.legend = FALSE)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula 'y ~ x'
 ```
 
 ![plot of chunk unnamed-chunk-111](images/dataviz-unnamed-chunk-111-1.png)
@@ -2472,10 +2419,7 @@ hc %>%
   geom_text(aes(label=abb), 
             nudge_x = 150, 
             show.legend = FALSE)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula 'y ~ x'
 ```
 
 ![plot of chunk unnamed-chunk-112](images/dataviz-unnamed-chunk-112-1.png)
@@ -2500,10 +2444,7 @@ hc %>%
   geom_text(aes(label=abb), 
             nudge_x = 150, 
             show.legend = FALSE)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula 'y ~ x'
 ```
 
 ![plot of chunk unnamed-chunk-113](images/dataviz-unnamed-chunk-113-1.png)
@@ -2517,13 +2458,8 @@ Let's save some of these plots for later:
 
 ```r
 pdf(here::here("figures", "exploratory", "2013and2014_spending_and_coverage.pdf"))
-```
+Error in pdf(here::here("figures", "exploratory", "2013and2014_spending_and_coverage.pdf")): cannot open file '/Users/rdpeng/books/tidyverse-devel/figures/exploratory/2013and2014_spending_and_coverage.pdf'
 
-```
-## Error in pdf(here::here("figures", "exploratory", "2013and2014_spending_and_coverage.pdf")): cannot open file '/Users/rdpeng/books/tidyverse-devel/figures/exploratory/2013and2014_spending_and_coverage.pdf'
-```
-
-```r
 hc %>%
   filter(type == "Employer") %>% 
   ggplot(aes(x = spending_capita, 
@@ -2537,32 +2473,18 @@ hc %>%
   geom_text(aes(label=abb), 
             nudge_x = 150, 
             show.legend = FALSE)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula 'y ~ x'
 ```
 
 ![plot of chunk unnamed-chunk-114](images/dataviz-unnamed-chunk-114-1.png)
 
 ```r
 dev.off()
-```
+null device 
+          1 
 
-```
-## null device 
-##           1
-```
-
-```r
 pdf(here::here("figures", "exploratory", "2013_coverage_type.pdf"))
-```
-
-```
-## Error in pdf(here::here("figures", "exploratory", "2013_coverage_type.pdf")): cannot open file '/Users/rdpeng/books/tidyverse-devel/figures/exploratory/2013_coverage_type.pdf'
-```
-
-```r
+Error in pdf(here::here("figures", "exploratory", "2013_coverage_type.pdf")): cannot open file '/Users/rdpeng/books/tidyverse-devel/figures/exploratory/2013_coverage_type.pdf'
 hc %>%
   filter(year == "2013") %>% 
   ggplot(aes(x = spending_capita, 
@@ -2576,42 +2498,16 @@ hc %>%
   geom_text(aes(label=abb), 
             nudge_x = 150, 
             show.legend = FALSE)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-```
-## Warning: Removed 9 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 9 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 9 rows containing missing values (geom_text).
-```
-
-```r
+`geom_smooth()` using formula 'y ~ x'
+Warning: Removed 9 rows containing non-finite values (stat_smooth).
+Warning: Removed 9 rows containing missing values (geom_point).
+Warning: Removed 9 rows containing missing values (geom_text).
 dev.off()
-```
+null device 
+          1 
 
-```
-## null device 
-##           1
-```
-
-```r
 pdf(here::here("figures", "exploratory", "2014_coverage_type.pdf"))
-```
-
-```
-## Error in pdf(here::here("figures", "exploratory", "2014_coverage_type.pdf")): cannot open file '/Users/rdpeng/books/tidyverse-devel/figures/exploratory/2014_coverage_type.pdf'
-```
-
-```r
+Error in pdf(here::here("figures", "exploratory", "2014_coverage_type.pdf")): cannot open file '/Users/rdpeng/books/tidyverse-devel/figures/exploratory/2014_coverage_type.pdf'
 hc %>%
   filter(year == "2014") %>% 
   ggplot(aes(x = spending_capita, 
@@ -2625,31 +2521,13 @@ hc %>%
   geom_text(aes(label=abb), 
             nudge_x = 150, 
             show.legend = FALSE)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-```
-## Warning: Removed 10 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 10 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 10 rows containing missing values (geom_text).
-```
-
-```r
+`geom_smooth()` using formula 'y ~ x'
+Warning: Removed 10 rows containing non-finite values (stat_smooth).
+Warning: Removed 10 rows containing missing values (geom_point).
+Warning: Removed 10 rows containing missing values (geom_text).
 dev.off()
-```
-
-```
-## null device 
-##           1
+null device 
+          1 
 ```
 
 #### Q2: Spending Across Geographic Regions?
@@ -2722,10 +2600,7 @@ hc %>%
        y = "coverage proportion") +
   geom_smooth(method = "lm", col = "red") + 
   facet_grid(year~type)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula 'y ~ x'
 ```
 
 ![plot of chunk unnamed-chunk-117](images/dataviz-unnamed-chunk-117-1.png)
@@ -2750,25 +2625,22 @@ In the previous course, we wrangled the data into a single, helpful data frame: 
 ```r
 # see firearms data
 firearms
-```
-
-```
-## # A tibble: 51 x 15
-##    NAME  white black hispanic  male total_pop violent_crime brady_scores
-##    <chr> <dbl> <dbl>    <dbl> <dbl>     <dbl>         <dbl>        <dbl>
-##  1 alab…  69.5 26.7      4.13  48.5   4850858          472.        -18  
-##  2 alas…  66.5  3.67     6.82  52.4    737979          730.        -30  
-##  3 ariz…  83.5  4.80    30.9   49.7   6802262          410.        -39  
-##  4 arka…  79.6 15.7      7.18  49.1   2975626          521.        -24  
-##  5 cali…  73.0  6.49    38.7   49.7  39032444          426.         76  
-##  6 colo…  87.6  4.47    21.3   50.3   5440445          321          22  
-##  7 conn…  80.9 11.6     15.3   48.8   3593862          218.         73  
-##  8 dela…  70.3 22.5      8.96  48.4    944107          499          41  
-##  9 dist…  44.1 48.5     10.7   47.4    672736         1269.         NA  
-## 10 flor…  77.7 16.9     24.7   48.9  20268567          462.        -20.5
-## # … with 41 more rows, and 7 more variables: gunshot_tally <int>,
-## #   gunshot_filtered <int>, gunshot_rate <dbl>, unemployment_rate <dbl>,
-## #   unemployment_rank <int>, density <dbl>, ownership <dbl>
+# A tibble: 51 x 15
+   NAME  white black hispanic  male total_pop violent_crime brady_scores
+   <chr> <dbl> <dbl>    <dbl> <dbl>     <dbl>         <dbl>        <dbl>
+ 1 alab…  69.5 26.7      4.13  48.5   4850858          472.        -18  
+ 2 alas…  66.5  3.67     6.82  52.4    737979          730.        -30  
+ 3 ariz…  83.5  4.80    30.9   49.7   6802262          410.        -39  
+ 4 arka…  79.6 15.7      7.18  49.1   2975626          521.        -24  
+ 5 cali…  73.0  6.49    38.7   49.7  39032444          426.         76  
+ 6 colo…  87.6  4.47    21.3   50.3   5440445          321          22  
+ 7 conn…  80.9 11.6     15.3   48.8   3593862          218.         73  
+ 8 dela…  70.3 22.5      8.96  48.4    944107          499          41  
+ 9 dist…  44.1 48.5     10.7   47.4    672736         1269.         NA  
+10 flor…  77.7 16.9     24.7   48.9  20268567          462.        -20.5
+# … with 41 more rows, and 7 more variables: gunshot_tally <int>,
+#   gunshot_filtered <int>, gunshot_rate <dbl>, unemployment_rate <dbl>,
+#   unemployment_rank <int>, density <dbl>, ownership <dbl>
 ```
 
 This dataset contains state level information about firearm ownership (broken down by ethnicity and gender), the population of each state (`total_pop`), the number of violent crimes (`violent_crime`), the “total state points” from the Brady Scorecard (`brady_scores`), the number of gunshots (`gunshot_tally`), the number of gunshots from armed, non-white, male individuals (`gunshot_filtered`), the annualized rate per 1,000,000 residents (`gunshot_rate`), the `unemployment rate` and `unemployment_rank`, population density (`density`), and firearm ownership as a percent of firearm suicides to all suicides (`ownership`).
@@ -2854,11 +2726,8 @@ ggplot(firearms,
        y = "Violent Crime") + 
   theme_classic() + 
   geom_text_repel(aes(label = NAME))
-```
-
-```
-## Warning: ggrepel: 15 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
+Warning: ggrepel: 15 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps
 ```
 
 ![plot of chunk unnamed-chunk-121](images/dataviz-unnamed-chunk-121-1.png)
@@ -2895,10 +2764,7 @@ ggplot(firearms,
   labs(x = "Annualized Rate of Fatal \n Police Shootings per 1,000,000",
        y = "Gun Ownership \n (firearm suicides:all suicides)") + 
   theme_classic()
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
+Warning: Removed 2 rows containing missing values (geom_point).
 ```
 
 ![plot of chunk unnamed-chunk-123](images/dataviz-unnamed-chunk-123-1.png)
@@ -2926,10 +2792,7 @@ ggplot(firearms, aes(x = brady_scores,
   labs(x = "Firearm Legislative Strength Score",
        y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
   theme_classic()
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
+Warning: Removed 2 rows containing missing values (geom_point).
 ```
 
 ![plot of chunk unnamed-chunk-124](images/dataviz-unnamed-chunk-124-1.png)
@@ -2949,14 +2812,8 @@ ggplot(firearms, aes(x = brady_scores,
   theme_classic() +
   geom_text(aes(label = NAME), 
             nudge_x = 7)
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_text).
+Warning: Removed 2 rows containing missing values (geom_point).
+Warning: Removed 2 rows containing missing values (geom_text).
 ```
 
 ![plot of chunk unnamed-chunk-125](images/dataviz-unnamed-chunk-125-1.png)
@@ -2977,19 +2834,10 @@ ggplot(firearms, aes(x = brady_scores,
        y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
   theme_classic() +
   geom_text_repel(aes(label = NAME))
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_text_repel).
-```
-
-```
-## Warning: ggrepel: 3 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
+Warning: Removed 2 rows containing missing values (geom_point).
+Warning: Removed 2 rows containing missing values (geom_text_repel).
+Warning: ggrepel: 3 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps
 ```
 
 ![plot of chunk unnamed-chunk-126](images/dataviz-unnamed-chunk-126-1.png)
@@ -2999,13 +2847,8 @@ If we wanted to save this particular plot as a pdf, we could do so like this to 
 
 ```r
 pdf(here::here("figures", "exploratory", "Fatal_police_shootings_and_firearm_legislative_strength.pdf"))
-```
+Error in pdf(here::here("figures", "exploratory", "Fatal_police_shootings_and_firearm_legislative_strength.pdf")): cannot open file '/Users/rdpeng/books/tidyverse-devel/figures/exploratory/Fatal_police_shootings_and_firearm_legislative_strength.pdf'
 
-```
-## Error in pdf(here::here("figures", "exploratory", "Fatal_police_shootings_and_firearm_legislative_strength.pdf")): cannot open file '/Users/rdpeng/books/tidyverse-devel/figures/exploratory/Fatal_police_shootings_and_firearm_legislative_strength.pdf'
-```
-
-```r
 ggplot(firearms, aes(x = brady_scores, 
                      y = gunshot_rate)) + 
   geom_point() +
@@ -3013,28 +2856,17 @@ ggplot(firearms, aes(x = brady_scores,
        y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
   theme_classic() +
   geom_text_repel(aes(label = NAME))
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_text_repel).
-```
-
-```
-## Warning: ggrepel: 3 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
+Warning: Removed 2 rows containing missing values (geom_point).
+Warning: Removed 2 rows containing missing values (geom_text_repel).
+Warning: ggrepel: 3 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps
 ```
 
 ![plot of chunk unnamed-chunk-127](images/dataviz-unnamed-chunk-127-1.png)
 
 ```r
-dev.off()
-```
 
-```
-## null device 
-##           1
+dev.off()
+null device 
+          1 
 ```

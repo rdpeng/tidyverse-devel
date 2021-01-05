@@ -47,23 +47,20 @@ For example, the `trees` dataset is a data.frame that's available in base R. Thi
 
 ```r
 as_tibble(trees)
-```
-
-```
-## # A tibble: 31 x 3
-##    Girth Height Volume
-##    <dbl>  <dbl>  <dbl>
-##  1   8.3     70   10.3
-##  2   8.6     65   10.3
-##  3   8.8     63   10.2
-##  4  10.5     72   16.4
-##  5  10.7     81   18.8
-##  6  10.8     83   19.7
-##  7  11       66   15.6
-##  8  11       75   18.2
-##  9  11.1     80   22.6
-## 10  11.2     75   19.9
-## # … with 21 more rows
+# A tibble: 31 x 3
+   Girth Height Volume
+   <dbl>  <dbl>  <dbl>
+ 1   8.3     70   10.3
+ 2   8.6     65   10.3
+ 3   8.8     63   10.2
+ 4  10.5     72   16.4
+ 5  10.7     81   18.8
+ 6  10.8     83   19.7
+ 7  11       66   15.6
+ 8  11       75   18.2
+ 9  11.1     80   22.6
+10  11.2     75   19.9
+# … with 21 more rows
 ```
 
 Note in the above example and as mentioned earlier, that tibbles, by default, only print the first ten rows to screen. If you were to print `trees` to screen, all 31 rows would be displayed. When working with large data.frames, this default behavior can be incredibly frustrating. Using tibbles removes this frustration because of the default settings for tibble printing.
@@ -78,18 +75,15 @@ A second option is the fact that `print()` enables you to specify how many rows 
 ```r
 as_tibble(trees) %>% 
   print(n = 5, width = Inf)
-```
-
-```
-## # A tibble: 31 x 3
-##   Girth Height Volume
-##   <dbl>  <dbl>  <dbl>
-## 1   8.3     70   10.3
-## 2   8.6     65   10.3
-## 3   8.8     63   10.2
-## 4  10.5     72   16.4
-## 5  10.7     81   18.8
-## # … with 26 more rows
+# A tibble: 31 x 3
+  Girth Height Volume
+  <dbl>  <dbl>  <dbl>
+1   8.3     70   10.3
+2   8.6     65   10.3
+3   8.8     63   10.2
+4  10.5     72   16.4
+5  10.7     81   18.8
+# … with 26 more rows
 ```
 
 Other options for viewing your tibbles are the `slice_*` functions of the `dplyr` package. 
@@ -99,20 +93,17 @@ The `slice_sample()` function of the `dplyr` package will allow you to see a sam
 
 ```r
 slice_sample(trees, n = 10)
-```
-
-```
-##    Girth Height Volume
-## 1   11.0     75   18.2
-## 2   12.9     85   33.8
-## 3   10.7     81   18.8
-## 4   11.2     75   19.9
-## 5    8.6     65   10.3
-## 6   12.9     74   22.2
-## 7   11.3     79   24.2
-## 8   17.3     81   55.4
-## 9   18.0     80   51.5
-## 10  11.0     66   15.6
+   Girth Height Volume
+1    8.6     65   10.3
+2   14.2     80   31.7
+3   13.3     86   27.4
+4   11.4     76   21.4
+5   11.1     80   22.6
+6   16.3     77   42.6
+7   14.5     74   36.3
+8   18.0     80   51.5
+9   11.0     75   18.2
+10  16.0     72   38.3
 ```
 
 You can also use `slice_head()` or `slice_tail()` to take a look at the top rows or bottom rows of your tibble. Again the number of rows can be specified with the n argument.
@@ -122,15 +113,12 @@ This will show the first 5 rows.
 
 ```r
 slice_head(trees, n = 5)
-```
-
-```
-##   Girth Height Volume
-## 1   8.3     70   10.3
-## 2   8.6     65   10.3
-## 3   8.8     63   10.2
-## 4  10.5     72   16.4
-## 5  10.7     81   18.8
+  Girth Height Volume
+1   8.3     70   10.3
+2   8.6     65   10.3
+3   8.8     63   10.2
+4  10.5     72   16.4
+5  10.7     81   18.8
 ```
 
 This will show the last 5 rows.
@@ -138,15 +126,12 @@ This will show the last 5 rows.
 
 ```r
 slice_tail(trees, n = 5)
-```
-
-```
-##   Girth Height Volume
-## 1  17.5     82   55.7
-## 2  17.9     80   58.3
-## 3  18.0     80   51.5
-## 4  18.0     80   51.0
-## 5  20.6     87   77.0
+  Girth Height Volume
+1  17.5     82   55.7
+2  17.9     80   58.3
+3  18.0     80   51.5
+4  18.0     80   51.0
+5  20.6     87   77.0
 ```
 
 
@@ -164,17 +149,14 @@ tibble(
   c = 1,
   z = (a + b)^2 + c
 )
-```
-
-```
-## # A tibble: 5 x 4
-##       a     b     c     z
-##   <int> <int> <dbl> <dbl>
-## 1     1     6     1    50
-## 2     2     7     1    82
-## 3     3     8     1   122
-## 4     4     9     1   170
-## 5     5    10     1   226
+# A tibble: 5 x 4
+      a     b     c     z
+  <int> <int> <dbl> <dbl>
+1     1     6     1    50
+2     2     7     1    82
+3     3     8     1   122
+4     4     9     1   170
+5     5    10     1   226
 ```
 
 The `tibble()` function allows you to quickly generate tibbles and even allows you to reference columns within the tibble you're creating, as seen in column z of the example above.
@@ -188,17 +170,14 @@ tibble(
   `12` = "numeric",
   `:)` = "smile",
 )
-```
-
-```
-## # A tibble: 5 x 3
-##   `two words` `12`    `:)` 
-##         <int> <chr>   <chr>
-## 1           1 numeric smile
-## 2           2 numeric smile
-## 3           3 numeric smile
-## 4           4 numeric smile
-## 5           5 numeric smile
+# A tibble: 5 x 3
+  `two words` `12`    `:)` 
+        <int> <chr>   <chr>
+1           1 numeric smile
+2           2 numeric smile
+3           3 numeric smile
+4           4 numeric smile
+5           5 numeric smile
 ```
 
 ### Subsetting
@@ -216,27 +195,13 @@ df <- tibble(
 
 # Extract by name using $ or [[]]
 df$z
-```
-
-```
-## [1]  50  82 122 170 226
-```
-
-```r
+[1]  50  82 122 170 226
 df[["z"]]
-```
+[1]  50  82 122 170 226
 
-```
-## [1]  50  82 122 170 226
-```
-
-```r
 # Extract by position requires [[]]
 df[[4]]
-```
-
-```
-## [1]  50  82 122 170 226
+[1]  50  82 122 170 226
 ```
 
 Having now discussed tibbles, which are the type of object most tidyverse and tidyverse-adjacent packages work best with, we now know the goal. In many cases, tibbles are ultimately what we want to work with in R. However, data are stored in many different formats outside of R. We'll spend the rest of this course discussing those formats and talking about how to get those data into R so that you can start the process of working with and analyzing these data in R.
@@ -274,23 +239,20 @@ Within the `readxl` package there are a number of example datasets that we can u
 example <- readxl_example("datasets.xlsx")
 df <- read_excel(example)
 df
-```
-
-```
-## # A tibble: 150 x 5
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl> <chr>  
-##  1          5.1         3.5          1.4         0.2 setosa 
-##  2          4.9         3            1.4         0.2 setosa 
-##  3          4.7         3.2          1.3         0.2 setosa 
-##  4          4.6         3.1          1.5         0.2 setosa 
-##  5          5           3.6          1.4         0.2 setosa 
-##  6          5.4         3.9          1.7         0.4 setosa 
-##  7          4.6         3.4          1.4         0.3 setosa 
-##  8          5           3.4          1.5         0.2 setosa 
-##  9          4.4         2.9          1.4         0.2 setosa 
-## 10          4.9         3.1          1.5         0.1 setosa 
-## # … with 140 more rows
+# A tibble: 150 x 5
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+          <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+ 1          5.1         3.5          1.4         0.2 setosa 
+ 2          4.9         3            1.4         0.2 setosa 
+ 3          4.7         3.2          1.3         0.2 setosa 
+ 4          4.6         3.1          1.5         0.2 setosa 
+ 5          5           3.6          1.4         0.2 setosa 
+ 6          5.4         3.9          1.7         0.4 setosa 
+ 7          4.6         3.4          1.4         0.3 setosa 
+ 8          5           3.4          1.5         0.2 setosa 
+ 9          4.4         2.9          1.4         0.2 setosa 
+10          4.9         3.1          1.5         0.1 setosa 
+# … with 140 more rows
 ```
 
 Note that the information stored in `df` is a tibble. This will be a common theme throughout the packages used in these courses. 
@@ -307,23 +269,20 @@ For example, we are able to change the column names directly by passing a charac
 ```r
 # specify column names on import
 read_excel(example, col_names = LETTERS[1:5])
-```
-
-```
-## # A tibble: 151 x 5
-##    A            B           C            D           E      
-##    <chr>        <chr>       <chr>        <chr>       <chr>  
-##  1 Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##  2 5.1          3.5         1.4          0.2         setosa 
-##  3 4.9          3           1.4          0.2         setosa 
-##  4 4.7          3.2         1.3          0.2         setosa 
-##  5 4.6          3.1         1.5          0.2         setosa 
-##  6 5            3.6         1.4          0.2         setosa 
-##  7 5.4          3.9         1.7          0.4         setosa 
-##  8 4.6          3.4         1.4          0.3         setosa 
-##  9 5            3.4         1.5          0.2         setosa 
-## 10 4.4          2.9         1.4          0.2         setosa 
-## # … with 141 more rows
+# A tibble: 151 x 5
+   A            B           C            D           E      
+   <chr>        <chr>       <chr>        <chr>       <chr>  
+ 1 Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+ 2 5.1          3.5         1.4          0.2         setosa 
+ 3 4.9          3           1.4          0.2         setosa 
+ 4 4.7          3.2         1.3          0.2         setosa 
+ 5 4.6          3.1         1.5          0.2         setosa 
+ 6 5            3.6         1.4          0.2         setosa 
+ 7 5.4          3.9         1.7          0.4         setosa 
+ 8 4.6          3.4         1.4          0.3         setosa 
+ 9 5            3.4         1.5          0.2         setosa 
+10 4.4          2.9         1.4          0.2         setosa 
+# … with 141 more rows
 ```
 
 To take this a step further let's discuss one of the lesser-known arguments of the `read_excel()` function: `.name_repair`. This argument allows for further fine-tuning and handling of column names. 
@@ -338,15 +297,12 @@ read_excel(
   range = "arts!A5:F8",
   .name_repair = "unique"
 )
-```
-
-```
-## # A tibble: 3 x 6
-##   Name       Profession   Age `Has kids` `Date of birth`     `Date of death`    
-##   <chr>      <chr>      <dbl> <lgl>      <dttm>              <dttm>             
-## 1 David Bow… musician      69 TRUE       1947-01-08 00:00:00 2016-01-10 00:00:00
-## 2 Carrie Fi… actor         60 TRUE       1956-10-21 00:00:00 2016-12-27 00:00:00
-## 3 Chuck Ber… musician      90 TRUE       1926-10-18 00:00:00 2017-03-18 00:00:00
+# A tibble: 3 x 6
+  Name       Profession   Age `Has kids` `Date of birth`     `Date of death`    
+  <chr>      <chr>      <dbl> <lgl>      <dttm>              <dttm>             
+1 David Bow… musician      69 TRUE       1947-01-08 00:00:00 2016-01-10 00:00:00
+2 Carrie Fi… actor         60 TRUE       1956-10-21 00:00:00 2016-12-27 00:00:00
+3 Chuck Ber… musician      90 TRUE       1926-10-18 00:00:00 2017-03-18 00:00:00
 ```
 
 Another option for this argument is `.name_repair = "universal"`. This ensures that column names don’t contain any forbidden characters or reserved words. It's often a good idea to use this option if you plan to use these data with other packages downstream. This ensures that all the column names will work, regardless of the R package being used.
@@ -359,22 +315,16 @@ read_excel(
   range = "arts!A5:F8",
   .name_repair = "universal"
 )
-```
-
-```
-## New names:
-## * `Has kids` -> Has.kids
-## * `Date of birth` -> Date.of.birth
-## * `Date of death` -> Date.of.death
-```
-
-```
-## # A tibble: 3 x 6
-##   Name         Profession   Age Has.kids Date.of.birth       Date.of.death      
-##   <chr>        <chr>      <dbl> <lgl>    <dttm>              <dttm>             
-## 1 David Bowie  musician      69 TRUE     1947-01-08 00:00:00 2016-01-10 00:00:00
-## 2 Carrie Fish… actor         60 TRUE     1956-10-21 00:00:00 2016-12-27 00:00:00
-## 3 Chuck Berry  musician      90 TRUE     1926-10-18 00:00:00 2017-03-18 00:00:00
+New names:
+* `Has kids` -> Has.kids
+* `Date of birth` -> Date.of.birth
+* `Date of death` -> Date.of.death
+# A tibble: 3 x 6
+  Name         Profession   Age Has.kids Date.of.birth       Date.of.death      
+  <chr>        <chr>      <dbl> <lgl>    <dttm>              <dttm>             
+1 David Bowie  musician      69 TRUE     1947-01-08 00:00:00 2016-01-10 00:00:00
+2 Carrie Fish… actor         60 TRUE     1956-10-21 00:00:00 2016-12-27 00:00:00
+3 Chuck Berry  musician      90 TRUE     1926-10-18 00:00:00 2017-03-18 00:00:00
 ```
 
 Note that when using `.name_repair = "universal"`, you'll get a readout about which column names have been changed. Here you see that column names with a space in them have been changed to periods for word separation.
@@ -390,15 +340,12 @@ read_excel(
   range = "arts!A5:F8",
   .name_repair = toupper
 )
-```
-
-```
-## # A tibble: 3 x 6
-##   NAME       PROFESSION   AGE `HAS KIDS` `DATE OF BIRTH`     `DATE OF DEATH`    
-##   <chr>      <chr>      <dbl> <lgl>      <dttm>              <dttm>             
-## 1 David Bow… musician      69 TRUE       1947-01-08 00:00:00 2016-01-10 00:00:00
-## 2 Carrie Fi… actor         60 TRUE       1956-10-21 00:00:00 2016-12-27 00:00:00
-## 3 Chuck Ber… musician      90 TRUE       1926-10-18 00:00:00 2017-03-18 00:00:00
+# A tibble: 3 x 6
+  NAME       PROFESSION   AGE `HAS KIDS` `DATE OF BIRTH`     `DATE OF DEATH`    
+  <chr>      <chr>      <dbl> <lgl>      <dttm>              <dttm>             
+1 David Bow… musician      69 TRUE       1947-01-08 00:00:00 2016-01-10 00:00:00
+2 Carrie Fi… actor         60 TRUE       1956-10-21 00:00:00 2016-12-27 00:00:00
+3 Chuck Ber… musician      90 TRUE       1926-10-18 00:00:00 2017-03-18 00:00:00
 ```
 
 Notice that the function is passed directly to the argument. It does not have quotes around it, as we want this to be interpreted as the `toupper()` function.
@@ -686,10 +633,7 @@ json <-
 
 ## take a look
 json
-```
-
-```
-## [1] "[\n  {\"Name\" : \"Woody\", \"Age\" : 40, \"Occupation\" : \"Sherriff\"}, \n  {\"Name\" : \"Buzz Lightyear\", \"Age\" : 34, \"Occupation\" : \"Space Ranger\"},\n  {\"Name\" : \"Andy\", \"Occupation\" : \"Toy Owner\"}\n]"
+[1] "[\n  {\"Name\" : \"Woody\", \"Age\" : 40, \"Occupation\" : \"Sherriff\"}, \n  {\"Name\" : \"Buzz Lightyear\", \"Age\" : 34, \"Occupation\" : \"Space Ranger\"},\n  {\"Name\" : \"Andy\", \"Occupation\" : \"Toy Owner\"}\n]"
 ```
 
 Here, we've stored information about Toy Story characters, their age, and their occupation in an object called `json`.
@@ -706,13 +650,10 @@ mydf <- fromJSON(json)
 
 ## take a look
 mydf
-```
-
-```
-##             Name Age   Occupation
-## 1          Woody  40     Sherriff
-## 2 Buzz Lightyear  34 Space Ranger
-## 3           Andy  NA    Toy Owner
+            Name Age   Occupation
+1          Woody  40     Sherriff
+2 Buzz Lightyear  34 Space Ranger
+3           Andy  NA    Toy Owner
 ```
 
 
@@ -727,10 +668,7 @@ Data frames can also be returned to their original JSON format using the functio
 ## take JSON object and convert to a data frame
 json <- toJSON(mydf)
 json
-```
-
-```
-## [{"Name":"Woody","Age":40,"Occupation":"Sherriff"},{"Name":"Buzz Lightyear","Age":34,"Occupation":"Space Ranger"},{"Name":"Andy","Occupation":"Toy Owner"}]
+[{"Name":"Woody","Age":40,"Occupation":"Sherriff"},{"Name":"Buzz Lightyear","Age":34,"Occupation":"Space Ranger"},{"Name":"Andy","Occupation":"Toy Owner"}] 
 ```
 
 
@@ -747,6 +685,7 @@ read_json("json_file.json")
 # read JSON file into R and 
 # simplifies nested lists into vectors and data frames
 read_json("json_file.json", simplifyVector = TRUE)
+
 ```
 
 Note in our examples here that by default, `read_json()` reads the data in while retaining the JSON format. However, if you would like to simplify the information into a data.frame, you'll want to specify the argument, `simplifyVector = TRUE`.
@@ -766,6 +705,7 @@ We will look into the `xml2` package a bit more when we look at importing html f
 ```r
 # read XML file into R
 read_xml("xml_file.xml")
+
 ```
 
 
@@ -837,10 +777,7 @@ db <- dbConnect(sqlite, "company.db")
 
 ## List tables in database
 dbListTables(db)
-```
-
-```
-## character(0)
+character(0)
 ```
 
 The output from `dbListTables()` will include 13 tables. Among them will be the two tables we're going to work through in our example: `artists`, and `albums`.
@@ -864,18 +801,9 @@ library(dplyr)
 
 ## get two tables
 albums <- tbl(db, "albums")
-```
-
-```
-## Error: no such table: albums
-```
-
-```r
+Error: no such table: albums
 artists <- tbl(db, "artists")
-```
-
-```
-## Error: no such table: artists
+Error: no such table: artists
 ```
 
 ### Mutating Joins
@@ -913,19 +841,11 @@ Now, to run this for our tables from the database, rather than just for a few ro
 ```r
 ## do inner join
 inner <- inner_join(artists, albums, by = "ArtistId")
-```
+Error in inner_join(artists, albums, by = "ArtistId"): object 'artists' not found
 
-```
-## Error in inner_join(artists, albums, by = "ArtistId"): object 'artists' not found
-```
-
-```r
 ## look at output as a tibble
 as_tibble(inner)
-```
-
-```
-## Error in as_tibble(inner): object 'inner' not found
+Error in as_tibble(inner): object 'inner' not found
 ```
 
 #### Left Join
@@ -946,19 +866,11 @@ Now, to run this for our tables from the database, rather than just for a few ro
 ```r
 ## do left join
 left <- left_join(artists, albums, by = "ArtistId")
-```
+Error in left_join(artists, albums, by = "ArtistId"): object 'artists' not found
 
-```
-## Error in left_join(artists, albums, by = "ArtistId"): object 'artists' not found
-```
-
-```r
 ## look at output as a tibble
 as_tibble(left)
-```
-
-```
-## Error in as_tibble(left): object 'left' not found
+Error in as_tibble(left): object 'left' not found
 ```
 
 
@@ -980,19 +892,11 @@ Now, to run this for our tables from the database, you would have to do somethin
 ```r
 ## do right join
 right <- right_join(as_tibble(artists), as_tibble(albums), by = "ArtistId")
-```
+Error in as_tibble(artists): object 'artists' not found
 
-```
-## Error in as_tibble(artists): object 'artists' not found
-```
-
-```r
 ## look at output as a tibble
 as_tibble(right)
-```
-
-```
-## Error in as_tibble(right): object 'right' not found
+Error in as_tibble(right): object 'right' not found
 ```
 
 
@@ -1014,19 +918,11 @@ As you saw in the last example, to carry out a full join, we have to again speci
 ```r
 ## do right join
 full <- full_join(as_tibble(artists), as_tibble(albums), by = "ArtistId")
-```
+Error in as_tibble(artists): object 'artists' not found
 
-```
-## Error in as_tibble(artists): object 'artists' not found
-```
-
-```r
 ## look at output as a tibble
 as_tibble(full)
-```
-
-```
-## Error in as_tibble(full): object 'full' not found
+Error in as_tibble(full): object 'full' not found
 ```
 
 #### Mutating Joins Summary
@@ -1153,30 +1049,16 @@ Finally `html_text()` extracts the text from the tag we've specified, giving us 
 ## load package
 # install.packages("rvest")
 library(rvest) # this loads the xml2 package too!
-```
+Loading required package: xml2
 
-```
-## Loading required package: xml2
-```
+Attaching package: 'rvest'
+The following object is masked from 'package:purrr':
 
-```
-## 
-## Attaching package: 'rvest'
-```
+    pluck
+The following object is masked from 'package:readr':
 
-```
-## The following object is masked from 'package:purrr':
-## 
-##     pluck
-```
+    guess_encoding
 
-```
-## The following object is masked from 'package:readr':
-## 
-##     guess_encoding
-```
-
-```r
 ## provide URL
 packages <- read_html("http://jhudatascience.org/stable_website/webscrape.html") # the function is from xml2
 
@@ -1184,10 +1066,7 @@ packages <- read_html("http://jhudatascience.org/stable_website/webscrape.html")
 packages %>% 
   html_nodes("strong") %>%
   html_text() 
-```
-
-```
-## [1] "rvest"        "httr"         "dbplyr"       "jsonlite"     "googlesheets"
+[1] "rvest"        "httr"         "dbplyr"       "jsonlite"     "googlesheets"
 ```
 
 With just a few lines of code we have the information we were looking for!
@@ -1261,11 +1140,8 @@ Let's first take a look at what other variables are available within the `api_re
 ```r
 ## See variables in response
 names(api_response)
-```
-
-```
-##  [1] "url"         "status_code" "headers"     "all_headers" "cookies"    
-##  [6] "content"     "date"        "times"       "request"     "handle"
+ [1] "url"         "status_code" "headers"     "all_headers" "cookies"    
+ [6] "content"     "date"        "times"       "request"     "handle"     
 ```
 
 ![`httr` response](images/gslides/076.png)
@@ -1276,10 +1152,7 @@ While we see ten different variables within `api_response`, we should probably f
 ```r
 ## Check Status Code of request
 api_response$status_code
-```
-
-```
-## [1] 200
+[1] 200
 ```
 
 But, to be honest, we aren't really interested in just knowing the request worked. We actually want to see what information is contained on our GitHub account. 
@@ -1304,27 +1177,21 @@ lapply(repo_content, function(x) {
   df <- data_frame(repo = x$name,
                    address = x$html_url)}) %>% 
   bind_rows()
-```
-
-```
-## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
-## Please use `tibble()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_warnings()` to see where this warning was generated.
-```
-
-```
-## # A tibble: 8 x 2
-##   repo                       address                                            
-##   <chr>                      <chr>                                              
-## 1 cbds                       https://github.com/JaneEverydayDoe/cbds            
-## 2 first_project              https://github.com/JaneEverydayDoe/first_project   
-## 3 gcd                        https://github.com/JaneEverydayDoe/gcd             
-## 4 hello-world                https://github.com/JaneEverydayDoe/hello-world     
-## 5 janeeverydaydoe.github.com https://github.com/JaneEverydayDoe/janeeverydaydoe…
-## 6 my_first_project           https://github.com/JaneEverydayDoe/my_first_project
-## 7 newproject                 https://github.com/JaneEverydayDoe/newproject      
-## 8 Temporary_add_to_version_… https://github.com/JaneEverydayDoe/Temporary_add_t…
+Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+Please use `tibble()` instead.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated.
+# A tibble: 8 x 2
+  repo                       address                                            
+  <chr>                      <chr>                                              
+1 cbds                       https://github.com/JaneEverydayDoe/cbds            
+2 first_project              https://github.com/JaneEverydayDoe/first_project   
+3 gcd                        https://github.com/JaneEverydayDoe/gcd             
+4 hello-world                https://github.com/JaneEverydayDoe/hello-world     
+5 janeeverydaydoe.github.com https://github.com/JaneEverydayDoe/janeeverydaydoe…
+6 my_first_project           https://github.com/JaneEverydayDoe/my_first_project
+7 newproject                 https://github.com/JaneEverydayDoe/newproject      
+8 Temporary_add_to_version_… https://github.com/JaneEverydayDoe/Temporary_add_t…
 ```
 
 ![output from API request](images/gslides/078.png)
@@ -1404,18 +1271,12 @@ write_sas(data = mydf, path = here::here("data", "mydf.sas7bdat"))
 # read_sas() reads .sas7bdat and .sas7bcat files 
 sas_mydf <-read_sas(here::here("data", "mydf.sas7bdat")) 
 sas_mydf
-```
-
-```
-## # A tibble: 3 x 3
-##   Name             Age Occupation  
-##   <chr>          <dbl> <chr>       
-## 1 Woody             40 Sherriff    
-## 2 Buzz Lightyear    34 Space Ranger
-## 3 Andy              NA Toy Owner
-```
-
-```r
+# A tibble: 3 x 3
+  Name             Age Occupation  
+  <chr>          <dbl> <chr>       
+1 Woody             40 Sherriff    
+2 Buzz Lightyear    34 Space Ranger
+3 Andy              NA Toy Owner   
 # use read_xpt() to read SAS transport files (version 5 and 8)
 ```
 
@@ -1427,18 +1288,12 @@ write_sav(data = mydf, path = here::here("data", "mydf.sav"))
 # use to read_sav() to read .sav files
 sav_mydf <-read_sav(here::here("data", "mydf.sav"))
 sav_mydf
-```
-
-```
-## # A tibble: 3 x 3
-##   Name             Age Occupation  
-##   <chr>          <dbl> <chr>       
-## 1 Woody             40 Sherriff    
-## 2 Buzz Lightyear    34 Space Ranger
-## 3 Andy              NA Toy Owner
-```
-
-```r
+# A tibble: 3 x 3
+  Name             Age Occupation  
+  <chr>          <dbl> <chr>       
+1 Woody             40 Sherriff    
+2 Buzz Lightyear    34 Space Ranger
+3 Andy              NA Toy Owner   
 # use read_por() to read older .por files
 ```
 
@@ -1452,15 +1307,12 @@ write_dta(data = mydf, path = here::here("data", "mydf.dta"))
 # use to read_dta() to read .dta files 
 dta_mydf <-read_dta(here::here("data", "mydf.dta"))
 dta_mydf
-```
-
-```
-## # A tibble: 3 x 3
-##   Name             Age Occupation  
-##   <chr>          <dbl> <chr>       
-## 1 Woody             40 Sherriff    
-## 2 Buzz Lightyear    34 Space Ranger
-## 3 Andy              NA Toy Owner
+# A tibble: 3 x 3
+  Name             Age Occupation  
+  <chr>          <dbl> <chr>       
+1 Woody             40 Sherriff    
+2 Buzz Lightyear    34 Space Ranger
+3 Andy              NA Toy Owner   
 ```
 
 When exporting and importing to and from all foreign statistical formats it's important to realize that the conversion will generally be less than perfect. For simple data frames with numerical data, the conversion should work well. However, when there are a lot of missing data, or different types of data that perhaps a given statistical software package may not recognize, it's always important to check the output to make sure it contains all of the information that you expected.
@@ -1501,43 +1353,28 @@ We will show how to do this using a couple of tidyverse package hex stickers.
 #install.packages("magick")
 # load package
 library(magick)
-```
-
-```
-## Linking to ImageMagick 7.0.10.50
-## Enabled features: freetype, ghostscript, lcms, webp
-## Disabled features: cairo, fontconfig, fftw, pango, rsvg, x11
-```
-
-```
-## Using 16 threads
-```
-
-```r
+Linking to ImageMagick 7.0.10.50
+Enabled features: freetype, ghostscript, lcms, webp
+Disabled features: cairo, fontconfig, fftw, pango, rsvg, x11
+Using 16 threads
 img1 <- image_read("https://ggplot2.tidyverse.org/logo.png")
 img2 <- image_read("https://pbs.twimg.com/media/D5bccHZWkAQuPqS.png")
 #show the image
 print(img1)
-```
-
-```
-## # A tibble: 1 x 7
-##   format width height colorspace matte filesize density
-##   <chr>  <int>  <int> <chr>      <lgl>    <int> <chr>  
-## 1 PNG      240    278 sRGB       TRUE     38516 +85x+85
+# A tibble: 1 x 7
+  format width height colorspace matte filesize density
+  <chr>  <int>  <int> <chr>      <lgl>    <int> <chr>  
+1 PNG      240    278 sRGB       TRUE     38516 +85x+85
 ```
 
 ![plot of chunk unnamed-chunk-52](images/get-data-unnamed-chunk-52-1.png)
 
 ```r
 print(img2)
-```
-
-```
-## # A tibble: 1 x 7
-##   format width height colorspace matte filesize density
-##   <chr>  <int>  <int> <chr>      <lgl>    <int> <chr>  
-## 1 PNG      864    864 sRGB       TRUE     54056 +72x+72
+# A tibble: 1 x 7
+  format width height colorspace matte filesize density
+  <chr>  <int>  <int> <chr>      <lgl>    <int> <chr>  
+1 PNG      864    864 sRGB       TRUE     54056 +72x+72
 ```
 
 ![plot of chunk unnamed-chunk-52](images/get-data-unnamed-chunk-52-2.png)
@@ -1545,18 +1382,9 @@ print(img2)
 ```r
 #concatenate and print text
 cat(image_ocr(img1))
-```
-
-```
-## ggplot2
-```
-
-```r
+ggplot2
 cat(image_ocr(img2))
-```
-
-```
-## parsnip
+parsnip
 ```
 
 Great! We extracted the text!
@@ -1637,6 +1465,7 @@ Files can be shared using the `drive_share()` function. The sharing status of a 
 
 
 ```r
+
 drive_share(file = "tidyverse", 
             role = "commenter", 
             type = "user", 
@@ -1646,6 +1475,7 @@ drive_share(file = "tidyverse",
 drove_share_anyone(file = "tidyverse", verbose = TRUE) # anyone with link can read
 
 drive_reveal(file = "tidyverse", what = "permissions")
+
 ```
 
 There are many other helpful functions for interacting with the files in your Google Drive within the `googledrive` package.
@@ -1673,19 +1503,16 @@ To see what we mean, you can always use the `read_lines()` function from `readr`
 
 ```r
 read_lines(file = 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv', n_max = 10)
-```
-
-```
-##  [1] "\"Title: Health Insurance Coverage of the Total Population | The Henry J. Kaiser Family Foundation\""                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-##  [2] "\"Timeframe: 2013 - 2016\""                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-##  [3] "\"Location\",\"2013__Employer\",\"2013__Non-Group\",\"2013__Medicaid\",\"2013__Medicare\",\"2013__Other Public\",\"2013__Uninsured\",\"2013__Total\",\"2014__Employer\",\"2014__Non-Group\",\"2014__Medicaid\",\"2014__Medicare\",\"2014__Other Public\",\"2014__Uninsured\",\"2014__Total\",\"2015__Employer\",\"2015__Non-Group\",\"2015__Medicaid\",\"2015__Medicare\",\"2015__Other Public\",\"2015__Uninsured\",\"2015__Total\",\"2016__Employer\",\"2016__Non-Group\",\"2016__Medicaid\",\"2016__Medicare\",\"2016__Other Public\",\"2016__Uninsured\",\"2016__Total\""
-##  [4] "\"United States\",\"155696900\",\"13816000\",\"54919100\",\"40876300\",\"6295400\",\"41795100\",\"313401200\",\"154347500\",\"19313000\",\"61650400\",\"41896500\",\"5985000\",\"32967500\",\"316159900\",\"155965800\",\"21816500\",\"62384500\",\"43308400\",\"6422300\",\"28965900\",\"318868500\",\"157381500\",\"21884400\",\"62303400\",\"44550200\",\"6192200\",\"28051900\",\"320372000\""                                                                                                                                                                           
-##  [5] "\"Alabama\",\"2126500\",\"174200\",\"869700\",\"783000\",\"85600\",\"724800\",\"4763900\",\"2202800\",\"288900\",\"891900\",\"718400\",\"143900\",\"522200\",\"4768000\",\"2218000\",\"291500\",\"911400\",\"719100\",\"174600\",\"519400\",\"4833900\",\"2263800\",\"262400\",\"997000\",\"761200\",\"128800\",\"420800\",\"4834100\""                                                                                                                                                                                                                                      
-##  [6] "\"Alaska\",\"364900\",\"24000\",\"95000\",\"55200\",\"60600\",\"102200\",\"702000\",\"345300\",\"26800\",\"130100\",\"55300\",\"37300\",\"100800\",\"695700\",\"355700\",\"22300\",\"128100\",\"60900\",\"47700\",\"90500\",\"705300\",\"324400\",\"20300\",\"145400\",\"68200\",\"55600\",\"96900\",\"710800\""                                                                                                                                                                                                                                                             
-##  [7] "\"Arizona\",\"2883800\",\"170800\",\"1346100\",\"842000\",\"N/A\",\"1223000\",\"6603100\",\"2835200\",\"333500\",\"1639400\",\"911100\",\"N/A\",\"827100\",\"6657200\",\"2766500\",\"278400\",\"1711500\",\"949000\",\"189300\",\"844800\",\"6739500\",\"3010700\",\"377000\",\"1468400\",\"1028000\",\"172500\",\"833700\",\"6890200\""                                                                                                                                                                                                                                     
-##  [8] "\"Arkansas\",\"1128800\",\"155600\",\"600800\",\"515200\",\"67600\",\"436800\",\"2904800\",\"1176500\",\"231700\",\"639200\",\"479400\",\"82000\",\"287200\",\"2896000\",\"1293700\",\"200200\",\"641400\",\"484500\",\"63700\",\"268400\",\"2953000\",\"1290900\",\"252900\",\"618600\",\"490000\",\"67500\",\"225500\",\"2945300\""                                                                                                                                                                                                                                        
-##  [9] "\"California\",\"17747300\",\"1986400\",\"8344800\",\"3828500\",\"675400\",\"5594100\",\"38176400\",\"17703700\",\"2778800\",\"9618800\",\"4049000\",\"634400\",\"3916700\",\"38701300\",\"17718300\",\"3444200\",\"10138100\",\"4080100\",\"752700\",\"2980600\",\"39113900\",\"18116200\",\"3195400\",\"9853800\",\"4436000\",\"556100\",\"3030800\",\"39188300\""                                                                                                                                                                                                         
-## [10] "\"Colorado\",\"2852500\",\"426300\",\"697300\",\"549700\",\"118100\",\"654000\",\"5297800\",\"2489400\",\"397900\",\"1053700\",\"619500\",\"214000\",\"602900\",\"5377400\",\"2706000\",\"346900\",\"1036600\",\"708000\",\"148000\",\"475700\",\"5421300\",\"2872600\",\"370000\",\"855800\",\"692400\",\"190100\",\"528400\",\"5509200\""
+ [1] "\"Title: Health Insurance Coverage of the Total Population | The Henry J. Kaiser Family Foundation\""                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+ [2] "\"Timeframe: 2013 - 2016\""                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+ [3] "\"Location\",\"2013__Employer\",\"2013__Non-Group\",\"2013__Medicaid\",\"2013__Medicare\",\"2013__Other Public\",\"2013__Uninsured\",\"2013__Total\",\"2014__Employer\",\"2014__Non-Group\",\"2014__Medicaid\",\"2014__Medicare\",\"2014__Other Public\",\"2014__Uninsured\",\"2014__Total\",\"2015__Employer\",\"2015__Non-Group\",\"2015__Medicaid\",\"2015__Medicare\",\"2015__Other Public\",\"2015__Uninsured\",\"2015__Total\",\"2016__Employer\",\"2016__Non-Group\",\"2016__Medicaid\",\"2016__Medicare\",\"2016__Other Public\",\"2016__Uninsured\",\"2016__Total\""
+ [4] "\"United States\",\"155696900\",\"13816000\",\"54919100\",\"40876300\",\"6295400\",\"41795100\",\"313401200\",\"154347500\",\"19313000\",\"61650400\",\"41896500\",\"5985000\",\"32967500\",\"316159900\",\"155965800\",\"21816500\",\"62384500\",\"43308400\",\"6422300\",\"28965900\",\"318868500\",\"157381500\",\"21884400\",\"62303400\",\"44550200\",\"6192200\",\"28051900\",\"320372000\""                                                                                                                                                                           
+ [5] "\"Alabama\",\"2126500\",\"174200\",\"869700\",\"783000\",\"85600\",\"724800\",\"4763900\",\"2202800\",\"288900\",\"891900\",\"718400\",\"143900\",\"522200\",\"4768000\",\"2218000\",\"291500\",\"911400\",\"719100\",\"174600\",\"519400\",\"4833900\",\"2263800\",\"262400\",\"997000\",\"761200\",\"128800\",\"420800\",\"4834100\""                                                                                                                                                                                                                                      
+ [6] "\"Alaska\",\"364900\",\"24000\",\"95000\",\"55200\",\"60600\",\"102200\",\"702000\",\"345300\",\"26800\",\"130100\",\"55300\",\"37300\",\"100800\",\"695700\",\"355700\",\"22300\",\"128100\",\"60900\",\"47700\",\"90500\",\"705300\",\"324400\",\"20300\",\"145400\",\"68200\",\"55600\",\"96900\",\"710800\""                                                                                                                                                                                                                                                             
+ [7] "\"Arizona\",\"2883800\",\"170800\",\"1346100\",\"842000\",\"N/A\",\"1223000\",\"6603100\",\"2835200\",\"333500\",\"1639400\",\"911100\",\"N/A\",\"827100\",\"6657200\",\"2766500\",\"278400\",\"1711500\",\"949000\",\"189300\",\"844800\",\"6739500\",\"3010700\",\"377000\",\"1468400\",\"1028000\",\"172500\",\"833700\",\"6890200\""                                                                                                                                                                                                                                     
+ [8] "\"Arkansas\",\"1128800\",\"155600\",\"600800\",\"515200\",\"67600\",\"436800\",\"2904800\",\"1176500\",\"231700\",\"639200\",\"479400\",\"82000\",\"287200\",\"2896000\",\"1293700\",\"200200\",\"641400\",\"484500\",\"63700\",\"268400\",\"2953000\",\"1290900\",\"252900\",\"618600\",\"490000\",\"67500\",\"225500\",\"2945300\""                                                                                                                                                                                                                                        
+ [9] "\"California\",\"17747300\",\"1986400\",\"8344800\",\"3828500\",\"675400\",\"5594100\",\"38176400\",\"17703700\",\"2778800\",\"9618800\",\"4049000\",\"634400\",\"3916700\",\"38701300\",\"17718300\",\"3444200\",\"10138100\",\"4080100\",\"752700\",\"2980600\",\"39113900\",\"18116200\",\"3195400\",\"9853800\",\"4436000\",\"556100\",\"3030800\",\"39188300\""                                                                                                                                                                                                         
+[10] "\"Colorado\",\"2852500\",\"426300\",\"697300\",\"549700\",\"118100\",\"654000\",\"5297800\",\"2489400\",\"397900\",\"1053700\",\"619500\",\"214000\",\"602900\",\"5377400\",\"2706000\",\"346900\",\"1036600\",\"708000\",\"148000\",\"475700\",\"5421300\",\"2872600\",\"370000\",\"855800\",\"692400\",\"190100\",\"528400\",\"5509200\""                                                                                                                                                                                                                                  
 ```
 
 We'll read in the data, starting with the third line of the file:
@@ -1694,47 +1521,39 @@ We'll read in the data, starting with the third line of the file:
 ```r
 coverage <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv', 
                      skip = 2)
-```
+Warning: 26 parsing failures.
+row col   expected    actual                                                                                                              file
+ 53  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+ 54  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+ 55  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+ 56  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+ 57  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
+... ... .......... ......... .................................................................................................................
+See problems(...) for more details.
 
-```
-## Warning: 26 parsing failures.
-## row col   expected    actual                                                                                                              file
-##  53  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
-##  54  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
-##  55  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
-##  56  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
-##  57  -- 29 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-coverage.csv'
-## ... ... .......... ......... .................................................................................................................
-## See problems(...) for more details.
-```
-
-```r
 coverage
-```
-
-```
-## # A tibble: 78 x 29
-##    Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
-##    <chr>               <dbl>            <dbl>            <dbl>            <dbl>
-##  1 United …        155696900         13816000         54919100         40876300
-##  2 Alabama           2126500           174200           869700           783000
-##  3 Alaska             364900            24000            95000            55200
-##  4 Arizona           2883800           170800          1346100           842000
-##  5 Arkansas          1128800           155600           600800           515200
-##  6 Califor…         17747300          1986400          8344800          3828500
-##  7 Colorado          2852500           426300           697300           549700
-##  8 Connect…          2030500           126800           532000           475300
-##  9 Delaware           473700            25100           192700           141300
-## 10 Distric…           324300            30400           174900            59900
-## # … with 68 more rows, and 24 more variables: `2013__Other Public` <chr>,
-## #   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
-## #   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
-## #   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
-## #   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
-## #   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
-## #   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
-## #   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
-## #   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
+# A tibble: 78 x 29
+   Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
+   <chr>               <dbl>            <dbl>            <dbl>            <dbl>
+ 1 United …        155696900         13816000         54919100         40876300
+ 2 Alabama           2126500           174200           869700           783000
+ 3 Alaska             364900            24000            95000            55200
+ 4 Arizona           2883800           170800          1346100           842000
+ 5 Arkansas          1128800           155600           600800           515200
+ 6 Califor…         17747300          1986400          8344800          3828500
+ 7 Colorado          2852500           426300           697300           549700
+ 8 Connect…          2030500           126800           532000           475300
+ 9 Delaware           473700            25100           192700           141300
+10 Distric…           324300            30400           174900            59900
+# … with 68 more rows, and 24 more variables: `2013__Other Public` <chr>,
+#   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
+#   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
+#   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
+#   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
+#   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
+#   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
+#   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
+#   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
 ```
 
 So, the first few lines of the dataset appear to store information for each state (observation) in the rows and different variables in the columns. What about the final few lines of the file?
@@ -1742,31 +1561,28 @@ So, the first few lines of the dataset appear to store information for each stat
 
 ```r
 tail(coverage, n = 30)
-```
-
-```
-## # A tibble: 30 x 29
-##    Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
-##    <chr>               <dbl>            <dbl>            <dbl>            <dbl>
-##  1 "Washin…          3541600           309000          1026800           879000
-##  2 "West V…           841300            42600           382500           329400
-##  3 "Wiscon…          3154500           225300           907600           812900
-##  4 "Wyomin…           305900            19500            74200            65400
-##  5 "Notes"                NA               NA               NA               NA
-##  6 "The ma…               NA               NA               NA               NA
-##  7  <NA>                  NA               NA               NA               NA
-##  8 "In thi…               NA               NA               NA               NA
-##  9  <NA>                  NA               NA               NA               NA
-## 10 "Data e…               NA               NA               NA               NA
-## # … with 20 more rows, and 24 more variables: `2013__Other Public` <chr>,
-## #   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
-## #   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
-## #   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
-## #   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
-## #   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
-## #   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
-## #   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
-## #   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
+# A tibble: 30 x 29
+   Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
+   <chr>               <dbl>            <dbl>            <dbl>            <dbl>
+ 1 "Washin…          3541600           309000          1026800           879000
+ 2 "West V…           841300            42600           382500           329400
+ 3 "Wiscon…          3154500           225300           907600           812900
+ 4 "Wyomin…           305900            19500            74200            65400
+ 5 "Notes"                NA               NA               NA               NA
+ 6 "The ma…               NA               NA               NA               NA
+ 7  <NA>                  NA               NA               NA               NA
+ 8 "In thi…               NA               NA               NA               NA
+ 9  <NA>                  NA               NA               NA               NA
+10 "Data e…               NA               NA               NA               NA
+# … with 20 more rows, and 24 more variables: `2013__Other Public` <chr>,
+#   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
+#   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
+#   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
+#   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
+#   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
+#   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
+#   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
+#   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
 ```
 
 Looks like there's a lot of missing information there at the end of the file due the "Notes" observation. Seems as though Notes were added to the file that are not the actual data. We'll want to only include rows before the "Notes" at the end of the file, using `n_max`:
@@ -1779,27 +1595,24 @@ coverage <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-heal
                      n_max  = which(coverage$Location == "Notes")-1)
 
 tail(coverage)
-```
-
-```
-## # A tibble: 6 x 29
-##   Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
-##   <chr>               <dbl>            <dbl>            <dbl>            <dbl>
-## 1 Vermont            317700            26200           123400            96600
-## 2 Virginia          4661600           364800           773200           968000
-## 3 Washing…          3541600           309000          1026800           879000
-## 4 West Vi…           841300            42600           382500           329400
-## 5 Wiscons…          3154500           225300           907600           812900
-## 6 Wyoming            305900            19500            74200            65400
-## # … with 24 more variables: `2013__Other Public` <chr>,
-## #   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
-## #   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
-## #   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
-## #   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
-## #   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
-## #   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
-## #   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
-## #   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
+# A tibble: 6 x 29
+  Location `2013__Employer` `2013__Non-Grou… `2013__Medicaid` `2013__Medicare`
+  <chr>               <dbl>            <dbl>            <dbl>            <dbl>
+1 Vermont            317700            26200           123400            96600
+2 Virginia          4661600           364800           773200           968000
+3 Washing…          3541600           309000          1026800           879000
+4 West Vi…           841300            42600           382500           329400
+5 Wiscons…          3154500           225300           907600           812900
+6 Wyoming            305900            19500            74200            65400
+# … with 24 more variables: `2013__Other Public` <chr>,
+#   `2013__Uninsured` <dbl>, `2013__Total` <dbl>, `2014__Employer` <dbl>,
+#   `2014__Non-Group` <dbl>, `2014__Medicaid` <dbl>, `2014__Medicare` <dbl>,
+#   `2014__Other Public` <chr>, `2014__Uninsured` <dbl>, `2014__Total` <dbl>,
+#   `2015__Employer` <dbl>, `2015__Non-Group` <dbl>, `2015__Medicaid` <dbl>,
+#   `2015__Medicare` <dbl>, `2015__Other Public` <chr>,
+#   `2015__Uninsured` <dbl>, `2015__Total` <dbl>, `2016__Employer` <dbl>,
+#   `2016__Non-Group` <dbl>, `2016__Medicaid` <dbl>, `2016__Medicare` <dbl>,
+#   `2016__Other Public` <chr>, `2016__Uninsured` <dbl>, `2016__Total` <dbl>
 ```
 
 Looks much better now! We can then use `glimpse()` to get a sense of what types of information are stored in our dataset.
@@ -1807,40 +1620,37 @@ Looks much better now! We can then use `glimpse()` to get a sense of what types 
 
 ```r
 glimpse(coverage)
-```
-
-```
-## Rows: 52
-## Columns: 29
-## $ Location             <chr> "United States", "Alabama", "Alaska", "Arizona",…
-## $ `2013__Employer`     <dbl> 155696900, 2126500, 364900, 2883800, 1128800, 17…
-## $ `2013__Non-Group`    <dbl> 13816000, 174200, 24000, 170800, 155600, 1986400…
-## $ `2013__Medicaid`     <dbl> 54919100, 869700, 95000, 1346100, 600800, 834480…
-## $ `2013__Medicare`     <dbl> 40876300, 783000, 55200, 842000, 515200, 3828500…
-## $ `2013__Other Public` <chr> "6295400", "85600", "60600", "N/A", "67600", "67…
-## $ `2013__Uninsured`    <dbl> 41795100, 724800, 102200, 1223000, 436800, 55941…
-## $ `2013__Total`        <dbl> 313401200, 4763900, 702000, 6603100, 2904800, 38…
-## $ `2014__Employer`     <dbl> 154347500, 2202800, 345300, 2835200, 1176500, 17…
-## $ `2014__Non-Group`    <dbl> 19313000, 288900, 26800, 333500, 231700, 2778800…
-## $ `2014__Medicaid`     <dbl> 61650400, 891900, 130100, 1639400, 639200, 96188…
-## $ `2014__Medicare`     <dbl> 41896500, 718400, 55300, 911100, 479400, 4049000…
-## $ `2014__Other Public` <chr> "5985000", "143900", "37300", "N/A", "82000", "6…
-## $ `2014__Uninsured`    <dbl> 32967500, 522200, 100800, 827100, 287200, 391670…
-## $ `2014__Total`        <dbl> 316159900, 4768000, 695700, 6657200, 2896000, 38…
-## $ `2015__Employer`     <dbl> 155965800, 2218000, 355700, 2766500, 1293700, 17…
-## $ `2015__Non-Group`    <dbl> 21816500, 291500, 22300, 278400, 200200, 3444200…
-## $ `2015__Medicaid`     <dbl> 62384500, 911400, 128100, 1711500, 641400, 10138…
-## $ `2015__Medicare`     <dbl> 43308400, 719100, 60900, 949000, 484500, 4080100…
-## $ `2015__Other Public` <chr> "6422300", "174600", "47700", "189300", "63700",…
-## $ `2015__Uninsured`    <dbl> 28965900, 519400, 90500, 844800, 268400, 2980600…
-## $ `2015__Total`        <dbl> 318868500, 4833900, 705300, 6739500, 2953000, 39…
-## $ `2016__Employer`     <dbl> 157381500, 2263800, 324400, 3010700, 1290900, 18…
-## $ `2016__Non-Group`    <dbl> 21884400, 262400, 20300, 377000, 252900, 3195400…
-## $ `2016__Medicaid`     <dbl> 62303400, 997000, 145400, 1468400, 618600, 98538…
-## $ `2016__Medicare`     <dbl> 44550200, 761200, 68200, 1028000, 490000, 443600…
-## $ `2016__Other Public` <chr> "6192200", "128800", "55600", "172500", "67500",…
-## $ `2016__Uninsured`    <dbl> 28051900, 420800, 96900, 833700, 225500, 3030800…
-## $ `2016__Total`        <dbl> 320372000, 4834100, 710800, 6890200, 2945300, 39…
+Rows: 52
+Columns: 29
+$ Location             <chr> "United States", "Alabama", "Alaska", "Arizona",…
+$ `2013__Employer`     <dbl> 155696900, 2126500, 364900, 2883800, 1128800, 17…
+$ `2013__Non-Group`    <dbl> 13816000, 174200, 24000, 170800, 155600, 1986400…
+$ `2013__Medicaid`     <dbl> 54919100, 869700, 95000, 1346100, 600800, 834480…
+$ `2013__Medicare`     <dbl> 40876300, 783000, 55200, 842000, 515200, 3828500…
+$ `2013__Other Public` <chr> "6295400", "85600", "60600", "N/A", "67600", "67…
+$ `2013__Uninsured`    <dbl> 41795100, 724800, 102200, 1223000, 436800, 55941…
+$ `2013__Total`        <dbl> 313401200, 4763900, 702000, 6603100, 2904800, 38…
+$ `2014__Employer`     <dbl> 154347500, 2202800, 345300, 2835200, 1176500, 17…
+$ `2014__Non-Group`    <dbl> 19313000, 288900, 26800, 333500, 231700, 2778800…
+$ `2014__Medicaid`     <dbl> 61650400, 891900, 130100, 1639400, 639200, 96188…
+$ `2014__Medicare`     <dbl> 41896500, 718400, 55300, 911100, 479400, 4049000…
+$ `2014__Other Public` <chr> "5985000", "143900", "37300", "N/A", "82000", "6…
+$ `2014__Uninsured`    <dbl> 32967500, 522200, 100800, 827100, 287200, 391670…
+$ `2014__Total`        <dbl> 316159900, 4768000, 695700, 6657200, 2896000, 38…
+$ `2015__Employer`     <dbl> 155965800, 2218000, 355700, 2766500, 1293700, 17…
+$ `2015__Non-Group`    <dbl> 21816500, 291500, 22300, 278400, 200200, 3444200…
+$ `2015__Medicaid`     <dbl> 62384500, 911400, 128100, 1711500, 641400, 10138…
+$ `2015__Medicare`     <dbl> 43308400, 719100, 60900, 949000, 484500, 4080100…
+$ `2015__Other Public` <chr> "6422300", "174600", "47700", "189300", "63700",…
+$ `2015__Uninsured`    <dbl> 28965900, 519400, 90500, 844800, 268400, 2980600…
+$ `2015__Total`        <dbl> 318868500, 4833900, 705300, 6739500, 2953000, 39…
+$ `2016__Employer`     <dbl> 157381500, 2263800, 324400, 3010700, 1290900, 18…
+$ `2016__Non-Group`    <dbl> 21884400, 262400, 20300, 377000, 252900, 3195400…
+$ `2016__Medicaid`     <dbl> 62303400, 997000, 145400, 1468400, 618600, 98538…
+$ `2016__Medicare`     <dbl> 44550200, 761200, 68200, 1028000, 490000, 443600…
+$ `2016__Other Public` <chr> "6192200", "128800", "55600", "172500", "67500",…
+$ `2016__Uninsured`    <dbl> 28051900, 420800, 96900, 833700, 225500, 3030800…
+$ `2016__Total`        <dbl> 320372000, 4834100, 710800, 6890200, 2945300, 39…
 ```
 
 Looks like we have a whole bunch of numeric variables, but a few that appear like they *should* be numeric, but are actually strings. We'll keep this in mind for when we wrangle the data!
@@ -1854,49 +1664,40 @@ Now, we're ready to read in our healthcare spending data, using a similar approa
 ## read spending data into R
 spending <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv', 
                      skip = 2)
-```
-
-```
-## Warning: 12 parsing failures.
-## row col   expected    actual                                                                                                              file
-##  53  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
-##  54  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
-##  55  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
-##  56  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
-##  57  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
-## ... ... .......... ......... .................................................................................................................
-## See problems(...) for more details.
-```
-
-```r
+Warning: 12 parsing failures.
+row col   expected    actual                                                                                                              file
+ 53  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+ 54  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+ 55  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+ 56  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+ 57  -- 25 columns 1 columns 'https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv'
+... ... .......... ......... .................................................................................................................
+See problems(...) for more details.
 #got some parsing errors...
 spending <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-healthexpenditure/master/data/KFF/healthcare-spending.csv', 
                      skip = 2, 
                      n_max  = which(spending$Location == "Notes")-1)
 tail(spending)
-```
-
-```
-## # A tibble: 6 x 25
-##   Location `1991__Total He… `1992__Total He… `1993__Total He… `1994__Total He…
-##   <chr>               <dbl>            <dbl>            <dbl>            <dbl>
-## 1 Vermont              1330             1421             1522             1625
-## 2 Virginia            14829            15599            16634            17637
-## 3 Washing…            12674            13859            14523            15303
-## 4 West Vi…             4672             5159             5550             5891
-## 5 Wiscons…            12694            13669            14636            15532
-## 6 Wyoming              1023             1067             1171             1265
-## # … with 20 more variables: `1995__Total Health Spending` <dbl>, `1996__Total
-## #   Health Spending` <dbl>, `1997__Total Health Spending` <dbl>, `1998__Total
-## #   Health Spending` <dbl>, `1999__Total Health Spending` <dbl>, `2000__Total
-## #   Health Spending` <dbl>, `2001__Total Health Spending` <dbl>, `2002__Total
-## #   Health Spending` <dbl>, `2003__Total Health Spending` <dbl>, `2004__Total
-## #   Health Spending` <dbl>, `2005__Total Health Spending` <dbl>, `2006__Total
-## #   Health Spending` <dbl>, `2007__Total Health Spending` <dbl>, `2008__Total
-## #   Health Spending` <dbl>, `2009__Total Health Spending` <dbl>, `2010__Total
-## #   Health Spending` <dbl>, `2011__Total Health Spending` <dbl>, `2012__Total
-## #   Health Spending` <dbl>, `2013__Total Health Spending` <dbl>, `2014__Total
-## #   Health Spending` <dbl>
+# A tibble: 6 x 25
+  Location `1991__Total He… `1992__Total He… `1993__Total He… `1994__Total He…
+  <chr>               <dbl>            <dbl>            <dbl>            <dbl>
+1 Vermont              1330             1421             1522             1625
+2 Virginia            14829            15599            16634            17637
+3 Washing…            12674            13859            14523            15303
+4 West Vi…             4672             5159             5550             5891
+5 Wiscons…            12694            13669            14636            15532
+6 Wyoming              1023             1067             1171             1265
+# … with 20 more variables: `1995__Total Health Spending` <dbl>, `1996__Total
+#   Health Spending` <dbl>, `1997__Total Health Spending` <dbl>, `1998__Total
+#   Health Spending` <dbl>, `1999__Total Health Spending` <dbl>, `2000__Total
+#   Health Spending` <dbl>, `2001__Total Health Spending` <dbl>, `2002__Total
+#   Health Spending` <dbl>, `2003__Total Health Spending` <dbl>, `2004__Total
+#   Health Spending` <dbl>, `2005__Total Health Spending` <dbl>, `2006__Total
+#   Health Spending` <dbl>, `2007__Total Health Spending` <dbl>, `2008__Total
+#   Health Spending` <dbl>, `2009__Total Health Spending` <dbl>, `2010__Total
+#   Health Spending` <dbl>, `2011__Total Health Spending` <dbl>, `2012__Total
+#   Health Spending` <dbl>, `2013__Total Health Spending` <dbl>, `2014__Total
+#   Health Spending` <dbl>
 ```
 
 Recall from the introduction, that in data science workflows, we perform multiple steps in evaluating data. To keep this process tidy and reproducible, it is often helpful to save our data in a raw state and in processed states to allow for easy comparison. So let's save our case study 1 data to use in later sections of the course. 
@@ -1911,13 +1712,7 @@ After creating a directory called raw_data within a directory that we called dat
 
 ```r
 library(here)
-```
-
-```
-## here() starts at /Users/rdpeng/books/tidyverse-devel
-```
-
-```r
+here() starts at /Users/rdpeng/books/tidyverse-devel
 save(coverage, spending, file = here::here("data", "raw_data", "case_study_1.rda"))
 #the coverage object and the spending object will get saved as case_study_1.rda within the raw_data directory which is a subdirectory of data 
 #the here package identifies where the project directory is located based on the .Rproj, and thus the path to this directory is not needed
@@ -1939,26 +1734,23 @@ Population characteristics at the state level for 2017 are available [here](http
 census <- read_csv('https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/sc-est2017-alldata6.csv',
                    n_max = 236900)
 census
-```
-
-```
-## # A tibble: 236,844 x 19
-##    SUMLEV REGION DIVISION STATE NAME    SEX ORIGIN  RACE   AGE CENSUS2010POP
-##    <chr>   <dbl>    <dbl> <chr> <chr> <dbl>  <dbl> <dbl> <dbl>         <dbl>
-##  1 040         3        6 01    Alab…     0      0     1     0         37991
-##  2 040         3        6 01    Alab…     0      0     1     1         38150
-##  3 040         3        6 01    Alab…     0      0     1     2         39738
-##  4 040         3        6 01    Alab…     0      0     1     3         39827
-##  5 040         3        6 01    Alab…     0      0     1     4         39353
-##  6 040         3        6 01    Alab…     0      0     1     5         39520
-##  7 040         3        6 01    Alab…     0      0     1     6         39813
-##  8 040         3        6 01    Alab…     0      0     1     7         39695
-##  9 040         3        6 01    Alab…     0      0     1     8         40012
-## 10 040         3        6 01    Alab…     0      0     1     9         42073
-## # … with 236,834 more rows, and 9 more variables: ESTIMATESBASE2010 <dbl>,
-## #   POPESTIMATE2010 <dbl>, POPESTIMATE2011 <dbl>, POPESTIMATE2012 <dbl>,
-## #   POPESTIMATE2013 <dbl>, POPESTIMATE2014 <dbl>, POPESTIMATE2015 <dbl>,
-## #   POPESTIMATE2016 <dbl>, POPESTIMATE2017 <dbl>
+# A tibble: 236,844 x 19
+   SUMLEV REGION DIVISION STATE NAME    SEX ORIGIN  RACE   AGE CENSUS2010POP
+   <chr>   <dbl>    <dbl> <chr> <chr> <dbl>  <dbl> <dbl> <dbl>         <dbl>
+ 1 040         3        6 01    Alab…     0      0     1     0         37991
+ 2 040         3        6 01    Alab…     0      0     1     1         38150
+ 3 040         3        6 01    Alab…     0      0     1     2         39738
+ 4 040         3        6 01    Alab…     0      0     1     3         39827
+ 5 040         3        6 01    Alab…     0      0     1     4         39353
+ 6 040         3        6 01    Alab…     0      0     1     5         39520
+ 7 040         3        6 01    Alab…     0      0     1     6         39813
+ 8 040         3        6 01    Alab…     0      0     1     7         39695
+ 9 040         3        6 01    Alab…     0      0     1     8         40012
+10 040         3        6 01    Alab…     0      0     1     9         42073
+# … with 236,834 more rows, and 9 more variables: ESTIMATESBASE2010 <dbl>,
+#   POPESTIMATE2010 <dbl>, POPESTIMATE2011 <dbl>, POPESTIMATE2012 <dbl>,
+#   POPESTIMATE2013 <dbl>, POPESTIMATE2014 <dbl>, POPESTIMATE2015 <dbl>,
+#   POPESTIMATE2016 <dbl>, POPESTIMATE2017 <dbl>
 ```
 
 #### Counted Data
@@ -1980,50 +1772,42 @@ Information about suicide and suicide as a result of firearms can also be direct
 # read in suicide data
 suicide_all <- read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/suicide_all.csv")
 suicide_all
-```
+# A tibble: 51 x 12
+   Sex   Race  State Ethnicity `Age Group` `First Year` `Last Year`
+   <chr> <chr> <chr> <chr>     <chr>              <dbl>       <dbl>
+ 1 Both… All … Alab… Both      All Ages            2015        2016
+ 2 Both… All … Alas… Both      All Ages            2015        2016
+ 3 Both… All … Ariz… Both      All Ages            2015        2016
+ 4 Both… All … Arka… Both      All Ages            2015        2016
+ 5 Both… All … Cali… Both      All Ages            2015        2016
+ 6 Both… All … Colo… Both      All Ages            2015        2016
+ 7 Both… All … Conn… Both      All Ages            2015        2016
+ 8 Both… All … Dela… Both      All Ages            2015        2016
+ 9 Both… All … Flor… Both      All Ages            2015        2016
+10 Both… All … Geor… Both      All Ages            2015        2016
+# … with 41 more rows, and 5 more variables: `Cause of Death` <chr>,
+#   Deaths <dbl>, Population <dbl>, `Crude Rate` <dbl>, `Age-Adjusted
+#   Rate` <chr>
 
-```
-## # A tibble: 51 x 12
-##    Sex   Race  State Ethnicity `Age Group` `First Year` `Last Year`
-##    <chr> <chr> <chr> <chr>     <chr>              <dbl>       <dbl>
-##  1 Both… All … Alab… Both      All Ages            2015        2016
-##  2 Both… All … Alas… Both      All Ages            2015        2016
-##  3 Both… All … Ariz… Both      All Ages            2015        2016
-##  4 Both… All … Arka… Both      All Ages            2015        2016
-##  5 Both… All … Cali… Both      All Ages            2015        2016
-##  6 Both… All … Colo… Both      All Ages            2015        2016
-##  7 Both… All … Conn… Both      All Ages            2015        2016
-##  8 Both… All … Dela… Both      All Ages            2015        2016
-##  9 Both… All … Flor… Both      All Ages            2015        2016
-## 10 Both… All … Geor… Both      All Ages            2015        2016
-## # … with 41 more rows, and 5 more variables: `Cause of Death` <chr>,
-## #   Deaths <dbl>, Population <dbl>, `Crude Rate` <dbl>, `Age-Adjusted
-## #   Rate` <chr>
-```
-
-```r
 # read in firearm suicide data
 suicide_firearm <- read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/suicide_firearm.csv")
 suicide_firearm
-```
-
-```
-## # A tibble: 51 x 12
-##    Sex   Race  State Ethnicity `Age Group` `First Year` `Last Year`
-##    <chr> <chr> <chr> <chr>     <chr>              <dbl>       <dbl>
-##  1 Both… All … Alab… Both      All Ages            2015        2016
-##  2 Both… All … Alas… Both      All Ages            2015        2016
-##  3 Both… All … Ariz… Both      All Ages            2015        2016
-##  4 Both… All … Arka… Both      All Ages            2015        2016
-##  5 Both… All … Cali… Both      All Ages            2015        2016
-##  6 Both… All … Colo… Both      All Ages            2015        2016
-##  7 Both… All … Conn… Both      All Ages            2015        2016
-##  8 Both… All … Dela… Both      All Ages            2015        2016
-##  9 Both… All … Flor… Both      All Ages            2015        2016
-## 10 Both… All … Geor… Both      All Ages            2015        2016
-## # … with 41 more rows, and 5 more variables: `Cause of Death` <chr>,
-## #   Deaths <dbl>, Population <dbl>, `Crude Rate` <dbl>, `Age-Adjusted
-## #   Rate` <chr>
+# A tibble: 51 x 12
+   Sex   Race  State Ethnicity `Age Group` `First Year` `Last Year`
+   <chr> <chr> <chr> <chr>     <chr>              <dbl>       <dbl>
+ 1 Both… All … Alab… Both      All Ages            2015        2016
+ 2 Both… All … Alas… Both      All Ages            2015        2016
+ 3 Both… All … Ariz… Both      All Ages            2015        2016
+ 4 Both… All … Arka… Both      All Ages            2015        2016
+ 5 Both… All … Cali… Both      All Ages            2015        2016
+ 6 Both… All … Colo… Both      All Ages            2015        2016
+ 7 Both… All … Conn… Both      All Ages            2015        2016
+ 8 Both… All … Dela… Both      All Ages            2015        2016
+ 9 Both… All … Flor… Both      All Ages            2015        2016
+10 Both… All … Geor… Both      All Ages            2015        2016
+# … with 41 more rows, and 5 more variables: `Cause of Death` <chr>,
+#   Deaths <dbl>, Population <dbl>, `Crude Rate` <dbl>, `Age-Adjusted
+#   Rate` <chr>
 ```
 
 #### Brady Data
@@ -2040,45 +1824,36 @@ url = "https://github.com/opencasestudies/ocs-police-shootings-firearm-legislati
 
 # Use httr's GET() and read_excel() to read in file
 GET(url, write_disk(tf <- tempfile(fileext = ".xlsx")))
-```
-
-```
-## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/Brady-State-Scorecard-2015.xlsx]
-##   Date: 2021-01-05 18:52
-##   Status: 200
-##   Content-Type: application/octet-stream
-##   Size: 66.2 kB
-## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpcBycqS/file83bf59c09d07.xlsx
-```
-
-```r
+Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/Brady-State-Scorecard-2015.xlsx]
+  Date: 2021-01-05 19:25
+  Status: 200
+  Content-Type: application/octet-stream
+  Size: 66.2 kB
+<ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpZT4ret/file85d659c09d07.xlsx
 brady <- read_excel(tf, sheet = 1)
 
 brady
-```
-
-```
-## # A tibble: 116 x 54
-##    `States can rec… `Category Point… `Sub Category P… Points AL    AK    AR   
-##    <chr>                       <dbl>            <dbl>  <dbl> <chr> <chr> <chr>
-##  1 TOTAL STATE POI…               NA               NA     NA -18   -30   -24  
-##  2 CATEGORY 1:  KE…               50               NA     NA <NA>  <NA>  <NA> 
-##  3 BACKGROUND CHEC…               NA               25     NA AL    AK    AR   
-##  4 Background Chec…               NA               NA     25 <NA>  <NA>  <NA> 
-##  5 Background Chec…               NA               NA     20 <NA>  <NA>  <NA> 
-##  6 Background Chec…               NA               NA      5 <NA>  <NA>  <NA> 
-##  7 Verifiy Legal P…               NA               NA     20 <NA>  <NA>  <NA> 
-##  8 TOTAL                          NA               NA     NA 0     0     0    
-##  9 <NA>                           NA               NA     NA <NA>  <NA>  <NA> 
-## 10 OTHER LAWS TO S…               NA               12     NA AL    AK    AR   
-## # … with 106 more rows, and 47 more variables: AZ <chr>, CA <chr>, CO <chr>,
-## #   CT <chr>, DE <chr>, FL <chr>, GA <chr>, HI <chr>, ID <chr>, IL <chr>,
-## #   IN <chr>, IA <chr>, KS <chr>, KY <chr>, LA <chr>, MA <chr>, MD <chr>,
-## #   ME <chr>, MI <chr>, MN <chr>, MO <chr>, MT <chr>, MS <chr>, NC <chr>,
-## #   ND <chr>, NE <chr>, NH <chr>, NJ <chr>, NM <chr>, NV <chr>, NY <chr>,
-## #   OK <chr>, OH <chr>, OR <chr>, PA <chr>, RI <chr>, SC <chr>, SD <chr>,
-## #   TN <chr>, TX <chr>, UT <chr>, VA <chr>, VT <chr>, WA <chr>, WI <chr>,
-## #   WV <chr>, WY <chr>
+# A tibble: 116 x 54
+   `States can rec… `Category Point… `Sub Category P… Points AL    AK    AR   
+   <chr>                       <dbl>            <dbl>  <dbl> <chr> <chr> <chr>
+ 1 TOTAL STATE POI…               NA               NA     NA -18   -30   -24  
+ 2 CATEGORY 1:  KE…               50               NA     NA <NA>  <NA>  <NA> 
+ 3 BACKGROUND CHEC…               NA               25     NA AL    AK    AR   
+ 4 Background Chec…               NA               NA     25 <NA>  <NA>  <NA> 
+ 5 Background Chec…               NA               NA     20 <NA>  <NA>  <NA> 
+ 6 Background Chec…               NA               NA      5 <NA>  <NA>  <NA> 
+ 7 Verifiy Legal P…               NA               NA     20 <NA>  <NA>  <NA> 
+ 8 TOTAL                          NA               NA     NA 0     0     0    
+ 9 <NA>                           NA               NA     NA <NA>  <NA>  <NA> 
+10 OTHER LAWS TO S…               NA               12     NA AL    AK    AR   
+# … with 106 more rows, and 47 more variables: AZ <chr>, CA <chr>, CO <chr>,
+#   CT <chr>, DE <chr>, FL <chr>, GA <chr>, HI <chr>, ID <chr>, IL <chr>,
+#   IN <chr>, IA <chr>, KS <chr>, KY <chr>, LA <chr>, MA <chr>, MD <chr>,
+#   ME <chr>, MI <chr>, MN <chr>, MO <chr>, MT <chr>, MS <chr>, NC <chr>,
+#   ND <chr>, NE <chr>, NH <chr>, NJ <chr>, NM <chr>, NV <chr>, NY <chr>,
+#   OK <chr>, OH <chr>, OR <chr>, PA <chr>, RI <chr>, SC <chr>, SD <chr>,
+#   TN <chr>, TX <chr>, UT <chr>, VA <chr>, VT <chr>, WA <chr>, WI <chr>,
+#   WV <chr>, WY <chr>
 ```
 
 #### Crime Data
@@ -2092,42 +1867,33 @@ url = "https://github.com/opencasestudies/ocs-police-shootings-firearm-legislati
 
 # Use httr's GET() and read_excel() to read in file
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
-```
-
-```
-## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/table_5_crime_in_the_united_states_by_state_2015.xls]
-##   Date: 2021-01-05 18:52
-##   Status: 200
-##   Content-Type: application/octet-stream
-##   Size: 98.3 kB
-## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpcBycqS/file83bf618fb492.xls
-```
-
-```r
+Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/table_5_crime_in_the_united_states_by_state_2015.xls]
+  Date: 2021-01-05 19:25
+  Status: 200
+  Content-Type: application/octet-stream
+  Size: 98.3 kB
+<ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpZT4ret/file85d6618fb492.xls
 crime <- read_excel(tf, sheet = 1, skip = 3)
 
 # see data
 crime
-```
-
-```
-## # A tibble: 510 x 14
-##    State Area  ...3  Population `Violent\ncrime… `Murder and \nn…
-##    <chr> <chr> <chr> <chr>                 <dbl>            <dbl>
-##  1 ALAB… Metr… <NA>  3708033                  NA               NA
-##  2 <NA>  <NA>  Area… 0.9709999…            18122              283
-##  3 <NA>  <NA>  Esti… 1                     18500              287
-##  4 <NA>  Citi… <NA>  522241                   NA               NA
-##  5 <NA>  <NA>  Area… 0.9739999…             3178               32
-##  6 <NA>  <NA>  Esti… 1                      3240               33
-##  7 <NA>  Nonm… <NA>  628705                   NA               NA
-##  8 <NA>  <NA>  Area… 0.9939999…             1205               28
-##  9 <NA>  <NA>  Esti… 1                      1212               28
-## 10 <NA>  Stat… <NA>  4858979               22952              348
-## # … with 500 more rows, and 8 more variables:
-## #   `Rape\n(revised\ndefinition)2` <dbl>, `Rape\n(legacy\ndefinition)3` <dbl>,
-## #   Robbery <dbl>, `Aggravated \nassault` <dbl>, `Property \ncrime` <dbl>,
-## #   Burglary <dbl>, `Larceny-\ntheft` <dbl>, `Motor \nvehicle \ntheft` <dbl>
+# A tibble: 510 x 14
+   State Area  ...3  Population `Violent\ncrime… `Murder and \nn…
+   <chr> <chr> <chr> <chr>                 <dbl>            <dbl>
+ 1 ALAB… Metr… <NA>  3708033                  NA               NA
+ 2 <NA>  <NA>  Area… 0.9709999…            18122              283
+ 3 <NA>  <NA>  Esti… 1                     18500              287
+ 4 <NA>  Citi… <NA>  522241                   NA               NA
+ 5 <NA>  <NA>  Area… 0.9739999…             3178               32
+ 6 <NA>  <NA>  Esti… 1                      3240               33
+ 7 <NA>  Nonm… <NA>  628705                   NA               NA
+ 8 <NA>  <NA>  Area… 0.9939999…             1205               28
+ 9 <NA>  <NA>  Esti… 1                      1212               28
+10 <NA>  Stat… <NA>  4858979               22952              348
+# … with 500 more rows, and 8 more variables:
+#   `Rape\n(revised\ndefinition)2` <dbl>, `Rape\n(legacy\ndefinition)3` <dbl>,
+#   Robbery <dbl>, `Aggravated \nassault` <dbl>, `Property \ncrime` <dbl>,
+#   Burglary <dbl>, `Larceny-\ntheft` <dbl>, `Motor \nvehicle \ntheft` <dbl>
 ```
 
 Note, however, there are slight differences in the code used here, relative to the Brady data. We have to use `skip = 3` to skip the first three lines of this file. *Also*, this file has the extension `.xls` rather than `.xlsx`, which we specify within the `fileext` argument.
@@ -2143,46 +1909,37 @@ url = "https://github.com/opencasestudies/ocs-police-shootings-firearm-legislati
 
 # Use httr's GET() and read_excel() to read in file
 GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
-```
-
-```
-## Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/LND01.xls]
-##   Date: 2021-01-05 18:52
-##   Status: 200
-##   Content-Type: application/octet-stream
-##   Size: 1.57 MB
-## <ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpcBycqS/file83bf6135133.xls
-```
-
-```r
+Response [https://raw.githubusercontent.com/opencasestudies/ocs-police-shootings-firearm-legislation/master/data/LND01.xls]
+  Date: 2021-01-05 19:25
+  Status: 200
+  Content-Type: application/octet-stream
+  Size: 1.57 MB
+<ON DISK>  /var/folders/xn/fncwm3zs5t36q6chqx1nxktr0000gn/T//RtmpZT4ret/file85d66135133.xls
 land <- read_excel(tf, sheet = 1)
 
 # see data
 land
-```
-
-```
-## # A tibble: 3,198 x 34
-##    Areaname STCOU LND010190F LND010190D LND010190N1 LND010190N2 LND010200F
-##    <chr>    <chr>      <dbl>      <dbl> <chr>       <chr>            <dbl>
-##  1 UNITED … 00000          0   3787425. 0000        0000                 0
-##  2 ALABAMA  01000          0     52423. 0000        0000                 0
-##  3 Autauga… 01001          0       604. 0000        0000                 0
-##  4 Baldwin… 01003          0      2027. 0000        0000                 0
-##  5 Barbour… 01005          0       905. 0000        0000                 0
-##  6 Bibb, AL 01007          0       626. 0000        0000                 0
-##  7 Blount,… 01009          0       651. 0000        0000                 0
-##  8 Bullock… 01011          0       626. 0000        0000                 0
-##  9 Butler,… 01013          0       778. 0000        0000                 0
-## 10 Calhoun… 01015          0       612. 0000        0000                 0
-## # … with 3,188 more rows, and 27 more variables: LND010200D <dbl>,
-## #   LND010200N1 <chr>, LND010200N2 <chr>, LND110180F <dbl>, LND110180D <dbl>,
-## #   LND110180N1 <chr>, LND110180N2 <chr>, LND110190F <dbl>, LND110190D <dbl>,
-## #   LND110190N1 <chr>, LND110190N2 <chr>, LND110200F <dbl>, LND110200D <dbl>,
-## #   LND110200N1 <chr>, LND110200N2 <chr>, LND110210F <dbl>, LND110210D <dbl>,
-## #   LND110210N1 <chr>, LND110210N2 <chr>, LND210190F <dbl>, LND210190D <dbl>,
-## #   LND210190N1 <chr>, LND210190N2 <chr>, LND210200F <dbl>, LND210200D <dbl>,
-## #   LND210200N1 <chr>, LND210200N2 <chr>
+# A tibble: 3,198 x 34
+   Areaname STCOU LND010190F LND010190D LND010190N1 LND010190N2 LND010200F
+   <chr>    <chr>      <dbl>      <dbl> <chr>       <chr>            <dbl>
+ 1 UNITED … 00000          0   3787425. 0000        0000                 0
+ 2 ALABAMA  01000          0     52423. 0000        0000                 0
+ 3 Autauga… 01001          0       604. 0000        0000                 0
+ 4 Baldwin… 01003          0      2027. 0000        0000                 0
+ 5 Barbour… 01005          0       905. 0000        0000                 0
+ 6 Bibb, AL 01007          0       626. 0000        0000                 0
+ 7 Blount,… 01009          0       651. 0000        0000                 0
+ 8 Bullock… 01011          0       626. 0000        0000                 0
+ 9 Butler,… 01013          0       778. 0000        0000                 0
+10 Calhoun… 01015          0       612. 0000        0000                 0
+# … with 3,188 more rows, and 27 more variables: LND010200D <dbl>,
+#   LND010200N1 <chr>, LND010200N2 <chr>, LND110180F <dbl>, LND110180D <dbl>,
+#   LND110180N1 <chr>, LND110180N2 <chr>, LND110190F <dbl>, LND110190D <dbl>,
+#   LND110190N1 <chr>, LND110190N2 <chr>, LND110200F <dbl>, LND110200D <dbl>,
+#   LND110200N1 <chr>, LND110200N2 <chr>, LND110210F <dbl>, LND110210D <dbl>,
+#   LND110210N1 <chr>, LND110210N2 <chr>, LND210190F <dbl>, LND210190D <dbl>,
+#   LND210190N1 <chr>, LND210190N2 <chr>, LND210200F <dbl>, LND210200D <dbl>,
+#   LND210200N1 <chr>, LND210200N2 <chr>
 ```
 
 #### Unemployment Data
@@ -2207,23 +1964,20 @@ out <- html_nodes(url, "table") %>%
 unemployment <- as_tibble(out[[1]]) 
 
 unemployment
-```
-
-```
-## # A tibble: 54 x 3
-##    State           `2015rate` Rank 
-##    <chr>           <chr>      <chr>
-##  1 "United States" "5.3"      ""   
-##  2 ""              ""         ""   
-##  3 "North Dakota"  "2.8"      "1"  
-##  4 "Nebraska"      "3.0"      "2"  
-##  5 "South Dakota"  "3.1"      "3"  
-##  6 "New Hampshire" "3.4"      "4"  
-##  7 "Hawaii"        "3.6"      "5"  
-##  8 "Utah"          "3.6"      "5"  
-##  9 "Vermont"       "3.6"      "5"  
-## 10 "Minnesota"     "3.7"      "8"  
-## # … with 44 more rows
+# A tibble: 54 x 3
+   State           `2015rate` Rank 
+   <chr>           <chr>      <chr>
+ 1 "United States" "5.3"      ""   
+ 2 ""              ""         ""   
+ 3 "North Dakota"  "2.8"      "1"  
+ 4 "Nebraska"      "3.0"      "2"  
+ 5 "South Dakota"  "3.1"      "3"  
+ 6 "New Hampshire" "3.4"      "4"  
+ 7 "Hawaii"        "3.6"      "5"  
+ 8 "Utah"          "3.6"      "5"  
+ 9 "Vermont"       "3.6"      "5"  
+10 "Minnesota"     "3.7"      "8"  
+# … with 44 more rows
 ```
 
 Then we get the values from each column of the data table. The `html_nodes()` function acts as a CSS selector. The "table" class returns two tables from the webpage and we specify that we want the second table. From the object `out` we select the first in the list and store this as a tibble.
