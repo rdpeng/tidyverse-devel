@@ -1317,59 +1317,6 @@ kable(df, digits=0, "html") %>%
   add_header_above(c(" " = 2,  "price (USD)" = 3)) 
 ```
 
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-<tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="2"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">price (USD)</div></th>
-</tr>
-  <tr>
-   <th style="text-align:left;"> cut </th>
-   <th style="text-align:right;"> N </th>
-   <th style="text-align:right;"> min </th>
-   <th style="text-align:right;"> avg </th>
-   <th style="text-align:right;"> max </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Fair </td>
-   <td style="text-align:right;"> 1610 </td>
-   <td style="text-align:right;"> 337 </td>
-   <td style="text-align:right;"> 4359 </td>
-   <td style="text-align:right;"> 18574 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Good </td>
-   <td style="text-align:right;"> 4906 </td>
-   <td style="text-align:right;"> 327 </td>
-   <td style="text-align:right;"> 3929 </td>
-   <td style="text-align:right;"> 18788 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Very Good </td>
-   <td style="text-align:right;"> 12082 </td>
-   <td style="text-align:right;"> 336 </td>
-   <td style="text-align:right;"> 3982 </td>
-   <td style="text-align:right;"> 18818 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Premium </td>
-   <td style="text-align:right;"> 13791 </td>
-   <td style="text-align:right;"> 326 </td>
-   <td style="text-align:right;"> 4584 </td>
-   <td style="text-align:right;"> 18823 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ideal </td>
-   <td style="text-align:right;"> 21551 </td>
-   <td style="text-align:right;"> 326 </td>
-   <td style="text-align:right;"> 3458 </td>
-   <td style="text-align:right;"> 18806 </td>
-  </tr>
-</tbody>
-</table>
-
 ![Viewer tab with formatted table](images/gslides/231.png)
 
 ### Annotating Your Table
@@ -1384,62 +1331,6 @@ kable(df, digits=0, "html", caption="Table 1: Diamonds Price by Quality of Cut. 
   add_header_above(c(" " = 2,  "price (USD)" = 3)) %>% 
   footnote(general = "Diamonds dataset from ggplot2", general_title = "Source:", footnote_as_chunk = T)
 ```
-
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;border-bottom: 0;">
-<caption>Table 1: Diamonds Price by Quality of Cut. Most Diamonds are of the highest quality cut and the most expensive diamonds are of the highest quality</caption>
- <thead>
-<tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="2"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">price (USD)</div></th>
-</tr>
-  <tr>
-   <th style="text-align:left;"> cut </th>
-   <th style="text-align:right;"> N </th>
-   <th style="text-align:right;"> min </th>
-   <th style="text-align:right;"> avg </th>
-   <th style="text-align:right;"> max </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Fair </td>
-   <td style="text-align:right;"> 1610 </td>
-   <td style="text-align:right;"> 337 </td>
-   <td style="text-align:right;"> 4359 </td>
-   <td style="text-align:right;"> 18574 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Good </td>
-   <td style="text-align:right;"> 4906 </td>
-   <td style="text-align:right;"> 327 </td>
-   <td style="text-align:right;"> 3929 </td>
-   <td style="text-align:right;"> 18788 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Very Good </td>
-   <td style="text-align:right;"> 12082 </td>
-   <td style="text-align:right;"> 336 </td>
-   <td style="text-align:right;"> 3982 </td>
-   <td style="text-align:right;"> 18818 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Premium </td>
-   <td style="text-align:right;"> 13791 </td>
-   <td style="text-align:right;"> 326 </td>
-   <td style="text-align:right;"> 4584 </td>
-   <td style="text-align:right;"> 18823 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ideal </td>
-   <td style="text-align:right;"> 21551 </td>
-   <td style="text-align:right;"> 326 </td>
-   <td style="text-align:right;"> 3458 </td>
-   <td style="text-align:right;"> 18806 </td>
-  </tr>
-</tbody>
-<tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Source:</span> <sup></sup> Diamonds dataset from ggplot2</td></tr></tfoot>
-</table>
 
 ![Viewer tab with annotated and formatted table](images/gslides/232.png)
 
@@ -2031,6 +1922,8 @@ ggplot(mtcars) +
 
 Alternatively, we could animate the plot, using `gganimate` so that on a single plot we rotate between each of these three plots. 
 
+NOTE: For this book, we only show the code for the animations, not the output. In order to see the animations live, you can see the [web version of this book](https://jhudatascience.org/tidyversecourse/dataviz.html#gganimate-1).
+
 ##### Transitions
 
 We'll transition in this example between frames by gear:
@@ -2045,8 +1938,6 @@ mtcars %>%
   geom_boxplot(aes(cyl, mpg)) + 
   transition_manual(gear)
 ```
-
-![plot of chunk unnamed-chunk-90](images/dataviz-unnamed-chunk-90-1.gif)
 
 Note that here, `transition_manual()` is a new grammar class that we add right on top of our `ggplot2` plot code! Within this grammar class, we specify the variable upon which we'd like the transition in the animation to occur.
 
@@ -2066,8 +1957,6 @@ anim <- ggplot(mtcars) +
 anim
 ```
 
-![plot of chunk unnamed-chunk-91](images/dataviz-unnamed-chunk-91-1.gif)
-
 Note here that we've stored the output from `transition_states` in the object `anim`. We'll build on this object below.
 
 ##### Labeling
@@ -2083,8 +1972,6 @@ anim <- anim +
 anim
 ```
 
-![plot of chunk unnamed-chunk-92](images/dataviz-unnamed-chunk-92-1.gif)
-
 Note that we're referring to the appropriate gear within the animation frame by specifying `{closest_state}`.
 
 ##### Easing
@@ -2099,8 +1986,6 @@ anim <- anim +
 
 anim
 ```
-
-![plot of chunk unnamed-chunk-93](images/dataviz-unnamed-chunk-93-1.gif)
 
 There are a number of easing functions, all of which are listed within the documentation, which can be viewed, as always, using the `?` help function: `?ease_aes`.
 
@@ -2118,8 +2003,6 @@ anim <- anim +
 
 anim
 ```
-
-![plot of chunk unnamed-chunk-94](images/dataviz-unnamed-chunk-94-1.gif)
 
 The changes are subtle but you'll notice that on transition the data fades in to appear and shrinks upon exit.
 
@@ -2151,8 +2034,6 @@ scat <- ggplot(mtcars) +
 scat
 ```
 
-![plot of chunk unnamed-chunk-96](images/dataviz-unnamed-chunk-96-1.gif)
-
 However, the x- and y-axes remain constant throughout the animation.
 
 If you wanted to allow these positional scales to adjust between each gear level, you could use `view_step`:
@@ -2166,8 +2047,6 @@ scat +
             nsteps = 3, 
             include = FALSE)
 ```
-
-![plot of chunk unnamed-chunk-97](images/dataviz-unnamed-chunk-97-1.gif)
 
 
 #### Example: gapminder
@@ -2194,8 +2073,6 @@ gap <- ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) 
 gap
 ```
 
-![plot of chunk unnamed-chunk-98](images/dataviz-unnamed-chunk-98-1.gif)
-
 Note that in this example, we're now using `transition_time()` rather than `transition_states()`. This is a variant of `transition_states()` that is particularly useful when the states represent points in time, such as the years we're animating through in the plot above. The transition length is set to correspond to the time difference between the points in the data.
 
 ##### Shadow
@@ -2210,8 +2087,6 @@ gap +
  shadow_trail(distance = 0.05,
               alpha = 0.3)
 ```
-
-![plot of chunk unnamed-chunk-99](images/dataviz-unnamed-chunk-99-1.gif)
 
 Here, distance specifies the temporal distance between the frames to show and alpha specifies the transparency of the trail, so that the current frame's data is always discernible.
 
@@ -2336,235 +2211,48 @@ skim(hc)
 ```
 
 
-<table style='width: auto;'
-        class='table table-condensed'>
-<caption>Data summary</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:left;">   </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Name </td>
-   <td style="text-align:left;"> hc </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Number of rows </td>
-   <td style="text-align:left;"> 612 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Number of columns </td>
-   <td style="text-align:left;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> _______________________ </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Column type frequency: </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> character </td>
-   <td style="text-align:left;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> factor </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> numeric </td>
-   <td style="text-align:left;"> 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ________________________ </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Group variables </td>
-   <td style="text-align:left;"> None </td>
-  </tr>
-</tbody>
-</table>
+Table: Data summary
+
+|                         |     |
+|:------------------------|:----|
+|Name                     |hc   |
+|Number of rows           |612  |
+|Number of columns        |10   |
+|_______________________  |     |
+|Column type frequency:   |     |
+|character                |3    |
+|factor                   |1    |
+|numeric                  |6    |
+|________________________ |     |
+|Group variables          |None |
 
 
 **Variable type: character**
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> skim_variable </th>
-   <th style="text-align:right;"> n_missing </th>
-   <th style="text-align:right;"> complete_rate </th>
-   <th style="text-align:right;"> min </th>
-   <th style="text-align:right;"> max </th>
-   <th style="text-align:right;"> empty </th>
-   <th style="text-align:right;"> n_unique </th>
-   <th style="text-align:right;"> whitespace </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Location </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> type </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> abb </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
+|skim_variable | n_missing| complete_rate| min| max| empty| n_unique| whitespace|
+|:-------------|---------:|-------------:|---:|---:|-----:|--------:|----------:|
+|Location      |         0|             1|   4|  20|     0|       51|          0|
+|type          |         0|             1|   8|  12|     0|        6|          0|
+|abb           |         0|             1|   2|   2|     0|       51|          0|
 
 
 **Variable type: factor**
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> skim_variable </th>
-   <th style="text-align:right;"> n_missing </th>
-   <th style="text-align:right;"> complete_rate </th>
-   <th style="text-align:left;"> ordered </th>
-   <th style="text-align:right;"> n_unique </th>
-   <th style="text-align:left;"> top_counts </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> region </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:left;"> Sou: 204, Wes: 156, Nor: 144, Nor: 108 </td>
-  </tr>
-</tbody>
-</table>
+|skim_variable | n_missing| complete_rate|ordered | n_unique|top_counts                             |
+|:-------------|---------:|-------------:|:-------|--------:|:--------------------------------------|
+|region        |         0|             1|FALSE   |        4|Sou: 204, Wes: 156, Nor: 144, Nor: 108 |
 
 
 **Variable type: numeric**
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> skim_variable </th>
-   <th style="text-align:right;"> n_missing </th>
-   <th style="text-align:right;"> complete_rate </th>
-   <th style="text-align:right;"> mean </th>
-   <th style="text-align:right;"> sd </th>
-   <th style="text-align:right;"> p0 </th>
-   <th style="text-align:right;"> p25 </th>
-   <th style="text-align:right;"> p50 </th>
-   <th style="text-align:right;"> p75 </th>
-   <th style="text-align:right;"> p100 </th>
-   <th style="text-align:left;"> hist </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 2013.50 </td>
-   <td style="text-align:right;"> 0.50 </td>
-   <td style="text-align:right;"> 2013.00 </td>
-   <td style="text-align:right;"> 2013.00 </td>
-   <td style="text-align:right;"> 2013.50 </td>
-   <td style="text-align:right;"> 2014.00 </td>
-   <td style="text-align:right;"> 2014.00 </td>
-   <td style="text-align:left;"> ▇▁▁▁▇ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tot_coverage </td>
-   <td style="text-align:right;"> 19 </td>
-   <td style="text-align:right;"> 0.97 </td>
-   <td style="text-align:right;"> 1059391.91 </td>
-   <td style="text-align:right;"> 1864110.89 </td>
-   <td style="text-align:right;"> 9900.00 </td>
-   <td style="text-align:right;"> 135700.00 </td>
-   <td style="text-align:right;"> 436800.00 </td>
-   <td style="text-align:right;"> 1036800.00 </td>
-   <td style="text-align:right;"> 17747300.00 </td>
-   <td style="text-align:left;"> ▇▁▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tot_spending </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 49004.39 </td>
-   <td style="text-align:right;"> 54031.44 </td>
-   <td style="text-align:right;"> 4639.00 </td>
-   <td style="text-align:right;"> 12742.00 </td>
-   <td style="text-align:right;"> 33939.00 </td>
-   <td style="text-align:right;"> 60364.00 </td>
-   <td style="text-align:right;"> 291989.00 </td>
-   <td style="text-align:left;"> ▇▂▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tot_pop </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 6172245.10 </td>
-   <td style="text-align:right;"> 6983404.37 </td>
-   <td style="text-align:right;"> 572000.00 </td>
-   <td style="text-align:right;"> 1610200.00 </td>
-   <td style="text-align:right;"> 4357900.00 </td>
-   <td style="text-align:right;"> 6866000.00 </td>
-   <td style="text-align:right;"> 38701300.00 </td>
-   <td style="text-align:left;"> ▇▂▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> prop_coverage </td>
-   <td style="text-align:right;"> 19 </td>
-   <td style="text-align:right;"> 0.97 </td>
-   <td style="text-align:right;"> 0.17 </td>
-   <td style="text-align:right;"> 0.16 </td>
-   <td style="text-align:right;"> 0.01 </td>
-   <td style="text-align:right;"> 0.06 </td>
-   <td style="text-align:right;"> 0.13 </td>
-   <td style="text-align:right;"> 0.18 </td>
-   <td style="text-align:right;"> 0.61 </td>
-   <td style="text-align:left;"> ▇▅▁▁▂ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> spending_capita </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 8246.17 </td>
-   <td style="text-align:right;"> 1263.98 </td>
-   <td style="text-align:right;"> 5676.52 </td>
-   <td style="text-align:right;"> 7395.76 </td>
-   <td style="text-align:right;"> 8049.26 </td>
-   <td style="text-align:right;"> 8993.86 </td>
-   <td style="text-align:right;"> 11982.04 </td>
-   <td style="text-align:left;"> ▂▇▅▃▁ </td>
-  </tr>
-</tbody>
-</table>
+|skim_variable   | n_missing| complete_rate|       mean|         sd|        p0|        p25|        p50|        p75|        p100|hist  |
+|:---------------|---------:|-------------:|----------:|----------:|---------:|----------:|----------:|----------:|-----------:|:-----|
+|year            |         0|          1.00|    2013.50|       0.50|   2013.00|    2013.00|    2013.50|    2014.00|     2014.00|▇▁▁▁▇ |
+|tot_coverage    |        19|          0.97| 1059391.91| 1864110.89|   9900.00|  135700.00|  436800.00| 1036800.00| 17747300.00|▇▁▁▁▁ |
+|tot_spending    |         0|          1.00|   49004.39|   54031.44|   4639.00|   12742.00|   33939.00|   60364.00|   291989.00|▇▂▁▁▁ |
+|tot_pop         |         0|          1.00| 6172245.10| 6983404.37| 572000.00| 1610200.00| 4357900.00| 6866000.00| 38701300.00|▇▂▁▁▁ |
+|prop_coverage   |        19|          0.97|       0.17|       0.16|      0.01|       0.06|       0.13|       0.18|        0.61|▇▅▁▁▂ |
+|spending_capita |         0|          1.00|    8246.17|    1263.98|   5676.52|    7395.76|    8049.26|    8993.86|    11982.04|▂▇▅▃▁ |
 
 At a glance, by looking at the `hist` column of the output for our numeric/integer variables, we see that there is a long right tail in `tot_coverage` and `tot_pop`. 
 
@@ -2583,346 +2271,56 @@ hc %>%
 ```
 
 
-<table style='width: auto;'
-        class='table table-condensed'>
-<caption>Data summary</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:left;">   </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Name </td>
-   <td style="text-align:left;"> Piped data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Number of rows </td>
-   <td style="text-align:left;"> 612 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Number of columns </td>
-   <td style="text-align:left;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> _______________________ </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Column type frequency: </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> character </td>
-   <td style="text-align:left;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> factor </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> numeric </td>
-   <td style="text-align:left;"> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ________________________ </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Group variables </td>
-   <td style="text-align:left;"> year </td>
-  </tr>
-</tbody>
-</table>
+Table: Data summary
+
+|                         |           |
+|:------------------------|:----------|
+|Name                     |Piped data |
+|Number of rows           |612        |
+|Number of columns        |10         |
+|_______________________  |           |
+|Column type frequency:   |           |
+|character                |3          |
+|factor                   |1          |
+|numeric                  |5          |
+|________________________ |           |
+|Group variables          |year       |
 
 
 **Variable type: character**
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> skim_variable </th>
-   <th style="text-align:right;"> year </th>
-   <th style="text-align:right;"> n_missing </th>
-   <th style="text-align:right;"> complete_rate </th>
-   <th style="text-align:right;"> min </th>
-   <th style="text-align:right;"> max </th>
-   <th style="text-align:right;"> empty </th>
-   <th style="text-align:right;"> n_unique </th>
-   <th style="text-align:right;"> whitespace </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Location </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Location </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> type </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> type </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> abb </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> abb </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
+|skim_variable | year| n_missing| complete_rate| min| max| empty| n_unique| whitespace|
+|:-------------|----:|---------:|-------------:|---:|---:|-----:|--------:|----------:|
+|Location      | 2013|         0|             1|   4|  20|     0|       51|          0|
+|Location      | 2014|         0|             1|   4|  20|     0|       51|          0|
+|type          | 2013|         0|             1|   8|  12|     0|        6|          0|
+|type          | 2014|         0|             1|   8|  12|     0|        6|          0|
+|abb           | 2013|         0|             1|   2|   2|     0|       51|          0|
+|abb           | 2014|         0|             1|   2|   2|     0|       51|          0|
 
 
 **Variable type: factor**
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> skim_variable </th>
-   <th style="text-align:right;"> year </th>
-   <th style="text-align:right;"> n_missing </th>
-   <th style="text-align:right;"> complete_rate </th>
-   <th style="text-align:left;"> ordered </th>
-   <th style="text-align:right;"> n_unique </th>
-   <th style="text-align:left;"> top_counts </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> region </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:left;"> Sou: 102, Wes: 78, Nor: 72, Nor: 54 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> region </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:left;"> Sou: 102, Wes: 78, Nor: 72, Nor: 54 </td>
-  </tr>
-</tbody>
-</table>
+|skim_variable | year| n_missing| complete_rate|ordered | n_unique|top_counts                          |
+|:-------------|----:|---------:|-------------:|:-------|--------:|:-----------------------------------|
+|region        | 2013|         0|             1|FALSE   |        4|Sou: 102, Wes: 78, Nor: 72, Nor: 54 |
+|region        | 2014|         0|             1|FALSE   |        4|Sou: 102, Wes: 78, Nor: 72, Nor: 54 |
 
 
 **Variable type: numeric**
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> skim_variable </th>
-   <th style="text-align:right;"> year </th>
-   <th style="text-align:right;"> n_missing </th>
-   <th style="text-align:right;"> complete_rate </th>
-   <th style="text-align:right;"> mean </th>
-   <th style="text-align:right;"> sd </th>
-   <th style="text-align:right;"> p0 </th>
-   <th style="text-align:right;"> p25 </th>
-   <th style="text-align:right;"> p50 </th>
-   <th style="text-align:right;"> p75 </th>
-   <th style="text-align:right;"> p100 </th>
-   <th style="text-align:left;"> hist </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> tot_coverage </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 0.97 </td>
-   <td style="text-align:right;"> 1052927.61 </td>
-   <td style="text-align:right;"> 1863158.94 </td>
-   <td style="text-align:right;"> 9900.00 </td>
-   <td style="text-align:right;"> 132300.00 </td>
-   <td style="text-align:right;"> 426300.00 </td>
-   <td style="text-align:right;"> 1034500.00 </td>
-   <td style="text-align:right;"> 17747300.00 </td>
-   <td style="text-align:left;"> ▇▁▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tot_coverage </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 0.97 </td>
-   <td style="text-align:right;"> 1065878.04 </td>
-   <td style="text-align:right;"> 1868198.24 </td>
-   <td style="text-align:right;"> 9900.00 </td>
-   <td style="text-align:right;"> 137700.00 </td>
-   <td style="text-align:right;"> 450150.00 </td>
-   <td style="text-align:right;"> 1056725.00 </td>
-   <td style="text-align:right;"> 17703700.00 </td>
-   <td style="text-align:left;"> ▇▁▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tot_spending </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 47757.31 </td>
-   <td style="text-align:right;"> 52637.29 </td>
-   <td style="text-align:right;"> 4639.00 </td>
-   <td style="text-align:right;"> 12392.00 </td>
-   <td style="text-align:right;"> 33468.00 </td>
-   <td style="text-align:right;"> 60364.00 </td>
-   <td style="text-align:right;"> 278168.00 </td>
-   <td style="text-align:left;"> ▇▂▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tot_spending </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 50251.47 </td>
-   <td style="text-align:right;"> 55448.72 </td>
-   <td style="text-align:right;"> 4856.00 </td>
-   <td style="text-align:right;"> 12742.00 </td>
-   <td style="text-align:right;"> 35299.00 </td>
-   <td style="text-align:right;"> 62847.00 </td>
-   <td style="text-align:right;"> 291989.00 </td>
-   <td style="text-align:left;"> ▇▂▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tot_pop </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 6145121.57 </td>
-   <td style="text-align:right;"> 6945677.64 </td>
-   <td style="text-align:right;"> 582200.00 </td>
-   <td style="text-align:right;"> 1600600.00 </td>
-   <td style="text-align:right;"> 4400100.00 </td>
-   <td style="text-align:right;"> 6866000.00 </td>
-   <td style="text-align:right;"> 38176400.00 </td>
-   <td style="text-align:left;"> ▇▂▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tot_pop </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 6199368.63 </td>
-   <td style="text-align:right;"> 7032201.22 </td>
-   <td style="text-align:right;"> 572000.00 </td>
-   <td style="text-align:right;"> 1610200.00 </td>
-   <td style="text-align:right;"> 4315700.00 </td>
-   <td style="text-align:right;"> 7085000.00 </td>
-   <td style="text-align:right;"> 38701300.00 </td>
-   <td style="text-align:left;"> ▇▂▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> prop_coverage </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 0.97 </td>
-   <td style="text-align:right;"> 0.17 </td>
-   <td style="text-align:right;"> 0.16 </td>
-   <td style="text-align:right;"> 0.01 </td>
-   <td style="text-align:right;"> 0.05 </td>
-   <td style="text-align:right;"> 0.13 </td>
-   <td style="text-align:right;"> 0.18 </td>
-   <td style="text-align:right;"> 0.60 </td>
-   <td style="text-align:left;"> ▇▆▁▁▂ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> prop_coverage </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 0.97 </td>
-   <td style="text-align:right;"> 0.17 </td>
-   <td style="text-align:right;"> 0.16 </td>
-   <td style="text-align:right;"> 0.01 </td>
-   <td style="text-align:right;"> 0.06 </td>
-   <td style="text-align:right;"> 0.12 </td>
-   <td style="text-align:right;"> 0.18 </td>
-   <td style="text-align:right;"> 0.61 </td>
-   <td style="text-align:left;"> ▇▅▁▁▂ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> spending_capita </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 8064.53 </td>
-   <td style="text-align:right;"> 1228.01 </td>
-   <td style="text-align:right;"> 5676.52 </td>
-   <td style="text-align:right;"> 7210.56 </td>
-   <td style="text-align:right;"> 7842.66 </td>
-   <td style="text-align:right;"> 8883.00 </td>
-   <td style="text-align:right;"> 11413.89 </td>
-   <td style="text-align:left;"> ▂▇▅▃▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> spending_capita </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 8427.80 </td>
-   <td style="text-align:right;"> 1275.27 </td>
-   <td style="text-align:right;"> 6007.03 </td>
-   <td style="text-align:right;"> 7544.68 </td>
-   <td style="text-align:right;"> 8242.67 </td>
-   <td style="text-align:right;"> 9378.16 </td>
-   <td style="text-align:right;"> 11982.04 </td>
-   <td style="text-align:left;"> ▂▇▃▃▁ </td>
-  </tr>
-</tbody>
-</table>
+|skim_variable   | year| n_missing| complete_rate|       mean|         sd|        p0|        p25|        p50|        p75|        p100|hist  |
+|:---------------|----:|---------:|-------------:|----------:|----------:|---------:|----------:|----------:|----------:|-----------:|:-----|
+|tot_coverage    | 2013|         9|          0.97| 1052927.61| 1863158.94|   9900.00|  132300.00|  426300.00| 1034500.00| 17747300.00|▇▁▁▁▁ |
+|tot_coverage    | 2014|        10|          0.97| 1065878.04| 1868198.24|   9900.00|  137700.00|  450150.00| 1056725.00| 17703700.00|▇▁▁▁▁ |
+|tot_spending    | 2013|         0|          1.00|   47757.31|   52637.29|   4639.00|   12392.00|   33468.00|   60364.00|   278168.00|▇▂▁▁▁ |
+|tot_spending    | 2014|         0|          1.00|   50251.47|   55448.72|   4856.00|   12742.00|   35299.00|   62847.00|   291989.00|▇▂▁▁▁ |
+|tot_pop         | 2013|         0|          1.00| 6145121.57| 6945677.64| 582200.00| 1600600.00| 4400100.00| 6866000.00| 38176400.00|▇▂▁▁▁ |
+|tot_pop         | 2014|         0|          1.00| 6199368.63| 7032201.22| 572000.00| 1610200.00| 4315700.00| 7085000.00| 38701300.00|▇▂▁▁▁ |
+|prop_coverage   | 2013|         9|          0.97|       0.17|       0.16|      0.01|       0.05|       0.13|       0.18|        0.60|▇▆▁▁▂ |
+|prop_coverage   | 2014|        10|          0.97|       0.17|       0.16|      0.01|       0.06|       0.12|       0.18|        0.61|▇▅▁▁▂ |
+|spending_capita | 2013|         0|          1.00|    8064.53|    1228.01|   5676.52|    7210.56|    7842.66|    8883.00|    11413.89|▂▇▅▃▁ |
+|spending_capita | 2014|         0|          1.00|    8427.80|    1275.27|   6007.03|    7544.68|    8242.67|    9378.16|    11982.04|▂▇▃▃▁ |
 
 At a glance, there doesn't appear to be a huge difference in the variables from one year to the next, but we'll explore this again in a bit.
 
@@ -3400,289 +2798,46 @@ skim(firearms)
 ```
 
 
-<table style='width: auto;'
-        class='table table-condensed'>
-<caption>Data summary</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:left;">   </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Name </td>
-   <td style="text-align:left;"> firearms </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Number of rows </td>
-   <td style="text-align:left;"> 51 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Number of columns </td>
-   <td style="text-align:left;"> 15 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> _______________________ </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Column type frequency: </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> character </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> numeric </td>
-   <td style="text-align:left;"> 14 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ________________________ </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Group variables </td>
-   <td style="text-align:left;"> None </td>
-  </tr>
-</tbody>
-</table>
+Table: Data summary
+
+|                         |         |
+|:------------------------|:--------|
+|Name                     |firearms |
+|Number of rows           |51       |
+|Number of columns        |15       |
+|_______________________  |         |
+|Column type frequency:   |         |
+|character                |1        |
+|numeric                  |14       |
+|________________________ |         |
+|Group variables          |None     |
 
 
 **Variable type: character**
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> skim_variable </th>
-   <th style="text-align:right;"> n_missing </th>
-   <th style="text-align:right;"> complete_rate </th>
-   <th style="text-align:right;"> min </th>
-   <th style="text-align:right;"> max </th>
-   <th style="text-align:right;"> empty </th>
-   <th style="text-align:right;"> n_unique </th>
-   <th style="text-align:right;"> whitespace </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> NAME </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
+|skim_variable | n_missing| complete_rate| min| max| empty| n_unique| whitespace|
+|:-------------|---------:|-------------:|---:|---:|-----:|--------:|----------:|
+|NAME          |         0|             1|   4|  20|     0|       51|          0|
 
 
 **Variable type: numeric**
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> skim_variable </th>
-   <th style="text-align:right;"> n_missing </th>
-   <th style="text-align:right;"> complete_rate </th>
-   <th style="text-align:right;"> mean </th>
-   <th style="text-align:right;"> sd </th>
-   <th style="text-align:right;"> p0 </th>
-   <th style="text-align:right;"> p25 </th>
-   <th style="text-align:right;"> p50 </th>
-   <th style="text-align:right;"> p75 </th>
-   <th style="text-align:right;"> p100 </th>
-   <th style="text-align:left;"> hist </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> white </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 78.83 </td>
-   <td style="text-align:right;"> 13.17 </td>
-   <td style="text-align:right;"> 26.02 </td>
-   <td style="text-align:right;"> 71.95 </td>
-   <td style="text-align:right;"> 82.15 </td>
-   <td style="text-align:right;"> 87.65 </td>
-   <td style="text-align:right;"> 94.95 </td>
-   <td style="text-align:left;"> ▁▁▂▆▇ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> black </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 11.70 </td>
-   <td style="text-align:right;"> 10.89 </td>
-   <td style="text-align:right;"> 0.55 </td>
-   <td style="text-align:right;"> 3.56 </td>
-   <td style="text-align:right;"> 8.23 </td>
-   <td style="text-align:right;"> 16.26 </td>
-   <td style="text-align:right;"> 48.52 </td>
-   <td style="text-align:left;"> ▇▃▂▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> hispanic </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 11.55 </td>
-   <td style="text-align:right;"> 10.18 </td>
-   <td style="text-align:right;"> 1.49 </td>
-   <td style="text-align:right;"> 4.92 </td>
-   <td style="text-align:right;"> 9.08 </td>
-   <td style="text-align:right;"> 13.15 </td>
-   <td style="text-align:right;"> 48.20 </td>
-   <td style="text-align:left;"> ▇▂▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 49.40 </td>
-   <td style="text-align:right;"> 0.85 </td>
-   <td style="text-align:right;"> 47.44 </td>
-   <td style="text-align:right;"> 48.78 </td>
-   <td style="text-align:right;"> 49.28 </td>
-   <td style="text-align:right;"> 49.78 </td>
-   <td style="text-align:right;"> 52.37 </td>
-   <td style="text-align:left;"> ▁▇▇▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> total_pop </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 6294898.80 </td>
-   <td style="text-align:right;"> 7191254.03 </td>
-   <td style="text-align:right;"> 586102.00 </td>
-   <td style="text-align:right;"> 1744545.50 </td>
-   <td style="text-align:right;"> 4422057.00 </td>
-   <td style="text-align:right;"> 6977540.00 </td>
-   <td style="text-align:right;"> 39032444.00 </td>
-   <td style="text-align:left;"> ▇▂▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> violent_crime </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 379.86 </td>
-   <td style="text-align:right;"> 186.69 </td>
-   <td style="text-align:right;"> 118.00 </td>
-   <td style="text-align:right;"> 257.60 </td>
-   <td style="text-align:right;"> 349.60 </td>
-   <td style="text-align:right;"> 441.75 </td>
-   <td style="text-align:right;"> 1269.10 </td>
-   <td style="text-align:left;"> ▇▇▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> brady_scores </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0.98 </td>
-   <td style="text-align:right;"> 3.94 </td>
-   <td style="text-align:right;"> 32.25 </td>
-   <td style="text-align:right;"> -39.00 </td>
-   <td style="text-align:right;"> -19.00 </td>
-   <td style="text-align:right;"> -8.75 </td>
-   <td style="text-align:right;"> 19.62 </td>
-   <td style="text-align:right;"> 76.00 </td>
-   <td style="text-align:left;"> ▇▇▂▁▃ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> gunshot_tally </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0.98 </td>
-   <td style="text-align:right;"> 20.34 </td>
-   <td style="text-align:right;"> 30.57 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 5.25 </td>
-   <td style="text-align:right;"> 16.00 </td>
-   <td style="text-align:right;"> 20.00 </td>
-   <td style="text-align:right;"> 196.00 </td>
-   <td style="text-align:left;"> ▇▁▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> gunshot_filtered </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0.98 </td>
-   <td style="text-align:right;"> 17.28 </td>
-   <td style="text-align:right;"> 24.47 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 4.25 </td>
-   <td style="text-align:right;"> 14.00 </td>
-   <td style="text-align:right;"> 18.75 </td>
-   <td style="text-align:right;"> 150.00 </td>
-   <td style="text-align:left;"> ▇▁▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> gunshot_rate </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0.98 </td>
-   <td style="text-align:right;"> 1.74 </td>
-   <td style="text-align:right;"> 1.09 </td>
-   <td style="text-align:right;"> 0.28 </td>
-   <td style="text-align:right;"> 0.97 </td>
-   <td style="text-align:right;"> 1.51 </td>
-   <td style="text-align:right;"> 2.10 </td>
-   <td style="text-align:right;"> 5.12 </td>
-   <td style="text-align:left;"> ▇▇▂▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> unemployment_rate </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 5.04 </td>
-   <td style="text-align:right;"> 1.08 </td>
-   <td style="text-align:right;"> 2.80 </td>
-   <td style="text-align:right;"> 4.25 </td>
-   <td style="text-align:right;"> 5.10 </td>
-   <td style="text-align:right;"> 6.00 </td>
-   <td style="text-align:right;"> 6.90 </td>
-   <td style="text-align:left;"> ▃▅▅▇▅ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> unemployment_rank </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 25.47 </td>
-   <td style="text-align:right;"> 14.78 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 13.00 </td>
-   <td style="text-align:right;"> 26.00 </td>
-   <td style="text-align:right;"> 38.00 </td>
-   <td style="text-align:right;"> 51.00 </td>
-   <td style="text-align:left;"> ▇▇▇▇▇ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> density </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:right;"> 412.52 </td>
-   <td style="text-align:right;"> 1537.71 </td>
-   <td style="text-align:right;"> 1.29 </td>
-   <td style="text-align:right;"> 47.77 </td>
-   <td style="text-align:right;"> 106.35 </td>
-   <td style="text-align:right;"> 226.87 </td>
-   <td style="text-align:right;"> 11019.43 </td>
-   <td style="text-align:left;"> ▇▁▁▁▁ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ownership </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0.98 </td>
-   <td style="text-align:right;"> 51.07 </td>
-   <td style="text-align:right;"> 12.11 </td>
-   <td style="text-align:right;"> 20.27 </td>
-   <td style="text-align:right;"> 47.85 </td>
-   <td style="text-align:right;"> 52.04 </td>
-   <td style="text-align:right;"> 59.79 </td>
-   <td style="text-align:right;"> 70.09 </td>
-   <td style="text-align:left;"> ▂▁▅▇▅ </td>
-  </tr>
-</tbody>
-</table>
+|skim_variable     | n_missing| complete_rate|       mean|         sd|        p0|        p25|        p50|        p75|        p100|hist  |
+|:-----------------|---------:|-------------:|----------:|----------:|---------:|----------:|----------:|----------:|-----------:|:-----|
+|white             |         0|          1.00|      78.83|      13.17|     26.02|      71.95|      82.15|      87.65|       94.95|▁▁▂▆▇ |
+|black             |         0|          1.00|      11.70|      10.89|      0.55|       3.56|       8.23|      16.26|       48.52|▇▃▂▁▁ |
+|hispanic          |         0|          1.00|      11.55|      10.18|      1.49|       4.92|       9.08|      13.15|       48.20|▇▂▁▁▁ |
+|male              |         0|          1.00|      49.40|       0.85|     47.44|      48.78|      49.28|      49.78|       52.37|▁▇▇▁▁ |
+|total_pop         |         0|          1.00| 6294898.80| 7191254.03| 586102.00| 1744545.50| 4422057.00| 6977540.00| 39032444.00|▇▂▁▁▁ |
+|violent_crime     |         0|          1.00|     379.86|     186.69|    118.00|     257.60|     349.60|     441.75|     1269.10|▇▇▁▁▁ |
+|brady_scores      |         1|          0.98|       3.94|      32.25|    -39.00|     -19.00|      -8.75|      19.62|       76.00|▇▇▂▁▃ |
+|gunshot_tally     |         1|          0.98|      20.34|      30.57|      1.00|       5.25|      16.00|      20.00|      196.00|▇▁▁▁▁ |
+|gunshot_filtered  |         1|          0.98|      17.28|      24.47|      1.00|       4.25|      14.00|      18.75|      150.00|▇▁▁▁▁ |
+|gunshot_rate      |         1|          0.98|       1.74|       1.09|      0.28|       0.97|       1.51|       2.10|        5.12|▇▇▂▁▁ |
+|unemployment_rate |         0|          1.00|       5.04|       1.08|      2.80|       4.25|       5.10|       6.00|        6.90|▃▅▅▇▅ |
+|unemployment_rank |         0|          1.00|      25.47|      14.78|      1.00|      13.00|      26.00|      38.00|       51.00|▇▇▇▇▇ |
+|density           |         0|          1.00|     412.52|    1537.71|      1.29|      47.77|     106.35|     226.87|    11019.43|▇▁▁▁▁ |
+|ownership         |         1|          0.98|      51.07|      12.11|     20.27|      47.85|      52.04|      59.79|       70.09|▂▁▅▇▅ |
 
 Ultimately, we're interested in firearm legislation and fatal police shootings, which we'll get to,  but let's explore the relationship between other variables in our dataset first to gain a more complete understanding.
 
