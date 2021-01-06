@@ -1,6 +1,5 @@
 frontmatter.txt
 mainmatter.txt
-intro.md
-dataviz.md
+prediction.md
 backmatter.txt
 about.md
